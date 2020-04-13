@@ -1,39 +1,24 @@
 All documentation for the workshop is best viewed from the github.io pages
 
-[Documentation](https://ucdavis-bioinformatics-training.github.io/ucdavis-bioinformatics-training_template/)
+[Documentation](https://ucdavis-bioinformatics-training.github.io/2020-Bioinformatics_Prerequisites_Workshop/)
 
-Bioinformatics: RNA-Seq Workshop @ UC Davis  
-Aug. 19, 2019, 9 a.m. - Aug. 23, 2019, 4:30 p.m.  
+Bioinformatics: Bioinformatics: Command Line/R Prerequisites 2020 @ UC Davis  
+Oct. 05, 2020, 9 a.m. - Oct. 09, 2020, 4:30 p.m.  
 Organizer - Bioinformatics Core  
 Contact - UC Davis Bioinformatics Core, training.bioinformatics@ucdavis.edu
 
-This workshop will include a rich collection of lectures and hands-on sessions, covering both theory and tools associated with command-line RNA-seq data analysis. Participants will explore experimental design, cost estimation, data generation, and analysis of RNA-Seq data generated on the Illumina sequencing platform. Participants will explore software and protocols, create and modify workflows, and diagnose/treat problematic data utilizing high performance computing services. Exercises will be performed with provided datasets, using command-line interaction.
+This workshop will cover the basic computational and statistical concepts needed before performing bioinformatics analysis.
 
-A preliminary agenda for the week includes:
+Access to a multi-core (24 cpu or greater), ‘high’ memory 64Gb or greater Linux server.
+Familiarity with the ’command line’ and constructing scripts/pipelines.
+Basic knowledge of how to install software
+Basic knowledge of R (or equivalent) and statistical programming
+Basic knowledge of Statistics and model building
+The course will include experimental data organization, basic command line and high performance computing concepts, how to install software, use help, run applications, and the basics of building scripts and pipelines. Also covered will be basic R programming, working with data tables and generating figures, basic statistical concepts, and statistical model building. There are no prerequisites for this workshop other than an interest in bioinformatics! The workshop will be on the UC Davis campus, and will run from 9am to 5:00pm each day and include light breakfast, lunch, and snacks.
 
-* Monday	Introduction to the command line, cluster resources, and the R programming language (or advanced computing topics)
-* Tuesday	Introduction to sequence data and preprocessing
-* Wednesday        	Mapping data to a genome and transcript expression quantification
-* Thursday	Differential expression analysis
-* Friday	Post differential expression analysis, including gene set enrichment analysis, Gene Ontology/Pathway analysis, Generation of figures and tables
-
-Lectures throughout the week will include topics such as:
-
-* Sequencing technologies
-* What is Bioinformatics?
-* Hardware and software considerations
-* Experimental design and cost estimation
-* TAG-Seq vs. mRNA-Seq
+Participants must bring their own laptops to use, which should have a recent version of R, Rstudio, and Java installed, and an application that allows them to ssh into a server (e.g. Bash for Windows, or Terminal for Apple), as well as the ability to connect to the internet via wifi.
 
 ### Industry Sponsors
-
-|:------|:------|------|
-| Monday | <img src="base_figures/kapa.jpeg" alt="kapa" width="150px"/> |  |  
-| Monday Evening Social |  <img src="base_figures/illumina.png" alt="illumina" width="150px"/> |    |  
-| Tuesday | <img src="base_figures/agilant.png" alt="agilant" width="150px"/> |    |  
-| Wednesday | <img src="base_figures/lexogen.jpeg" alt="lexogen" width="150px"/> |    |  
-| Thursday | <img src="base_figures/takara.png" alt="takara" width="150px"/> |    |  
-| Friday | <img src="base_figures/10x.png" alt="10x genomics" width="150px"/> |    |  
 
 ### FAQ
 
@@ -60,6 +45,5 @@ If you have any questions, please don’t hesitate to contact us at training.bio
 
 ### Register
 
-https://registration.genomecenter.ucdavis.edu/events/RNASeq-workshop_Aug_2019/  
+https://registration.genomecenter.ucdavis.edu/events/prerequisites_2020/
 
-**Registration is closed for this event**
