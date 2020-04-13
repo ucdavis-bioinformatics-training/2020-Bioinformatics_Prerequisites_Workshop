@@ -9,11 +9,11 @@ Contact - UC Davis Bioinformatics Core, training.bioinformatics@ucdavis.edu
 
 This workshop will cover the basic computational and statistical concepts needed before performing bioinformatics analysis.
 
-Access to a multi-core (24 cpu or greater), ‘high’ memory 64Gb or greater Linux server.
-Familiarity with the ’command line’ and constructing scripts/pipelines.
-Basic knowledge of how to install software
-Basic knowledge of R (or equivalent) and statistical programming
-Basic knowledge of Statistics and model building
+* Access to a multi-core (24 cpu or greater), ‘high’ memory 64Gb or greater Linux server.
+* Familiarity with the ’command line’ and constructing scripts/pipelines.
+* Basic knowledge of how to install software
+* Basic knowledge of R (or equivalent) and statistical programming
+* Basic knowledge of Statistics and model building
 The course will include experimental data organization, basic command line and high performance computing concepts, how to install software, use help, run applications, and the basics of building scripts and pipelines. Also covered will be basic R programming, working with data tables and generating figures, basic statistical concepts, and statistical model building. There are no prerequisites for this workshop other than an interest in bioinformatics! The workshop will be on the UC Davis campus, and will run from 9am to 5:00pm each day and include light breakfast, lunch, and snacks.
 
 Participants must bring their own laptops to use, which should have a recent version of R, Rstudio, and Java installed, and an application that allows them to ssh into a server (e.g. Bash for Windows, or Terminal for Apple), as well as the ability to connect to the internet via wifi.
