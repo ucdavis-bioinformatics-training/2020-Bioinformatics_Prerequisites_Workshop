@@ -1,0 +1,734 @@
+---
+title: "An introduction to tidyverse and GGPLOT2"
+author: "Bioinformatics Core"
+output: 
+  html_document:
+    keep_md: TRUE
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+### Getting started with Tidyverse
+
+Tidyverse is a set of package for doing data science.  [R for Data Science](https://r4ds.had.co.nz/index.html) by Garrett Grolemund, Hadley Wickham model Data Science in the following way.
+
+![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2_images/R-data-science.png)
+
+
+We will start learning about Tidyverse tools by starting at the first step in this process, importing data.
+
+*** 
+
+### Step 1: Import data with the [readr](https://readr.tidyverse.org/) package ![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2_images/readr.png)
+
+
+> “The goal of 'readr' is to provide a fast and friendly way to read rectangular data (like 'csv', 'tsv', and 'fwf'). It is designed to flexibly parse many types of data found in the wild, while still cleanly failing when data unexpectedly changes.”
+
+The readr package gets loaded automatically when you use library(tidyverse), or you can load it directly.
+```{r readr}
+library(readr)
+```
+
+***
+
+
+#### readr supports a number of file formats with different read_* functions including:
+
+* read_csv(): comma separated (CSV) files
+* read_tsv(): tab separated files
+* read_delim(): general delimited files (you must supply delimiter!)
+* read_fwf(): fixed width files           
+* read_table(): tabular files where columns are separated by white-space.
+* read_log(): web log files
+
+#### Readr also has functions write data in a number of formats with various write_* functions:
+
+* write_csv(): comma separated (CSV) files
+* write_tsv(): tab separated files
+* write_delim(): general delimited files
+* write_excel_csv(): comma separated files for Excel
+
+*** 
+
+#### Get some data and try out these functions:
+
+Note that this data set is from the ggplot2 package. 
+
+```{r download2, eval=FALSE, results='hide', warning=FALSE, error=FALSE, message=FALSE, collapse=TRUE}
+download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Intro_to_R/Intro2R/mpg.tsv", "mpg.tsv")
+```
+
+The file has a ".tsv" extension, so it is probably a tab separated values file. Lets check this assumption in a few different ways.
+Note that the output from the system() function does not appear in the markdown document, and this approach may not work on windows computers.
+```{r peeking at files}
+getwd()
+
+dir(pattern="*.tsv")
+
+system('head mpg.tsv')
+
+system('wc -l mpg.tsv')
+```
+
+Alternatively we could use another of the readr functions, **read_lines**, to look at the first few lines of the file:
+```{r}
+read_lines('mpg.tsv', n_max = 5)
+```
+
+
+We could also check the number of lines by reading the whole file and counting the lines. This approach will be slow for large files:
+```{r}
+length(read_lines('mpg.tsv'))
+```
+
+
+*How many lines does the file have?*
+
+
+*What is the first line of the file?*
+
+
+*What separates the values in the file?*
+
+Read the file and store it in an object:
+```{r}
+
+mpg <- read_tsv('mpg.tsv')
+
+```
+
+#### What are "Column Specifications"
+
+Computers use different types of containers to store different types of data. In tidyverse all numeric data (floating point and integer) is [stored as a 64-bit double](https://www.tidyverse.org/blog/2018/12/readr-1-3-1/). Data that is not numeric is stored in character vectors. When reading a file, readr must make a guess about the type of data stored in each column. To do this, readr skims the [first 1000 lines](https://readr.tidyverse.org/articles/readr.html) of the file, investigating the values it finds there, and using them to make a guess at the format of the file.
+
+*** 
+
+#### Now lets look at the object we just loaded 
+```{r}
+
+mpg
+
+```
+
+
+*Does the mpg object have the expected number of lines?*
+
+
+
+### Detour for [Tibbles](https://tibble.tidyverse.org/) ![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Intro_to_R/Intro2R//Intro_to_tidyverse_and_ggplot2_images/hex-tibble.png)
+
+Tibbles are a modified type of data frame. Everything you have learned about accessing and manipulating data frames still applies, but a tibble behaves a little differently.
+
+From <https://tibble.tidyverse.org/>
+
+>A tibble, or tbl_df, is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not. Tibbles are data.frames that are lazy and surly: they do less (i.e. they don’t change variable names or types, and don’t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code. Tibbles also have an enhanced print() method which makes them easier to use with large datasets containing complex objects.
+
+
+#### Creating tibbles
+
+Tibbles can be created from existing objects using as_tible()
+
+```{r}
+head(iris)
+
+as_tibble(iris)
+```
+
+Tibbles can also be created manually by specifying each column:
+
+```{r}
+tibble(
+        column1=1:5,
+        column2=c("a","b","c","d","e"),
+        column3=pi*1:5
+       )
+```
+
+Or row-by-row with tribble():![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2_images/tribble_.jpg)
+```{r}
+tribble(
+  ~x, ~y,  ~z,
+  "a", 2,  3.6,
+  "b", 1,  8.5
+)
+
+```
+
+
+Tibbles can have terrible column names that should never be used. **Good practice is to have unique column names that start with a letter and contain no special characters.**
+```{r}
+tibble(
+  `terrible column 1` = 1:5,
+  `no good :)` = letters[1:5],
+  `;very-bad/` = sin(4:8)
+)
+```
+
+
+*** 
+
+#### Readr and Tibble Exercises 
+
+1) Create a tibble with 100 rows and 3 columns. Write it out using **write_tsv()**. Try to read it back in with **read_csv()**. Did it read in successfully? How does the new tibble look? Try to use **read_delim()** to read in the data correctly (hint, you will need to specify the proper delimeter).
+
+```{r write a tibble, read a tibble}
+
+```
+
+
+2) Try to generate a *parsing failure* in readr. Based on what you know about how readr processes data, make a trecherous tibble. Write it out. Read it in again to generate the failure.
+
+```{r parsing_failure}
+
+```
+
+3) Take a look at the documentation for read_delim. Enter R code below that successfully loads the trecherous tibble you created in the last exercise.
+```{r}
+
+```
+
+
+*** 
+
+
+### Step 2: Tidying data with [tidyr](https://tidyr.tidyverse.org/) package![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2_images/hex-tidyr.png){width=100}
+
+![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2_images/R-data-science.png)
+
+#### First, what is "tidy" data?
+[**Wickham, Hadley. "Tidy data." Journal of Statistical Software 59.10 (2014): 1-23.**](https://vita.had.co.nz/papers/tidy-data.pdf)
+
+> Tidy data is data where:
+> 
+> 1) Every column is a variable.
+> 2) Every row is an observation.
+> 3) Every cell is a single value.
+> 
+> Tidy data describes a standard way of storing data that is used wherever possible throughout the tidyverse. If you ensure that your data is tidy, you’ll spend less time fighting with the tools and more time working on your analysis.
+
+
+Definitions:
+
+* A **variable** stores a set of values of a particular type (height, temperature, duration)
+
+* An **observation** is all values measured on the same unit across variables
+
+***
+
+#### Lets make a data set:
+```{r tidy_example1}
+d1 = data.frame(
+        sample = rep(c("sample1","sample2","sample3"), 2),
+        trt = rep(c('a','b'), each=3),
+        result = c(4,6,9,8,5,4)
+)
+d1
+```
+
+**Is this tidy?**
+
+1) Every column is a variable?
+  
+2) Every row is an observation?
+  
+3) Every cell is a single value?
+
+4) What are the variables?
+
+5) What are the observations:?
+
+
+
+***
+
+#### Lets make another data set:
+```{r tidy_example2}
+d2 <- data.frame(
+        sample1=c(4,8),
+        sample2=c(6,5),
+        sample3=c(9,4)
+)
+rownames(d2) <- c("a","b")
+d2
+```
+**Is this tidy?**
+
+1) Every column is a variable?
+  
+2) Every row is an observation?
+  
+3) Every cell is a single value?
+
+4) What are the variables?
+
+5) What are the observations?
+
+***
+
+#### How can we make d2 look like d1 (make d2 tidy)?
+
+First, make the row names into a new column with the **rownames_to_column()** function:
+```{r tidyup}
+d2.1 <- rownames_to_column(d2, 'trt')
+d2.1
+```
+
+Make each row an observation with **pivot_longer()** function:
+```{r}
+d2.2 <- pivot_longer(d2.1, cols = -trt, names_to = "sample", values_to = "result")
+d2.2
+```
+
+Reorder columns for looks using **select()** function:
+```{r}
+d2.3 <- select(d2.2, sample, trt, result)
+d2.3
+```
+
+***
+
+### Detour for [magrittr](https://magrittr.tidyverse.org/) and the %>% operator ![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2_images/magrittr.png) 
+Although the code above is fairly readable, it is not compact. It also creates three copies of the data (d2.1, d2.2, d2.3). We could use a couple of different strategies for carrying out this series of operations in a more concise manner.
+
+#### Option 1, the base-R strategy, Nested Functions
+Traditionally, R users have used nested functions to skip the creation of intermediary objects:
+```{r}
+d2.3 <- select( pivot_longer(rownames_to_column(d2, 'trt'), 
+                              cols = -trt, names_to = "sample", values_to = "result"), 
+                               sample, trt, result)
+d2.3
+```
+
+
+#### Option 2, using the %>% pipe operator (also known as syntactic sugar)
+
+> The magrittr package offers a set* of operators which make your code more readable by:
+> 
+> * structuring sequences of data operations left-to-right (as opposed to from the inside and out),
+> * avoiding nested function calls,
+> * minimizing the need for local variables and function definitions, and
+> * making it easy to add steps anywhere in the sequence of operations.
+
+*we will only look at one
+
+```{r}
+d2.3 <- 
+  d2 %>% rownames_to_column('trt') %>% 
+    pivot_longer(cols = -trt, names_to = "sample", values_to = "result") %>% 
+    select(sample, trt, result)
+d2.3
+```
+
+Does either one look more readable to you?
+
+#### How does %>% work?
+
+By default, %>% works to replace the first argument in a function with the left-hand side value with basic piping:
+
+* x %>% f is equivalent to f(x)
+* x %>% f(y) is equivalent to f(x, y)
+* x %>% f %>% g %>% h is equivalent to h(g(f(x)))
+
+In more complicated situations you can also specify the argument to pipe to using the argument placeholder:
+
+* x %>% f(y, .) is equivalent to f(y, x)
+* x %>% f(y, z = .) is equivalent to f(y, z = x)
+
+***
+
+#### Reverting to wide data format can be done with **pivot_wider()**, it does the inverse transformation of **pivot_longer()** and adds columns by removing rows.
+
+For example:
+```{r}
+d1
+```
+
+
+```{r}
+pivot_wider(d1, names_from = sample, values_from = result )
+```
+
+Note that **pivot_longer()** and **pivot_wider()** replace the old functionality in **spread()** and **gather()**, and also have similar functionality to **melt()** and **cast()** from the reshape2 package. [You can read more about this on r-bloggers](https://www.r-bloggers.com/using-r-from-gather-to-pivot/). 
+
+***
+
+#### Sometimes a column contains two variables split by a delimiter, **separate()** can be used to create two columns from this single input
+
+Lets practice on table3 from the tidyr package:
+```{r}
+table3
+```
+
+The third column **rate** contains two different values, **cases** and **population**. We can use the **separate()** function to split these into two columns.
+```{r}
+separate(data = table3, col = rate, into = c("cases", "population"), sep = '/')
+```
+
+
+
+#### tidyr exercises
+
+
+1) The tidyr package comes with a relig_income dataset. Use tidyr functions to make it into a tidy dataset. What are the variables? What are the observations?
+
+```{r}
+
+
+
+```
+
+2) The tidyr package come with a table2 dataset. What is wrong with this dataset? How many rows does it have per observation? Use tidyr functions to make it into a tidy dataset.
+```{r}
+
+```
+
+3) Use %>% and a set of pivot_wider and pivot_longer calls to convert d2 into d1 and then back into d2 again (round trip).
+```{r}
+
+```
+
+***
+
+### Step 3, Transforming data with dplyr ![](./Intro_to_tidyverse_and_ggplot2_images/hex-dplyr.png)
+
+![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2_images/R-data-science.png)
+
+
+dplyr provides a set of verbs for modifying, combining, and otherwise transforming variables, creating subsets based on various attributes, combining multiple tibbles, etc. These approaches are meant to enable efficient manipulation of data.
+
+To demonstrate some of them we will use the starwars dataset included in the dplyr package.
+
+
+
+```{r}
+library(dplyr)
+starwars
+
+```
+
+
+* mutate() adds new variables that are functions of existing variables. Lets use this to calculate the [BMI](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html) of characters in the Starwars universe (note that this equation may be incorrect for androids).
+
+```{r}
+
+starwars %>% mutate(BMI = mass / (height/100))
+
+```
+
+* Perhaps we are only interested in a subset of columns. **select()** allows us to select columns based on name or index.
+
+```{r}
+
+starwars %>% mutate(BMI = mass / (height/100)) %>% select(name, species, BMI)
+
+```
+
+* Before we calculate any summary statistics, lets check to see if we have appropriate levels of replication. We can determine the number of samples per species using **cout()** 
+
+```{r}
+starwars %>% count(species, sort=T, name = "Samples")
+```
+
+* Species information is missing for a number of samples, lets remove these with **drop_na()**, and also remove any samples for which mass or height is NA.
+
+```{r}
+starwars %>% drop_na(species, mass, height) %>% count(species, sort=T, name = "Samples")
+```
+
+* Now lets combine a number of operators to calculate the mean BMI for all groups with at least three samples. We can drop observations for species for which there isn't sufficient replication using a combination of **filter()**, **group_by** and a special **n()** function.
+
+```{r}
+starwars %>% drop_na(species, mass, height) %>%  # remove all observations with missing data
+  mutate(BMI = mass / (height/100)) %>%   # calculate BMI and add a new column
+  group_by(species) %>% filter(n() >= 3) %>%  # filter observations belonging to species with < 3 samples
+  summarize(mean_BMI = mean(BMI))  # calculate summary statistics
+
+```
+
+What can we learn from these results?
+
+***
+
+
+* We can use the **arrange()** and **slice()** functions to find the tallest observed inhabitant of each planet sampled:
+```{r}
+starwars %>% 
+  arrange(homeworld, desc(height)) %>%  # sort by homeworld, then height descending
+  group_by(homeworld) %>%  # use group_by to tell slice() how to select records
+  slice(1)  # keep only the first observation per homeworld
+```
+
+
+*** 
+
+#### Exercises
+
+Install the nycflights13 package and take a look at the **flights** dataset.
+
+```{r,  results='hide', warning=FALSE, error=FALSE, message=FALSE, collapse=TRUE}
+if (!any(rownames(installed.packages()) == "nycflights13")){
+  install.packages("nycflights13")
+}
+library(nycflights13)
+
+```
+```{r}
+
+flights
+
+```
+
+
+1) Assuming that people traveling for the Christmas/New Years holiday depart between December 20th and 24th, from which airport (EWR, JFK, LGA) did the most flights travel to San Francisco Airport (SFO)?
+
+```{r}
+
+```
+
+2) How many of these flights were delayed in departure by at least 30 minutes?
+```{r}
+
+```
+
+3) How many of these flights arrived late by at least 30 minutes?
+```{r}
+
+```
+
+4) What was the shortest in-flight time to SFO from each of the airports? 
+```{r}
+
+```
+
+
+5) Extra credit: answer questions 1, 2, and 3 using base R.
+```{r}
+
+```
+
+
+
+
+***
+
+
+
+### Step 4, Visualise with ggplot2 ![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2_images/hex-ggplot2.png)
+
+![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2_images/R-data-science.png)
+
+[ggplot2](https://ggplot2.tidyverse.org/) is a system for declaratively creating graphics, based on [The Grammar of Graphics](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl?ie=UTF8&qid=1477928463&sr=8-1&keywords=the+grammar+of+graphics&linkCode=sl1&tag=ggplot2-20&linkId=f0130e557161b83fbe97ba0e9175c431). You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+
+**Note that most of the material on GGPLOT2 was taken directly from [RStudio teaching resources](https://github.com/rstudio-education) that are made freely available online **
+
+***
+
+Lets start with a plot:
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x=displ, y=hwy))
+```
+
+#### A template for ggplot:
+
+> ggplot(data = \<DATA\>) +
+  \<GEOM_FUNCTION\>(mapping = aes(<MAPPING>) )
+
+
+**Aesthetics** - visual property of something in a graph - color, shape, size
+    Mapping connects values in the data to a visual indication in the plot.
+    color, size, shape, alpha
+
+**GEOM** Geometric object (geom_abline, geom_bar, geom_boxplot, geom_dotplot, etc)
+
+### Aesthetic mapping defines how variables in the dataset are connected to visual properties of the plot.
+
+Aesthetics can:
+
+* Tell ggplot which variables are used on what axis
+* Tell ggplot which shape to use for points on a plot
+* Tell ggplot what color to make the points
+* Tell ggplot what size to make the points
+* Tell ggplot how transparent to make a point (alpha)
+* etc
+
+All off these mappings can be passed in to the aes() function.
+
+#### Exercises
+
+1) Create scatter plots from the mpg dataset. Experiment with mapping color, size, alpha and shape to different variables. 
+
+```{r}
+
+```
+
+2) How does the behavior of GGPLOT differ when you use the "class" variable vs the "cty" variable for color?
+```{r}
+
+```
+
+3) What happens when you use more than one aesthetic?
+```{r}
+
+```
+
+4) Create a tibble with x coordinates, y coordinates, 6 colors (color1-6), and 6 shapes (shape1-6), plot this tibble. Try to set the size of all points to something larger than the default.
+```{r}
+
+```
+
+5) What happens if you try to specify an aesthetic mapping outside of the aes() function? Does the behavior different depending on whether you use a variable from your tibble/data frame?
+```{r}
+
+
+```
+
+*** 
+
+Plots can be built up piece by piece and only plotted when they are ready. 
+
+This code will not produce a plot:
+
+q <- ggplot(mpg) + geom_point(aes(x = displ, y = hwy))
+
+
+
+**Facets** are another way to display groupings in your data. Only instead of color or shape, facets display each group in a different plot.
+
+
+#### Exercises
+
+1) Experiment with each of the modifications to the _q_ object below.
+
+Write a brief description of how fact_grid works:
+
+Write a brief description of how facet_wrap works:
+
+```{r}
+q <- ggplot(mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+q + facet_grid(. ~ cyl)
+q + facet_grid(drv ~ .)
+q + facet_grid(drv ~ cyl)
+q + facet_wrap(~ class)
+
+```
+
+2) What happens when you provide two varaiables to facet_wrap?
+
+
+
+#### Lets update our ggplot template:
+
+> ggplot(data = \<DATA\>) +
+  \<GEOM_FUNCTION\>(mapping = aes(<MAPPING>)) +
+  \<FACET_FUNCTION\>
+
+
+#### Now lets add labels to our plots:
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(displ, hwy, color = class)) +
+  labs(title = "Fuel Efficiency by Engine Size",
+    subtitle = "Data facetted by class",
+    x = "Engine Size (displacement in liters)",
+    y = "Fuel Efficiency (MPG)",
+    color = "Class of\nAutomobile",
+    caption = "Data from the EPA") + 
+    facet_wrap(~ class)
+
+
+```
+
+### Different geometric objects (geom)
+
+GGPLOT supports many different types of geometric objects. Each provides a different way of presenting data. 
+
+#### Boxplots
+```{r}
+ggplot(data = mpg) +
+  geom_boxplot(mapping = aes(x = class, y = hwy))
+
+```
+
+#### Boxplots (modify binwidth to get higher or lower resolution plots)
+```{r}
+ggplot(data = mpg) +
+  geom_histogram(mapping = aes(x = hwy), binwidth=1)
+```
+
+
+#### It is also possible to include multiple geometric shapes on a single plot 
+```{r}
+ggplot(mpg) +
+  geom_point(aes(displ, hwy)) +
+  geom_smooth(aes(displ, hwy))
+
+```
+
+
+#### Global vs local varaibles can be used to change the behavior of plots
+Notice how the coloring of the points only impacts the geom_point geom, but does not impact geom_smooth
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+  geom_point(mapping = aes(color = drv)) +
+  geom_smooth()
+
+```
+
+
+
+#### This concept of global and local also applied to data. If you only want a subset of your data plotted by one of your geoms, you can specify a second data set inside of the function call to that geom.
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+  geom_point(mapping = aes(color = drv)) +
+  geom_smooth(data = filter(mpg, drv == "f"))
+```
+
+
+#### Once your plot is perfect, you want to save it. 
+
+Option 1, using base-R png() or pdf() functions:
+```{r}
+pdf(file="my-plot1.pdf", width=5, height=5)
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+  geom_point(mapping = aes(color = drv)) +
+  geom_smooth()
+dev.off()
+
+
+png(file="myplot.png", width=500, height=500)
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+  geom_point(mapping = aes(color = drv)) +
+  geom_smooth()
+dev.off()
+
+```
+
+
+Option 2, using the ggsave function to save the last plot made:
+```{r}
+p <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+  geom_point(mapping = aes(color = drv)) +
+  geom_smooth()
+
+ggsave(file = "myplot3.pdf", width=5, height=5, plot=p)
+
+```
+
+
+#### Exercises
+
+1) Visit <https://rstudio.cloud/learn/cheat-sheets> and download the Data Visualization cheatsheet. Choose five different **geoms** to experiment with. Try to get a good mix of one variable, two variables, continuous, and discrete.
+
+
+
+#### Putting it all together / something to keep you from getting bored over the holidays
+
+Visit <http://varianceexplained.org/r/tidy-genomics/> and work through the example. How many of the commands do you recognize from 
+

@@ -9,5 +9,52 @@ navigation:
   - heading: Introduction
   - title: Intro to the Workshop and Core
     url: welcome
+  - title: Schedule
+    url: base/schedule
   - title: Examples of Markdown Formatting
     url: examples
+  - title: Software and Links
+    url: software_scripts/software
+  - heading: Intro CLI
+  - title: Logging in and transferring files
+    url: CLI_Intro/logging-in
+  - title: Unix & the Command Line
+    url: CLI_Intro/command-line-intro
+  - title: Unix & the Command Line- Challenge Solutions
+    url: CLI_Intro/command-line-intro-challenge-solutions
+  - title: Clusters and modules
+    url: CLI_Intro/cluster
+  # - heading: Advanced CLI
+  # - title: Advanced Command Line
+  #   url: adv_cli/advanced_cli
+  # - title: Advanced Challenge Solutions
+  #   url: adv_cli/advanced_cli_solutions
+  # - title: Environment Variables
+  #   url: adv_cli/environment
+  # - title: Using screen to manage multiple projects
+  #   url: adv_cli/screen
+  # - heading: Introduction to R
+  # - title: Introduction to R
+  #   url: intro_R/intro_R
+  # - title: Introduction to tidyverse, part I
+  #   url: intro_R/tidyverse1
+  # - title: Introduction to tidyverse, part II
+  #   url: intro_R/tidyverse2
+  # - title: Linear modeling in R
+  #   url: intro_R/linear_models
+  # - heading: Spreadsheets
+  # - title: Working with spreadsheets
+  #   url: adv_cli/advanced_cli
+  # - heading: Bioinformatics
+  # - title: A Simple Bioinformatics Workflow
+  #   url: adv_cli/advanced_cli_solutions
+  # - heading: ETC
+  # - title: Closing Thoughts
+  #   url: adv_cli/environment
+  # - heading: Support
+  # - title: Using Slack in this workshop
+  #   url: base/slack
+  # - title: Using Zoom in this workshop
+  #   url: base/zoom
+  # - title: Cheat Sheets
+  #   url: base/cheatSheetIndex
