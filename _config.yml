@@ -35,7 +35,7 @@ navigation:
   #   url: adv_cli/screen
   - heading: Introduction to R
   - title: Introduction to R
-    url: intro_R/intro_R
+    url: Intro_to_R/Intro2R/Intro2R_main
   # - title: Introduction to tidyverse, part I
   #   url: intro_R/tidyverse1
   # - title: Introduction to tidyverse, part II
