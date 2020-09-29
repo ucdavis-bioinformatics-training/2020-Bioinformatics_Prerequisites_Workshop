@@ -118,7 +118,9 @@ A function is a block of organized, reusable code that is used to perform a set 
 
 **function.name(parameter1=value1, ...)**
 
-<font color='blue'>In R, in order to get help information on a funciton, one may use the command </font>**?function.name**
+In R, to get help information on a funciton, one may use the command: 
+
+**?function.name**
 
 
 * <font color='purple'>Operations</font>
