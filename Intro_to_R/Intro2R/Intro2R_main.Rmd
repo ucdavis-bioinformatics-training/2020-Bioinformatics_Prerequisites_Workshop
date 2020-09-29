@@ -125,6 +125,14 @@ There are three concepts that are essential in any programming language:
 A variable is a named storage. Creating a variable is to reserve some space in memory. In R, the name of a variable can have letters, numbers, dot and underscore. However, a valid variable name cannot start with a underscore or a number, or start with a dot that is followed by a number.
 
 
+* `r colFmt("Functions", 'purple')`
+
+A function is a block of organized, reusable code that is used to perform a set of predefined operations. A function may take zero or more parameters and return a result. The way to use a function in R is:
+
+**function.name(parameter1=value1, ...)**
+
+`r colFmt("In R, in order to get help information on a funciton, one may use the command **?function.name**.", 'blue')`
+
 
 * `r colFmt("Operations", 'purple')`
 
@@ -139,14 +147,6 @@ kable(data.frame(Operator=c("<", ">", "<=", ">=", "==", "!="), Description=c("Le
 
 kable(data.frame(Operator=c("!", "&", "&&", "|", "||"), Description=c("Logical NOT", "Element-wise logical AND", "Logical AND", "Element-wise logical OR", "Logical OR"), stringsAsFactors=F), align='c', caption="Logical Operators in R") %>% kable_styling(bootstrap_options="striped", full_width=F, position="left")
 ```
-
-* `r colFmt("Functions", 'purple')`
-
-A function is a block of organized, reusable code that is used to perform a set of predefined operations. A function may take zero or more parameters and return a result. The way to use a function in R is:
-
-**function.name(parameter1=value1, ...)**
-
-In R, in order to get help information on a funciton, one may use the command *?function.name*.
 
 <P style="page-break-before: always">
 
