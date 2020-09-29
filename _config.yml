@@ -33,9 +33,9 @@ navigation:
   #   url: adv_cli/environment
   # - title: Using screen to manage multiple projects
   #   url: adv_cli/screen
-    - heading: Introduction to R
-    - title: Introduction to R
-      url: intro_R/intro_R
+  - heading: Introduction to R
+  - title: Introduction to R
+    url: intro_R/intro_R
   # - title: Introduction to tidyverse, part I
   #   url: intro_R/tidyverse1
   # - title: Introduction to tidyverse, part II
