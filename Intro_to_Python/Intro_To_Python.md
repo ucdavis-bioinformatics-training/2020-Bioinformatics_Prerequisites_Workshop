@@ -7,6 +7,7 @@
 *  Part 1: Intro To Python (1 - 1:30pm)
     -  Why learn Python?
     -  Background
+        -  Beautiful code, PEP8, zen of python stuff
     -  Key concepts
         +  Interactive vs Script, python vs ipython
     -  [Basic data types](https://docs.python.org/3/library/datatypes.html)
@@ -14,6 +15,7 @@
         +  Strings
             -  Single and double quotes, escape characters, etc
             -  print()
+            -  inserting variables 
         +  Comments (#)
 *  Part 1: Hands on exercises (1:30 - 2pm)
     -  TODO
@@ -21,18 +23,28 @@
     -  Lists and Tuples
         -  Zero-based index, variables vs objects
     -  Dictionaries
-    -  
+    -  Maybe Counter() and OrderedDict() from collections (https://docs.python.org/2/library/collections.html)
+    -  Basic file read and write
 
 *  Part 3: Even more advaned
     -  Flow control
-        -  For Loops
-        -  
+        -  For Loops, while etc
+        -  Maybe list comprehension, lambda etc?
+    -  Simple functions
+* Part 4: Special topics
+    -  Biopython
+        -  SeqIO, Maybe some of the NCBI support, converting files, 
+            -  TODO: check the biopython tutorial/cookbook http://biopython.org/DIST/docs/tutorial/Tutorial.html
+    -  CSV package maybe https://docs.python.org/3/library/csv.html
+    -  Plotting 
 
 
-Topics:
+
+Topics to integrate:
     -  String slicing
     -  list comprehension
     -  Flow control
+    -  Plotting with 
 
 Extra:
     -  Sqlite and very basic SQL usage
@@ -42,21 +54,11 @@ Sources:
     https://docs.python.org/3/tutorial/index.html
 
 
-*  1:30 
-*  1:20pm Team part 1: 20 minutes in break out rooms
-    - setup and run BUSCO on Drosophila assemblies
-* 1:40pm Presentation about how BUSCO works: 20 minutes
-* 2pm Team part 2: 20 minutes in breakout rooms
-    - Evaluate BUSCO results
-    - Prepare presentation
-* 2:20pm Team Presentations: 25 minutes 
-    - Teams 1-5, 5 minutes each
-* 2:50pm Extra credit if time permits.
-
 
 Ideas for Exercises:
 *  Given a fastq record, convert the character values to quality values, calculate the average quality, count the number of bases < Q30
-
+*  http://rosalind.info/problems/gc/ Computing GC Content
+*  http://rosalind.info/problems/prot/ Translate RNA to protein
 
 
 ### Intro
