@@ -43,7 +43,7 @@
         -  What is "Scope" and how does it work?
         -  defining variables, passing variables, returning variables
     -  Hands on Exercises 3
-*  Part 5: Special topics
+*  Part 4: Special topics
     -  Biopython
         -  SeqIO, Maybe some of the NCBI support, converting files, 
             -  TODO: check the biopython tutorial/cookbook http://biopython.org/DIST/docs/tutorial/Tutorial.html
