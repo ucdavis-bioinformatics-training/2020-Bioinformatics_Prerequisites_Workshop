@@ -8,35 +8,42 @@
     -  Why learn Python?
     -  Background
         -  Beautiful code, PEP8, zen of python stuff
-    -  Key concepts
+    -  Key concepts of interacting with Python
         +  Interactive vs Script, python vs ipython
+    -  Exercise: Log into server, edit path, run ipython, print "Hello World!"
+*  Part 2: Basics of Python
     -  [Basic data types](https://docs.python.org/3/library/datatypes.html)
         +  Integers, Floating-point numbers, boolean, 
+            - abs(), 
         +  Strings
             -  Single and double quotes, escape characters, etc
             -  print()
             -  inserting variables 
         +  Comments (#)
-*  Part 1: Hands on exercises (1:30 - 2pm)
+*  Part 2: Hands on exercises (1:30 - 2pm)
     -  TODO
-*  Part 2: More advanced
+*  Part 3: More advanced
     -  Lists and Tuples
         -  Zero-based index, variables vs objects
     -  Dictionaries
     -  Maybe Counter() and OrderedDict() from collections (https://docs.python.org/2/library/collections.html)
     -  Basic file read and write
-
-*  Part 3: Even more advaned
+    -  Hands on Exercises 2
+*  Part 3: Even more advanced
     -  Flow control
         -  For Loops, while etc
+        -  Iterators - what is an iterator, how does it work?
         -  Maybe list comprehension, lambda etc?
     -  Simple functions
-* Part 4: Special topics
+        -  What is "Scope" and how does it work?
+    -  Hands on Exercises 3
+*  Part 4: Special topics
     -  Biopython
         -  SeqIO, Maybe some of the NCBI support, converting files, 
             -  TODO: check the biopython tutorial/cookbook http://biopython.org/DIST/docs/tutorial/Tutorial.html
     -  CSV package maybe https://docs.python.org/3/library/csv.html
-    -  Plotting 
+    -  Plotting Seaborn / GGPlot
+        -  Jupyter Notebooks
 
 
 
@@ -44,7 +51,7 @@ Topics to integrate:
     -  String slicing
     -  list comprehension
     -  Flow control
-    -  Plotting with 
+    -  Plotting with Seaborn / GGPlot
 
 Extra:
     -  Sqlite and very basic SQL usage
@@ -52,6 +59,7 @@ Extra:
 
 Sources:
     https://docs.python.org/3/tutorial/index.html
+    https://www.w3schools.com/python/ref_func_zip.asp
 
 
 
