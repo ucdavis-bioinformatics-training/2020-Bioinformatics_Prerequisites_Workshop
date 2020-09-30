@@ -61,6 +61,20 @@ Ideas for Exercises:
 *  http://rosalind.info/problems/prot/ Translate RNA to protein
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------- OLD STUFF for formatting examples --------------
 ### Intro
 
 **Benchmarking Universal Single-Copy Orthologs**, [BUSCO](https://doi.org/10.1093/bioinformatics/btv351), is a popular software package for assessing genome/transcriptome assembly completeness using single copy orthologs. It was published in Oct 2015 and had 3486 citations as of July 2020 according to Google Scholar! [The authors](https://www.sib.swiss/evgeny-zdobnov-group) are also responsible for [OrthoDB](https://www.orthodb.org/), a large database of curated [orthologous genes](https://www.orthodb.org/orthodb_userguide.html#terminology). 
