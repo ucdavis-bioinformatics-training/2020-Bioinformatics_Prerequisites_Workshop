@@ -197,6 +197,11 @@ my_list[-1]
 # OR
 my_list[5]
 
+# getting a range of the list
+my_list[-3:]
+my_list[1:3]
+my_list[:3]
+
 my_list2 = [7,8,9]
 
 # adding and subtracting lists
@@ -220,6 +225,13 @@ my_list-my_list2
 >>> my_list[5]
 6
 >>> 
+>>> # getting a range of the list
+>>> my_list[-3:]
+[4, 5, 6]
+>>> my_list[1:3]
+[2, 3]
+>>> my_list[:3]
+[1, 2, 3]
 >>> my_list2 = [7,8,9]
 >>> 
 >>> # adding and subtracting lists
