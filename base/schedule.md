@@ -35,7 +35,7 @@ All posted times are **Pacific** time zone. At least one break will be provided 
 **12:00 pm** Lunch  
 **1:00 pm**  Getting set up with AWS __lecture and hands on__ _Kevin_  
 **2:00 pm**  Introduction to R __lecture__ _Jessie_    
-**4:00 pm**  Getting started with R and Rstudio __hands on__ _Jessie_  
+**3:00 pm**  Getting started with R and Rstudio __hands on__ _Jessie_  
 **4:45 pm**  Wrap-up and homework  
 **5:00 pm**  Zoom session ends  
 
@@ -43,10 +43,11 @@ All posted times are **Pacific** time zone. At least one break will be provided 
 
 **8:50 am**  Zoom session starts  
 **9:00 am**  Recap of previous day's topics  
-**9:30 am**  Introduction to R __hands on__ _Jessie_      
+**9:30 am**  Introduction to tidyverse in R __lecture__ _Hannah_  
+**10:00 am** Introduction to tidyverse in R __hands on__ _Hannah_    
 **12:00 pm** Lunch  
-**1:00 pm**  Introduction to tidyverse in R __lecture__ _Hannah_    
-**1:30 pm**  Introduction to tidyverse in R __hands on__ _Hannah_  
+**1:00 pm**  Visualizations in tidyverse __hands on__ _Hannah_    
+**3:00 pm**  Special Topic (TBA)  
 **4:45 pm**  Wrap-up and homework  
 **5:00  pm**  Zoom session ends  
 
@@ -58,5 +59,5 @@ All posted times are **Pacific** time zone. At least one break will be provided 
 **10:00 am** Linear models in R __hands on__ _Blythe_    
 **12:00 pm** Lunch  
 **1:00 pm**  Working with spreadsheets __lecture and hands on__ _Matt_    
-**4:00 pm**  Closing thoughts  
+**4:00 pm**  Closing thoughts __lecture__ _Matt_
 **5:00  pm**  Zoom session ends  
