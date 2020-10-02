@@ -4,8 +4,8 @@
 - [Basic data types](#datatypes)
 - [Basic arithmetic](#arithmetic)
 - [Comparisons](#comparisons)
-- [Boolean Operations](#operations)
 - [Basic data structures](#datastructures)
+- [Boolean Operations](#operations)
 
 
 ---
@@ -69,7 +69,14 @@ True
 0
 </div>
 
-
+## Strings
+```
+my_string = "Hello world!"
+type(my_string)
+my_string
+print(my_string)
+my_string[1] # this will make more sense when we learn lists later
+```
 
 
 
@@ -182,7 +189,7 @@ False
 
 </div>
 
-# <a name="dattastructures"></a> Basic Data Structures: Lists, Sets, Tuples, Dictionaries.
+# <a name="datastructures"></a> Basic Data Structures: Lists, Sets, Tuples, Dictionaries.
 
 ## Lists
 ```
@@ -207,6 +214,17 @@ my_list2 = [7,8,9]
 # adding and subtracting lists
 my_list+my_list2
 my_list-my_list2
+
+
+# string lists, double indexing
+my_string_list = ['the', 'dog', 'says', 'woof']
+my_string_list[0][1:]
+
+# join, splits, replace, 
+" ".join(my_string_list)
+list(my_string_list[0])
+" ".join(my_string_list).split()
+
 ```
 
 <div class="output">
@@ -241,6 +259,18 @@ my_list-my_list2
 Traceback (most recent call last):
   File
 TypeError: unsupported operand type(s) for -: 'list' and 'list'
+>>> # string lists, double indexing
+>>> my_string_list = ['the', 'dog', 'says', 'woof']
+>>> my_string_list[0][1:]
+'he'
+>>> 
+>>> # join, splits, replace, 
+>>> " ".join(my_string_list)
+'the dog says woof'
+>>> list(my_string_list[0])
+['t', 'h', 'e']
+>>> " ".join(my_string_list).split()
+['the', 'dog', 'says', 'woof']
 </div>
 
 
@@ -248,66 +278,238 @@ TypeError: unsupported operand type(s) for -: 'list' and 'list'
 
 
 ```
+my_tuple = (1,2,3,4,5,6)
+type(my_tuple)
+
+# getting the first element in a tuple (0 index)
+my_tuple[0]
+
+# getting the last element in a tuple
+my_tuple[-1]
+# OR
+my_tuple[5]
+
+# getting a range of the tuple
+my_tuple[-3:]
+my_tuple[1:3]
+my_tuple[:3]
+
+my_tuple2 = (7,8,9)
+
+# adding and subtracting tuples
+my_tuple+my_tuple2
+my_tuple-my_tuple2
+```
+
+<div class="output">
+>>> my_tuple = (1,2,3,4,5,6)
+>>> type(my_tuple)
+<class 'tuple'>
+>>> 
+>>> # getting the first element in a tuple (0 index)
+>>> my_tuple[0]
+1
+>>> 
+>>> # getting the last element in a tuple
+>>> my_tuple[-1]
+6
+>>> # OR
+>>> my_tuple[5]
+6
+>>> 
+>>> # getting a range of the tuple
+>>> my_tuple[-3:]
+(4, 5, 6)
+>>> my_tuple[1:3]
+(2, 3)
+>>> my_tuple[:3]
+(1, 2, 3)
+>>> 
+>>> my_tuple2 = (7,8,9)
+>>> 
+>>> # adding and subtracting tuples
+>>> my_tuple+my_tuple2
+(1, 2, 3, 4, 5, 6, 7, 8, 9)
+>>> my_tuple-my_tuple2
+Traceback (most recent call last):
+  File 
+TypeError: unsupported operand type(s) for -: 'tuple' and 'tuple'
+</div>
+
+## Tuples vs Lists
 
 ```
+my_list[0] = 135
+my_list
+my_tuple[0] = 135
+my_tuple
+
+```
+<div class="output">
+>>> my_list = [1,2,3,4,5,6]
+>>> my_list[0] = 135
+>>> my_list
+[135, 2, 3, 4, 5, 6]
+>>> my_tuple[0] = 135
+Traceback (most recent call last):
+  File
+TypeError: 'tuple' object does not support item assignment
+>>> my_tuple
+(1, 2, 3, 4, 5, 6)
+
+</div>
 
 ## Sets
 
+```
+my_set = {1,2,3,4,5,5}
+my_set
+#OR 
+my_set = set([1,2,3,4,5,5]) 
+my_set
+type(my_set)
 
+
+# Can we index sets like we do lists? No
+my_set[0]
+
+
+my_set2 = {5,7,8,9}
+
+# intersection and union of sets etc.
+
+# union
+my_set|my_set2
+# intersection
+my_set&my_set2
+# subtracting sets
+my_set-my_set2
+my_set2-my_set
+
+```
+
+
+<div class="output">
+
+>>> my_set = {1,2,3,4,5,5}
+>>> my_set
+{1, 2, 3, 4, 5}
+>>> #OR 
+>>> my_set = set([1,2,3,4,5,5]) 
+>>> my_set
+{1, 2, 3, 4, 5}
+>>> type(my_set)
+<class 'set'>
+>>> 
+>>> 
+>>> # Can we index sets like we do lists? No
+>>> my_set[0]
+Traceback (most recent call last):
+  File 
+TypeError: 'set' object is not subscriptable
+>>> 
+>>> 
+>>> my_set2 = {5,7,8,9}
+>>> 
+>>> # intersection and union of sets etc.
+>>> 
+>>> # union
+>>> my_set|my_set2
+{1, 2, 3, 4, 5, 7, 8, 9}
+>>> # intersection
+>>> my_set&my_set2
+{5}
+>>> # subtracting sets
+>>> my_set-my_set2
+{1, 2, 3, 4}
+>>> my_set2-my_set
+{8, 9, 7}
+</div>
 
 ## Dictionaries
+```
+my_dict = {'a':1, 'b':2, 'c':3}
+type(my_dict)
 
+my_dict.keys()
+my_dict.values()
+my_dict['a']
+```
 
+<div class="output">
+>>> my_dict = {'a':1, 'b':2, 'c':3}
+>>> type(my_dict)
+<class 'dict'>
+>>> 
+>>> my_dict.keys()
+dict_keys(['a', 'b', 'c'])
+>>> my_dict.values()
+dict_values([1, 2, 3])
+>>> my_dict['a']
+1
+</div>
 
 
 # <a name="operations"></a> Boolean Operations: and, or, not 
 
+```
+1 and 1
+0 and 1
+0 or 1 
+not 1
+not 0
+not True
+not False
+True and False
+True or False
+```
+
+<div class="output">
+>>> 1 and 1
+1
+>>> 0 and 1
+0
+>>> 0 or 1 
+1
+>>> not 1
+False
+>>> not 0
+True
+>>> not True
+False
+>>> not False
+True
+>>> True and False
+False
+>>> True or False
+True
+
+</div>
 
 
 
 
 
--  [Basic data types](https://docs.python.org/3/library/datatypes.html)
-    +  Integers, Floating-point numbers, boolean, 
-        - abs(), 
-    +  Strings
-        -  Single and double quotes, escape characters, etc
-        -  print()
-        -  inserting variables 
-        -  
-    +  Comments (#)
+<div class="output">
+ 
+</div>
+
+<div class="output">
+ 
+</div>
+
+<div class="output">
+ 
+</div>
 
 
 
+-  Single and double quotes, escape characters, etc TODO
+-  inserting variables TODO
+-  Zero-based index, variables vs objects
+-  Maybe Counter() and OrderedDict() from collections (https://docs.python.org/2/library/collections.html)
 
-*  Part 2: Basics of Python and Basic Data Types
-    -  [Basic data types](https://docs.python.org/3/library/datatypes.html)
-        +  Integers, Floating-point numbers, boolean, 
-            - abs(), 
-        +  Strings
-            -  Single and double quotes, escape characters, etc
-            -  print()
-            -  inserting variables 
-            -  
-        +  Comments (#)
 
 *  Part 2: Hands on exercises (1:30 - 2pm)
     -  TODO
-*  Part 2: Continued more advanced data types
-    -  Lists and Tuples
-        -  Zero-based index, variables vs objects
-    -  Dictionaries
-    -  Maybe Counter() and OrderedDict() from collections (https://docs.python.org/2/library/collections.html)
-    -  Hands on Exercises 2
-*  Part 3: Flow control
-        -  if statements
-        -  range
-        -  break, continue, pass
-        -  For Loops, while etc
-        -  Iterators - what is an iterator, how does it work?
-        -  Maybe list comprehension, lambda etc?
-    -  Basic file read and write
-    -  Simple functions
-        -  What is "Scope" and how does it work?
-        -  defining variables, passing variables, returning variables
-    -  Hands on Exercises 3
+
