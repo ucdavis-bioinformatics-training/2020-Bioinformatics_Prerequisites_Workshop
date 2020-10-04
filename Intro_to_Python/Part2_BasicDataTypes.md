@@ -502,8 +502,8 @@ True
  
 </div>
 
-
-
+-  pop and append lists etc....
+-  rounding
 -  Single and double quotes, escape characters, etc TODO
 -  inserting variables TODO
 -  Zero-based index, variables vs objects
