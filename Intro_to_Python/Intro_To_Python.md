@@ -1,91 +1,40 @@
-<img src="./figures/python-logo2x.png" alt="Python" width="40%" align="left"/>
+<img src="./figures/python-logo2x.png" alt="Python" width="40%" align="right"/>
+
+<br><br><br>
+------------
   
   
   
-### Intro to Python
+## Intro to Python
 
 
 
 ### Schedule
-*  Part 1: Intro To Python (1 - 1:30pm)
-    -  Why learn Python?
-    -  Background
-        -  Beautiful code, PEP8, zen of python stuff
-    -  Key concepts of interacting with Python
-        +  Interactive vs Script, python vs ipython
-    -  Exercise: Log into server, edit path, run ipython, print "Hello World!"
-    -  Libraries, etc
-*  Part 2: Basics of Python and Basic Data Types
-    -  [Basic data types](https://docs.python.org/3/library/datatypes.html)
-        +  Integers, Floating-point numbers, boolean, 
-            - abs(), 
-        +  Strings
-            -  Single and double quotes, escape characters, etc
-            -  print()
-            -  inserting variables 
-            -  
-        +  Comments (#)
+*  Part 1: Intro To Python and first program (1 - 1:30pm)
+*  Part 2: Basics of Python and basic data types (1:30pm-3pm)
+    *  Breakout session 1, Hands on exercises, Basic Data Types (1:45 - 2:00pm)
+    *  Part 2 continued more advanced data types (2:00 - 2:15pm)
+    *  Breakout session 2, Hands on exercises, Advanced Data Types (2:15 - 2:30pm)
+    *  Part 2: Wrap up, objects and memory management 
 
-*  Part 2: Hands on exercises (1:30 - 2pm)
-    -  TODO
-*  Part 2: Continued more advanced data types
-    -  Lists and Tuples
-        -  Zero-based index, variables vs objects
-    -  Dictionaries
-    -  Maybe Counter() and OrderedDict() from collections (https://docs.python.org/2/library/collections.html)
-    -  Hands on Exercises 2
-*  Part 3: Flow control
-        -  if statements
-        -  range
-        -  break, continue, pass
-        -  For Loops, while etc
-        -  Iterators - what is an iterator, how does it work?
-        -  Maybe list comprehension, lambda etc?
-    -  Basic file read and write
-    -  Simple functions
-        -  What is "Scope" and how does it work?
-        -  defining variables, passing variables, returning variables
-    -  Documenting your code
-    -  Hands on Exercises 3
-*  Part 4: Special topics
+3pm Break (15 minutes)
+
+*  Part 3: Flow control (3:15 - 3:45pm) 
+    *  Breakout session 3, Practice Flow Control (3:45 - 4pm)
+*  Part 3: Continued, files, functions, documentation 
+    *  Hands on Exercises 3
+*  Part 4: Special topics (4 - 5pm)
     -  Biopython
-        -  SeqIO, Maybe some of the NCBI support, converting files, 
-            -  TODO: check the biopython tutorial/cookbook http://biopython.org/DIST/docs/tutorial/Tutorial.html
     -  CSV package maybe https://docs.python.org/3/library/csv.html
     -  Plotting Seaborn / GGPlot
-        -  Jupyter Notebooks
-
-
-
-Topics to integrate:
-    -  String slicing
-    -  list comprehension
-    -  Flow control
-    -  Plotting with Seaborn / GGPlot
-
-Extra:
-    -  Sqlite and very basic SQL usage
-    -  
-
-Sources:
-    https://docs.python.org/3/tutorial/index.html
-    https://www.w3schools.com/python/ref_func_zip.asp
-
-
-
-Ideas for Exercises:
-*  Given a fastq record, convert the character values to quality values, calculate the average quality, count the number of bases < Q30
-*  http://rosalind.info/problems/gc/ Computing GC Content
-*  http://rosalind.info/problems/prot/ Translate RNA to protein
 
 
 
 
 
+## Part 1: Intro to Python
 
-### Part 1: Intro to Python
-
-#### Why learn Python?
+### Why learn Python?
 
 
 <img src="figures/programming_languages_recommended.png" alt="Python" width="70%" align="center"/>
@@ -94,7 +43,7 @@ https://businessoverbroadway.com/2019/01/13/programming-languages-most-used-and-
 
 
 -  Python is extremely popular and widely used, especially for data science.
-    +  Gaining in popularity for Bioinformatics, especially for building tools.
+    +  Popular and getting more so in Bioinformatics, especially for building tools.
     +  R (which you will learn later in the week) is arguably more useful currently due to the huge number of packages available from [Bioconductor](http://bioconductor.org/). Really the best option is to learn [Python, R, and bash](http://omgenomics.com/programming-languages/). A little of each will go a long way.
 -  Freely available to [download](https://www.python.org/downloads/) for Windows, Linux, Mac OS X, etc.
 -  Python is extremely versatile
@@ -106,7 +55,7 @@ https://businessoverbroadway.com/2019/01/13/programming-languages-most-used-and-
 ------
 
 
-##### Goals for this course
+### Goals for this section
 
 
 -  Provide tips and pointers on things to be aware of.
@@ -115,14 +64,46 @@ https://businessoverbroadway.com/2019/01/13/programming-languages-most-used-and-
 -  Get you hooked on programming and solving problems with Python.
 -  Give you some basic tools and recipes that you can build on in the future.
 
-
 -----
 
-#### Background and things to know
+### Question
+1)  Click "YES" if you have ever programmed in Python before.
+
+2)  Click "YES" if you have ever programmed in any language before.
+
+
+----- 
+
+## Part 1a: Background
 
 What is a programming language and why do we need it?
 
-A programming language is a way for humans to describe a set of operations to a computer in 
+Speaking to a computer directly is tedious and complicated. A programming language is a way for humans to describe a set of operations to a computer. A helper program translates our description of the operations into a set of instructions (machine code) for the computer to carry out.<br> <br>
+
+<img src="figures/python_interpreter.png" alt="PythonInterpreter" width="90%" align="center"/> <br><br>
+
+-  Well defined vocabulary and syntax for describing the basic set of supported operations.
+    -  ```python 
+          import keyword
+          print(keyword.kwlist)
+
+          ['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 
+           'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 
+           'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 
+           'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 
+           'yield']
+          ```
+-  Well defined set of Data types
+
+
+A brief history of Python
+-  Initially developed during the late 1980's by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum), BDFL until 2018.
+-  First development version released in 1991. Version 1 released in 1994.
+-  Python 2.0.0 released June, 2001
+    -  Python 2.x end-of-life 2020-01-01
+    -  This version was so popular and widely used that many Bioinformatics software packages were written in it. Some of these tool have been converted to support v3.x while in the process of being upgraded or have been abandoned. The last Python 2.x release is still available for [download](https://www.python.org/downloads/release/python-2718/).
+-  Python 3.x (December 2008) was a significant re-design and broke compatibility with some parts of v2.x.
+-  The current version, 3.8.
 
 
 -  
