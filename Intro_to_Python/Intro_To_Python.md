@@ -1,5 +1,8 @@
-<img src="figures/opengraph-icon-200x200.png" alt="Python" width="20%" align="left"/>
-
+<img src="./figures/python-logo2x.png" alt="Python" width="40%" align="left"/>
+  
+  
+  
+### Intro to Python
 
 
 
@@ -42,6 +45,7 @@
     -  Simple functions
         -  What is "Scope" and how does it work?
         -  defining variables, passing variables, returning variables
+    -  Documenting your code
     -  Hands on Exercises 3
 *  Part 4: Special topics
     -  Biopython
@@ -79,9 +83,94 @@ Ideas for Exercises:
 
 
 
+### Part 1: Intro to Python
+
+#### Why learn Python?
+
+
+<img src="figures/programming_languages_recommended.png" alt="Python" width="70%" align="center"/>
+
+https://businessoverbroadway.com/2019/01/13/programming-languages-most-used-and-recommended-by-data-scientists/
+
+
+-  Python is extremely popular and widely used, especially for data science.
+    +  Gaining in popularity for Bioinformatics, especially for building tools.
+    +  R (which you will learn later in the week) is arguably more useful currently due to the huge number of packages available from [Bioconductor](http://bioconductor.org/). Really the best option is to learn [Python, R, and bash](http://omgenomics.com/programming-languages/). A little of each will go a long way.
+-  Freely available to [download](https://www.python.org/downloads/) for Windows, Linux, Mac OS X, etc.
+-  Python is extremely versatile
+    +  Used for a wide range of purposes from automating simple tasks to massive software projects with wide adoption [by many large companies.](https://realpython.com/world-class-companies-using-python/)
+-  Installed on almost every Linux server.
+-  Vast number of resources online: If you can Google for it you can learn how to do it.
+
+
+------
+
+
+##### Goals for this course
+
+
+-  Provide tips and pointers on things to be aware of.
+-  Lower the barrier to entry by resolving basic "getting started" hurdles.
+-  Provide a foundation in basic Python and some hands-on experience.
+-  Get you hooked on programming and solving problems with Python.
+-  Give you some basic tools and recipes that you can build on in the future.
+
+
+-----
+
+#### Background and things to know
+
+What is a programming language and why do we need it?
+
+A programming language is a way for humans to describe a set of operations to a computer in 
+
+
+-  
+
+-  Background
+    -  Beautiful code, PEP8, zen of python stuff
+-  Key concepts of interacting with Python
+    +  Interactive vs Script, python vs ipython
+-  Exercise: Log into server, edit path, run ipython, print "Hello World!"
+-  Libraries, etc
+    +  PyPI
+    +  PythonPath variable
+    +  Where do libraries live?
+    +  Virtual Environments 
+    +  Conflicts and package versions
+        -  Virtual environments
+        -  Conda
 
 
 
+
+
+
+
+Log into tadpole
+
+hello world
+
+#### Writing your first Python program
+
+[**Hello, World!"**](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) is traditionally the first program to write in any new programming language.
+
+
+Connect to the server
+```ssh user@tadpole.genomecenter.ucdavis.edu```
+
+```bash
+mkdir -p /share/workshop/genome_assembly/$USER/busco
+cd /share/workshop/genome_assembly/$USER/busco
+
+srun -t 03:00:00 -c 20 -n 1 --mem 16000 --partition production --account genome_workshop --reservation genome_workshop --pty /bin/bash
+aklog 
+source ~/.bashrc  # only necessary if you have a ~/.bashrc
+
+```
+
+
+<font color="red">Once you have successfully run `busco --help` mark "Yes" in zoom. Post questions or problems to the Slack channel.</font>
 
 
 
