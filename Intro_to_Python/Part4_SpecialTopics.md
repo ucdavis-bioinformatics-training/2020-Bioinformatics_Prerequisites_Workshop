@@ -1,35 +1,46 @@
 ## Special Topics
 
 
+## Outline 
 
-
-*  Part 4: Special topics
-    -  Notes on documenting code
-    -  Basic File Operations
-    -  Biopython
+*  [Part 4: Special topics](#top)
+    -  [Notes on documenting code](#Docs)
+    -  [Basic File Operations](#files)
+    -  [Biopython](#Biopython)
         -  SeqIO, Maybe some of the NCBI support, converting files, 
             -  TODO: check the biopython tutorial/cookbook http://biopython.org/DIST/docs/tutorial/Tutorial.html
-    -  CSV package maybe https://docs.python.org/3/library/csv.html
+    -  [CSV package](#CSV)
+ 
+## <a name="Docs">Notes on documenting code</a>
+
+
+## <a name="top">Basic File Operations</a>
+
+Reading and writing files in Python 
+
+```python
+
+# 
+
+```
 
 
 
-## Biopython
+
+## <a name="top">BioPython</a>
 
 <img src="figures/biopython_logo_m.png" alt="BioPython" width="25%" align="right"/>
 
 
-[Biopython](https://biopython.org/) is an open source collection of tools for manipulating biological data. The types of data it supports, and operations it provides for these data types are documented in the [Biopython Tutorial and Cookbook](https://biopython.org/DIST/docs/tutorial/Tutorial.html). 
+[Biopython](https://biopython.org/) is an open source collection of tools for manipulating biological data. The types of data it supports and operations it provides for these data types are documented in the [Biopython Tutorial and Cookbook](https://biopython.org/DIST/docs/tutorial/Tutorial.html) and are quite extensive. 
 
 
-### Getting started with BioPython
-
-First start python (or ipython).
-
-Lets start by exploring Biopython Sequence objects
+Explore Biopython Sequence objects
 
 ```python
 from Bio.Seq import Seq
 
+# Create a Seq object:
 m = Seq("AGTCCGTAG")
 
 # Normal string indexing still work
@@ -76,7 +87,19 @@ n = Seq("ACGTCCGTCA", IUPAC.IUPACUnambiguousDNA)
 </div>
 
 
+
+---------
+
+## <a name="top">CSV package</a>
+    maybe https://docs.python.org/3/library/csv.html
+
+
+
+
 ## Glob module
+
+
+## Collections 
 
 
 >>> from Bio.Seq import Seq
