@@ -80,9 +80,9 @@ Workshop materials are all posted on github, and publicly available
    [https://ucdavis-bioinformatics-training.github.io/](https://ucdavis-bioinformatics-training.github.io/)
 
 
-* This Intro to Iso-Seq Workshop
+* This Bioinformatics: Command Line / R Workshop
 
-   [https://ucdavis-bioinformatics-training.github.io/2020-August-intro-scRNAseq/](https://ucdavis-bioinformatics-training.github.io/2020-Bioinformatics_Prerequisites_Workshop/)
+   [https://ucdavis-bioinformatics-training.github.io/2020-Bioinformatics_Prerequisites_Workshop/](https://ucdavis-bioinformatics-training.github.io/2020-Bioinformatics_Prerequisites_Workshop/)
 
 ### Computing Cluster
 
@@ -96,3 +96,6 @@ Request an account -> sponsor is "Bioinformatics Core Workshop"
 If you already have, or have had in the past, an account on our systems, then please tell us your username, or email, and we will add you to the workshop. **Do not create a new account**
 
 Cluster usage will be under the slurm reservation  ‘prereq_workshop’
+
+<div class="output">ReservationName=prereq_workshop StartTime=2020-10-05T00:00:00 EndTime=2020-10-15T00:00:00 Duration=10-00:00:00
+</div>

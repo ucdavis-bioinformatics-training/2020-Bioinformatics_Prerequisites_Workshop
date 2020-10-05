@@ -6,7 +6,7 @@ All posted times are **Pacific** time zone. At least one break will be provided 
 
 **8:50 am**  Zoom session starts    
 **9:00 am**  Welcome, format and expectations, introductions   
-**9:30 am**  Logging in to the cluster __hands on__ #Hannah  
+**9:30 am**  Logging in to the cluster __hands on__   
 **10:00 am** Introduction to the command line, part 1 __hands on__    
 **11:00 am** "What is Bioinformatics?" __lecture__   
 **12:00 pm** Lunch    
@@ -59,5 +59,5 @@ All posted times are **Pacific** time zone. At least one break will be provided 
 **10:00 am** Linear models in R __hands on__     
 **12:00 pm** Lunch  
 **1:00 pm**  Working with spreadsheets __lecture and hands on__     
-**4:00 pm**  Closing thoughts __lecture__ 
+**4:00 pm**  Closing thoughts __lecture__
 **5:00  pm**  Zoom session ends  

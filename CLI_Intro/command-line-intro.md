@@ -2,9 +2,9 @@
 
 ## Outline:
 1. What is the command line?
-2. Directory Structure 
+2. Directory Structure
 3. Syntax of a Command
-4. Logging Into a Remove Server
+4. Logging Into a Remote Server
 5. Command Line Basics (ls, pwd, Ctrl-C, man, alias, ls -lthra)
 6. Getting Around (cd)
 7. Absolute and Relative Paths
@@ -134,11 +134,11 @@ Navigate like in 'less' (up,down,pgup,pgdn,g,G,/pattern,n,N,q), look up and try 
     ls -l -a
     ls -la  # option 'smushing' ... when no values need specifying
     ls -ltrha
-    
-And finally adding color: 
+
+And finally adding color:
 
     ls -ltrha --color  # single letter (smushed) vs word options (Linux)
-    
+
 **OR**
 
     ls -ltrhaG  # (MacOS)
@@ -240,7 +240,7 @@ why 'concatenate'? try this:
 OK, let's destroy what we just created:
 
     cd ../
-    rmdir tmp  # 'rmdir' meands 'remove directory', but this shouldn't work!
+    rmdir tmp  # 'rmdir' means 'remove directory', but this shouldn't work!
     rm tmp/first.txt
     rm tmp/second.txt  # clear directory first
     rmdir tmp  # should succeed now
@@ -334,7 +334,7 @@ Here are some more ways to make editing previous commands, or novel commands tha
 
 ## Compression and Archives
 
-As file sizes get large, you'll often see compressed files, or whole compressed folders. Note that **any good bioinformatics software** should be able to work with compressed file formats. 
+As file sizes get large, you'll often see compressed files, or whole compressed folders. Note that **any good bioinformatics software** should be able to work with compressed file formats.
 
     gzip test.txt
     cat test.txt.gz
@@ -414,7 +414,7 @@ Similarly we can also use the move command here, but then ./PhiX/Illumina/RTA/Se
     mv ./PhiX/Illumina/RTA/Sequence/WholeGenomeFasta/genome2.fa phix.fa
     ls ./PhiX/Illumina/RTA/Sequence/WholeGenomeFasta/
 
-This functionality of mv is why it is used to rename files. 
+This functionality of mv is why it is used to rename files.
 
 Note how we copied the 'genome.fa' file to a different name: 'phix.fa'
 
@@ -454,7 +454,7 @@ Combine successive identical sequences, but count them ('-c' option)
 
 Finally sort using reverse numeric order ('-rn')
 
-    grep --color  -o "ATG......" phix.fa | cut -c4-6 | sort | uniq -c | sort -rn 
+    grep --color  -o "ATG......" phix.fa | cut -c4-6 | sort | uniq -c | sort -rn
 
 ... which gives us the most common codons first
 
@@ -627,8 +627,8 @@ The first '-' becomes a 'd' if the 'file' is actually a directory. The next thre
 <div class="output">-rwxr-xr-- 1 msettles biocore 79 Aug 19 15:05 test.sh
 </div>
 
-The first 10 characters of the output represent the file and permissions. 
-The first character is the file type, the next three sets of three represent the file permissions for the user, group, and everyone respectively. 
+The first 10 characters of the output represent the file and permissions.
+The first character is the file type, the next three sets of three represent the file permissions for the user, group, and everyone respectively.
 - r = read
 - w = write
 - x = execute
@@ -650,8 +650,3 @@ OK! So let's run this script, feeding it the phiX genome. When we put the genome
 </div>
 
 The script's grep command splits out every character in the file on a separate line, then sorts them so it can count the occurrences of every unique character and show the most frequent characters first ... a quick and dirty way to get at GC content.
-
-
-
-
-
