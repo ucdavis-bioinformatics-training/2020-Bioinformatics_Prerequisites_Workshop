@@ -43,6 +43,7 @@ In Shell with SSH enabled:
 
 where 'username' is replaced with your username. Press Enter.
 
+To copy / paste in Shell for Windows 10, you may need to [enable keyboard shortcuts](https://www.howtogeek.com/353200/how-to-enable-copy-and-paste-keyboard-shortcuts-in-windows-10s-bash-shell/).
 ### For Windows - Transferring files
 
 1. Open up WinSCP. If you haven't installed it, get WinSCP [here](https://winscp.net/eng/download.php).
