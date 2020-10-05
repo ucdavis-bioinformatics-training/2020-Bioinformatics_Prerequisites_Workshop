@@ -274,7 +274,8 @@ my_string_list[::3]
 " ".join(my_string_list)
 list(my_string_list[0])
 " ".join(my_string_list).split()
-
+" ".join(my_string_list).split('s')
+" ".join(my_string_list).replace(" ", "-")
 ```
 
 <div class="output">
@@ -336,6 +337,10 @@ TypeError: unsupported operand type(s) for -: 'list' and 'list'
 ['t', 'h', 'e']
 >>> " ".join(my_string_list).split()
 ['the', 'dog', 'says', 'woof']
+>>> " ".join(my_string_list).split('s')
+['the dog ', 'ay', ' woof']
+>>> " ".join(my_string_list).replace(" ", "-")
+'the-dog-says-woof'
 
 </div>
 
