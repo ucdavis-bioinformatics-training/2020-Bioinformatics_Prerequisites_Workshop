@@ -217,7 +217,7 @@ record.seq
 
 len(record)
 
-
+# Calculate average quality score
 sum(record.letter_annotations['phred_quality'])/len(record) 
 
 
