@@ -6,6 +6,9 @@
 - [Comparisons](#comparisons)
 - [Basic data structures](#datastructures)
 - [Boolean Operations](#operations)
+- [Range](#range)
+- [String Formatting](#stringformat)
+- [Group Exercise](#exercise)
 
 
 ---
@@ -209,6 +212,10 @@ my_list[-3:]
 my_list[1:3]
 my_list[:3]
 
+# some other features of integer lists
+sum(my_list)
+len(my_list)
+
 my_list2 = [7,8,9]
 
 # adding and subtracting lists
@@ -250,6 +257,13 @@ list(my_string_list[0])
 [2, 3]
 >>> my_list[:3]
 [1, 2, 3]
+>>> 
+>>> # some other features of integer lists
+>>> sum(my_list)
+21
+>>> len(my_list)
+6
+>>> 
 >>> my_list2 = [7,8,9]
 >>> 
 >>> # adding and subtracting lists
@@ -257,8 +271,10 @@ list(my_string_list[0])
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
 >>> my_list-my_list2
 Traceback (most recent call last):
-  File
+  File 
 TypeError: unsupported operand type(s) for -: 'list' and 'list'
+>>> 
+>>> 
 >>> # string lists, double indexing
 >>> my_string_list = ['the', 'dog', 'says', 'woof']
 >>> my_string_list[0][1:]
@@ -271,6 +287,7 @@ TypeError: unsupported operand type(s) for -: 'list' and 'list'
 ['t', 'h', 'e']
 >>> " ".join(my_string_list).split()
 ['the', 'dog', 'says', 'woof']
+
 </div>
 
 
@@ -486,6 +503,30 @@ True
 
 </div>
 
+# <a name="range"></a> Range
+
+# <a name="exercise"></a> Group Exercises (~30 mins)
+1. Create a list of all even values from 0 to 100.
+- What is the length of the list?
+- What is the average of the list?  
+- What is the sum of the 13 to the 17th elements in the list?
+- What is the 16th element from the end?
+- Replace the 23rd element with the value 200. Now what is the average?
+
+
+2. Learning to use python it is good to have an experimental mentality to learn more about edge cases
+- What is the empty list in terms of a boolean value?
+- What is an empty dictionary in terms of a boolean value?
+- What about a float value of 0?
+
+
+3. Create a string in python with some information about yourself (Name, background, etc.) 
+- Take the string you created and make a list out of it where each word is an element.
+- Now recreate the string with two spaces where there was originally one space. There are two ways, one using the list 
+and one using the original string. Can you think of both?
+
+
+4. 
 
 
 
@@ -501,7 +542,7 @@ True
 <div class="output">
  
 </div>
-
+- reverse lists etc., step size in lists [::2], any, all
 -  pop and append lists etc....
 -  rounding
 -  Single and double quotes, escape characters, etc TODO

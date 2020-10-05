@@ -7,9 +7,12 @@
 - [While, Iterators](#while)
 - [Break, Continue, Pass, Try, Except](#stoppers)
 
-TODO
-- [Range](#range)
+TODO 
+talk about None, string formatting (%s and f)
 - [Simple Functions](#functions)
+- [Group Exercise](#exercise)
+
+
 ---
 
 # <a name="ifs"></a> If, else if, else.
@@ -250,6 +253,14 @@ for element in a:
 ```
 def simple_function(
 ```
+
+
+
+
+# <a name="exercise"></a> Group Exercises (~30 mins)
+1. 
+4. 
+
 
 
 
