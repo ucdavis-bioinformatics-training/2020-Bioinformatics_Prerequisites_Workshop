@@ -72,5 +72,15 @@ Ideas for Exercises:
 *  http://rosalind.info/problems/gc/ Computing GC Content
 *  http://rosalind.info/problems/prot/ Translate RNA to protein
 
-
+---
+Possible further topics if interested in learning even more: (from keith)
+-  zip
+-  add this link in notes somewhere https://docs.python.org/3/library/functions.html
+-  lambda
+-  Simple functions
+    -  What is "Scope" and how does it work?
+-  Single and double quotes, escape characters, etc
+-  inserting variables
+-  variables vs objects
+-  Maybe Counter() and OrderedDict() from collections (https://docs.python.org/2/library/collections.html)
 

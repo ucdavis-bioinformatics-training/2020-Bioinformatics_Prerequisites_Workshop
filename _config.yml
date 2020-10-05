@@ -8,13 +8,21 @@ navigation:
 
   - heading: Introduction
   - title: Intro to the Workshop and Core
-    url: welcome
+    url: base/welcome
   - title: Schedule
     url: base/schedule
+
+  - heading: Resources
+  - title: Zoom help
+    url: base/zoom
+  - title: Slack help
+    url: base/slack
   - title: Software and Links
     url: software_scripts/software
 
   - heading: Intro CLI
+  - title: Logging in
+    url: CLI_Intro/logging-in
   - title: Introduction to the Command Line part 1
     url: CLI_Intro/intro-cli-part1
   # - heading: Advanced CLI
