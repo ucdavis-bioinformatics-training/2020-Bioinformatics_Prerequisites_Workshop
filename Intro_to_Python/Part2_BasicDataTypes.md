@@ -16,6 +16,13 @@ but if you are serious about mastering python you will need to apply yourself be
 - We bring up a lot of concepts to expose you to them but we encourage you to have a "scientific" mentality and highly
 encourage you to continue testing the waters beyond these materials. 
 
+
+Setup
+```
+cd /share/workshop/prereq_workshop/$USER/python
+python3.8
+```
+
 ---
 
 # <a name="datatypes"></a> Basic Data Types: Integers, Floating-point numbers, booleans, strings.
