@@ -91,31 +91,21 @@ The file we just download is a [FastQ](https://en.wikipedia.org/wiki/FASTQ_forma
 4) The fourth line contains an [ASCII encoding of the Phred + 33 quality score](https://en.wikipedia.org/wiki/FASTQ_format#Quality). 
 
 ```
-@M02034:478:000000000-CYBKG:1:1101:26272:4914_P3:Z:seq1 1:N:0:61
-AGACAGGCAGTGGGAGCAAGATGGATTCACAGGCCCAGGTTCTTATATTGCTGCTGCTATGGGTATCTGGTACCTGTGGGGACATTGTGATGTCACAGTCTCCATCCTCCCTGGCTGTGTCAGCAGGAGAGATGGT
+@M02034:434:000000000-CHDFR:1:1101:13812:1361
+AGGGAATCTTCCGCAATGGACGAAAGTCTGACGGAGCAACGCCGCGTGAGTGATGAAGGTTTTCGGATCGTAAAGCTCTGTTGTTAGGGAAGAACAAGTACCGTTCGAATAGGGCGGTACCTTGACGGTACCTAACCAGAAAGCCACGGCTAACTACGTGCCAGCAGCCGCGGTAATACGTAGGTGGCAAGCGTTGTCCGGAATTATTGGGCGTAAAGGGCTCGCAGGCGGTTCCTTAAGTCTGATGTGAAAGCCCCCGGCTCAACCGGGGAGGGTCATTGGAAACTGGGGAACTTGAGTGCAGAAGAGGAAAGTGGAATTCCATGTGTAGCGGTGAAATGCGCAGAGATATGGAGGAACACCAGTGGCGAAGGCGACTTTCTGGTCTGTAACTGACGCTGATGTGCGAAAGCGTGGGGATCAAACAGG
 +
-:FDGGGCGGDGEDEEEGGGGGGGGGGGGGGGGFGGEFGGEFFGGFGFDFFF@FGFGGCABFF?GGCFGGGCFCGGFGGGG@EGGGGFGDGFGGFGGGGGF<AFGGGGGGGGGFGF@@EGGGCFFGCFCGGGGGGGF
-@M02034:478:000000000-CYBKG:1:1101:4726:7224_P3:Z:seq1 2:N:0:61
-AGAGATGGAGACAGACACACTCCTGTTATGGGTACTGCTGCTCTGGGTTCCAGGTTCCACTGGTGACATTGTGCTGACACAGTCTCCTGCTTCCTTAGCTGTATCTCTGGGGCAGAGGGCCACCATCTCATACAGG
+GGGGGGGGGGGGGGGGGGGFGGFGGGGGGGGGGGGGGGGGGGGGGGFGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFFFGGGGGGGFGGGGGGGGGGGGEFGGGGGGCFGDGGGGGGGGGGGGGGGGGGGGGGGGGGIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIE?IIIIIIIIII6IIIIIIIIIIIIIIIIIGI:<EEIIIIIIIIIIIIIIF"DIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII+CF9GGGFGEGGFFGGGFGGGFGGFGCGGGGGGGGGFFGGGFDGFFGCEEGGEEGGGGGGGGEFDGGFFGGGGGGGGGGFGGGGGFDEFGGGGFGEGGFDGGGFFGGGGGGFFGGFGDGGGGGGGGGGGGGGGGGGGGGGGGFGGGGGGGGGGG
+@M02034:434:000000000-CHDFR:1:1101:9702:6439
+AGGGAATCTTCCGCAATGGACGAAAGTCTGACGGAGCAACGCCGCGTGAGTGATGAAGGTTTTCGGATCGTAAAGCTCTGTTGTTAGGGAAGAACAAGTACCGTTCGAATAGGGCGGTACCTTGACGGTACCTAACCAGAAAGCCACGGCTAACTACGTGCCAGCAGCCGCGGTAATACGTAGGTGGCAAGCGTTGTCCGGAATTATTGGGCGTAAAGGGCTCGCAGGCGGTTCCTTAAGTCTGATGTGAAAGCCCCCGGCTCAACCGGGGAGGGTCATTGGAAACTGGGGAACTTGAGTGCAGAAGAGGAGAGTGGAATTCCACGTGTAGCGGTGAAATGCGTAGAGATGTGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGTCTGTAACTGACGCTGAGGAGCGAAAGCGTGGGGAGCGAACAGG
 +
-GGGGGGGGGGGGGGGGGGGGGGGGGGGGFGFFGGGGFGGGGGCFGGGGGGGGGGGGGGGGGGGGGDEGGGFFG<EFGGGF@GGGGGGGD<FFF=FDFFGFFGGGGFEFFGGGGGGGGGGGIIIII"IICIIIIIII
-@M02034:478:000000000-CYBKG:1:1101:27026:8436_P3:Z:seq1 2:N:0:61
-GAAGCATCCTCTCTTCCAGCTCTCAGAGATGGAGACAGACACACTCCTGTTATGGGTACTGCTGCTCTGGGTTCCAGGTTCCACTGGTGACATTGTGCTGACACAGTCTCCTGCTTCCTTAGCTGTATCTCTGGGG
+GGGGGGGGGGGGGGGFGGGGGGGGGGGGGGGGGGGGGGGGGGGEGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGAFGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGEGGGIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII?IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII"IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIEIIFDBDDGGGFD=DCGGGFGGGDGGGGGGFFAGGGGGGGFGGECGGGECEGE7GFFGAEEGGGGGGFAGEFGFGFDEFCEDCCFGGCGGFFGGGGGGGDGGGFGGGGGGGGGGGGGGGGGGGGGGEGGGFFGGGGGGGGGGGGGGGGGFF
+@M02034:434:000000000-CHDFR:1:1101:21100:7204
+AGGGAATCTTCCGCAATGGACGAAAGTCTGACGGAGCAACGCCGCGTGAGTGATGAAGGTTTTCGGATCATAAAGCTCTGTTGTTAGGGAAGAACAAGTACCGTTCGAATAGGGCGGTACCTTGACGGTACCTAACCAGAAAGCCACGGCTAACTACGTGCCAGCAGCCGCGGTAATACGTAGGTGGCAAGCGTTGTCCGGAATTATTGGGCGTAAAGGGCTCGCAGGCGGTTCCTTAAGTCTGATGTGAAAGCCCCCGGCTCAACCGGGGAGGGTCATTGGAAACTGGGGAACTTGAGTGCAGAAGAGGAGAGTGGAATTCCACGTGTAGCGGTGAAATGCGTAGAGATGTGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGTCTGTAACTGACGCTGAGGAGCGAAAGCGTGGGGAGCGAACAGG
 +
-GGGGGGGGGGGGGGGGGGGG<FEFGGGC8BEFCF8FFGEFGGGEF?FACG99@DFBFGGG<FAEFCFGGGFFFGGEC<C=FGFGFGGGGGGGFFAEGGGGGGGGGG?EFGFGGGGFGGGGGGGGGFCEE,FFGDGG
+GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGCGGGGGGGGGGGGGGGGGGFFGGGGFGGGGGGGGGGGGGEGFGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGGGGGGEGGFGGGGGGGI"IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII""IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII2IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII$AIIGGGGFDGGGGCFGFFGGGGGFFDGFCGGGGFFFGGGGFE,GGGGGGGFEFGFEGGECGGGDGGGGGFFAGGDGGGFGGGGGGGGGFCGGF7GGGGGGGGFF?GGGGGFGGFGGGGGGGGGGGGGGFFEGGGDGGGGGGGGGGGGGGGGGGGGGF
 ```
 
-
-If we try to open this file like we did with the previous file we will get incomprehensible garbage. 
-
-```python
-# EXERCISE: Try to open the file, read one line into a variable called "l" and then print l. What happens?
-
-
-```
-
-In order to read the file properly, we need to uncompress it. The Python gzip module allows us to do this.
-
+If we try to open this file like we did with the previous file we will get incomprehensible garbage. In order to read the file properly, we need to uncompress it. The Python gzip module allows us to do this, but otherwise works like the normal file handle.
 
 ```python
 import gzip
@@ -127,24 +117,70 @@ l = next(handle)
 
 print(l)
 
+handle.close()
+```
+
+What if we wanted to process the whole file and count how many times we see each character?
+
+```python
+# Create an empty dictionary
+chrcount = {}
+
+# read in each line of the fasta file, count character occurrences
+with gzip.open('example_data.fasta.gz', 'rt') as h:
+    for line in h:
+        for ch in line.strip():
+            if ch not in chrcount:
+                chrcount[ch] = 0
+            chrcount[ch] += 1
+
+# Print out the character (dictionary key) and associated value (the count):
+for k, v in chrcount.items():
+    print(f"character:{k}, count:{v}")
+
 ```
 
 
-Exercises
+We might want to print out values from most common to least. To do this, we need a way to sort. Python has a built in "sorted" function that can take care of this for us. The sorted() function is a little bit tricky because the "key" argument has to be a function. This is very powerful because it allows flexibility, but can also be confusing.
 
-1) How many base pairs long is the first read in the file?
+```python
+# Check how sorted works:
+sorted([4,2,5,6,2])
 
-2) The ord() function will return the ASCII value for a single character. Can you read the fourth line from the fastq file and calculate the average quality value? Hints: The last character is a line return, use strip() to remove it. You can use list comprehension or a for loop to split up the characters and run ord() on each one.  
+# 
+sorted([4,2,5,6,2], reverse=True)
 
-3) Write some code to figure out how many total lines are in example_data.fastq.gz. How many reads is this?
+# Sorting your dictionary by value requires some tricks:
+sorted(chrcount.items(), key=lambda x: x[1], reverse=True)
 
-4) 
+# How does this work?
+def getv(x):
+    return(x[1])
+
+sorted(chrcount.items(), key=getv, reverse=True)
+
+```
+
+
+#### Exercises
+
+1. Try to open the example_data.fastq.gz file without using gzip. Read the first line into a variable called "l", then print it. What happens?
+
+1. How many base pairs long is the first read in the file?
+
+1. The ord() function will return the ASCII value for a single character. Write some code to read the fourth line from the fastq file, then covert the values to a quality score and calculate the average quality value. 
+    *  Hints: The last character is a line return (\n), use strip() to remove it. You can use list comprehension or a for loop to split up the characters and run ord() on each one.  
+
+1. Write some code to figure out how many total lines are in example_data.fastq.gz. How many reads is this?
+
+ 
 
 ```python
 
 
 
 ```
+<h3><font color="red">Once you have successfully completed the exercises, mark "Yes" in zoom. Post questions or problems to the Slack channel.</font></h3>
 
 ## <a name="top">BioPython</a>
 
@@ -309,50 +345,19 @@ with open('my_data.csv', 'r') as csvfile:
 ```
 
 
-Now lets try a little 
+
+
+#### Exercises
+
+1. Use SeqIO to filter the records in from example_data.fastq.gz. Create a new file called data_filtered.fastq. Only write reads that DO NOT start with "AGGG". How many reads were there?
+
+1. Use SeqIO and the CSV package to record statistics for the reads in example_data.fastq.gz. Create a CSV file called read_stats.tsv. Create a DictWriter with column names: (ReadID, Length, GCcontent, AverageQuality). Collect each of these pieces of information for each read, and write it to the CSV file.  
+
+1. Use SeqIO and a Dictionary, count the frequency of the first 15bp and last 15bp of each read in example_data.fastq.gz. What are the most common sequences?
+
+<h3><font color="red">Once you have successfully completed the exercises, mark "Yes" in zoom. Post questions or problems to the Slack channel.</font></h3>
 
 ```python
-# Create an empty dictionary
-chrcount = {}
-
-# read in each line of the fasta file, count character occurrences
-with gzip.open('example_data.fasta.gz', 'rt') as h:
-    for line in h:
-        for ch in line.strip():
-            if ch not in chrcount:
-                chrcount[ch] = 0
-            chrcount[ch] += 1
-
-# Print out the character (dictionary key) and associated value (the count):
-for k, v in chrcount.items():
-    print(f"character:{k}, count:{v}")
-
-```
-
-What if we want to print out values from most common to least? First we need a way to sort, we can use Python's "sorted" function. The sorted() function is a little bit tricky because the "key" argument has to be a function. This is very powerful because it allows flexibility, but can also be confusing.
-
-```python
-# Check how sorted works:
-sorted([4,2,5,6,2])
-
-# 
-sorted([4,2,5,6,2], reverse=True)
-
-# Sorting your dictionary by value requires some tricks:
-sorted(chrcount.items(), key=lambda x: x[1], reverse=True)
-
-# How does this work?
-def getv(x):
-    return(x[1])
-
-sorted(chrcount.items(), key=getv, reverse=True)
 
 
 ```
-
-
-Exercises
-
-1) Use SeqIO and the CSV package to record statistics for the reads in example_data.fastq.gz. Create a CSV with column names, (ReadID, Length, GCcontent, ) 
-
-2) Use SeqIO and a Dictionary, count the frequency of the first 15bp and last 15bp of each read in example_data.fastq.gz.   
