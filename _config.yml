@@ -11,6 +11,12 @@ navigation:
     url: base/welcome
   - title: Schedule
     url: base/schedule
+
+  - heading: Resources
+  - title: Zoom help
+    url: base/zoom
+  - title: Slack help
+    url: base/slack
   - title: Software and Links
     url: software_scripts/software
 
