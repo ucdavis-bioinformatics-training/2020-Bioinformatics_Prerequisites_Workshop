@@ -26,6 +26,11 @@ navigation:
   #   url: adv_cli/environment
   # - title: Using screen to manage multiple projects
   #   url: adv_cli/screen
+  - heading: Introduction to Python
+  - title: Python Part1, Background
+  - title: Python Part2, Data Types
+  - title: Python Part3, Flow Control
+  - title: Python Part4, Working with Files
   - heading: Introduction to R
   - title: Introduction to R
     url: Intro_to_R/Intro2R/Intro2R_main
