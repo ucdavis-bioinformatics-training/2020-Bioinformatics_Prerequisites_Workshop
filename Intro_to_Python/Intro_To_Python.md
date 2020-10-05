@@ -110,6 +110,7 @@ Specifically in Python:
 ### Interesting features of Python
 -  High level: It hides a lot of the complicated details.
 -  Interpreted: programs are compiled to byte code and run on a virtual machine instead of being compiled to native machine language
+    -  This provides the option of running Python interactively, or writing Python scripts.
 -  Garbage Collected: memory is allocated and freed for you automatically
 -  Spaces matter in Python and are part of the language syntax. Be careful with copy/paste!
 -  In Python, "Readability counts". 
@@ -127,14 +128,6 @@ Specifically in Python:
     +  Conflicts and package versions
         -  Virtual environments
         -  Conda
-
-
-
--  Key concepts of interacting with Python
-    +  Interactive vs Script, python vs ipython
-
-
-
 
 
 ---------
