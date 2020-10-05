@@ -11,7 +11,10 @@
 - [Group Exercise](#exercise)
 
 A few note before we get started:
-- ....
+- Learning all the nuances of python takes a long time! Our goal here is to introduce you to as many concepts as possible
+but if you are serious about mastering python you will need to apply yourself beyond this introduction. 
+- We bring up a lot of concepts to expose you to them but we encourage you to have a "scientific" mentality and highly
+encourage you to continue testing the waters beyond these materials. 
 
 ---
 
@@ -256,6 +259,10 @@ my_list-my_list2
 my_string_list = ['the', 'dog', 'says', 'woof']
 my_string_list[0][1:]
 
+# every x number of indexes
+my_string_list[::2]
+my_string_list[::3]
+
 # join, splits, replace, 
 " ".join(my_string_list)
 list(my_string_list[0])
@@ -300,7 +307,7 @@ list(my_string_list[0])
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
 >>> my_list-my_list2
 Traceback (most recent call last):
-  File 
+  File "<stdin>", line 1, in <module>
 TypeError: unsupported operand type(s) for -: 'list' and 'list'
 >>> 
 >>> 
@@ -308,6 +315,12 @@ TypeError: unsupported operand type(s) for -: 'list' and 'list'
 >>> my_string_list = ['the', 'dog', 'says', 'woof']
 >>> my_string_list[0][1:]
 'he'
+>>> 
+>>> # every x number of indexes
+>>> my_string_list[::2]
+['the', 'says']
+>>> my_string_list[::3]
+['the', 'woof']
 >>> 
 >>> # join, splits, replace, 
 >>> " ".join(my_string_list)
@@ -536,6 +549,13 @@ not True
 not False
 True and False
 True or False
+None and None
+None or None
+
+
+bool(None) # we will see why this is important later when we talk about if statements in part3
+bool(0)
+bool(1)
 ```
 
 <div class="output">
@@ -557,20 +577,71 @@ True
 False
 >>> True or False
 True
+>>> None and None
+>>> None or None
+>>> 
+>>> 
+>>> bool(None) # we will see why this is important later when we talk about if statements in part3
+False
+>>> bool(0)
+False
+>>> bool(1)
+True
 
 </div>
 
+
+
 # <a name="range"></a> Range
 
-```
+Much more info is available on this [here](https://docs.python.org/3/library/stdtypes.html#range) but these 
+simple cases work for 95% of tasks for me.
 
 ```
+type(range(0,10))
+# first arg is start, 2nd is finish, 3rd is gap size (default is 1)
+list(range(0,10))
+list(range(0,10,5))
+list(range(0,1.1,0.1))
+```
+
+<div class="output">
+<class 'range'>
+>>> # first arg is start, 2nd is finish, 3rd is gap size (default is 1)
+>>> list(range(0,10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> list(range(0,10,5))
+[0, 5]
+</div>
+
+
 
 # <a name="stringformatting"></a> String Formatting
 
+This is just a brief intro. There are lots of features to this topic but this seems to solve 95% of tasks/cases for me.
+If you interested in more info regarding the other featrures checkout [Pyformat](https://pyformat.info/).
+```
+extra = "Goodbye."
+print("It was nice to meet you. %s" %extra)
+print("It was nice to meet you. %s %s" %(extra,extra))
+print(f"It was nice to meet you. {extra}")
+# or
+print("It was nice to meet you. {}".format(extra))
 ```
 
-```
+<div class="output">
+>>> extra = "Goodbye."
+>>> print("It was nice to meet you. %s" %extra)
+It was nice to meet you. Goodbye.
+>>> print("It was nice to meet you. %s %s" %(extra,extra))
+It was nice to meet you. Goodbye. Goodbye.
+>>> print(f"It was nice to meet you. {extra}")
+It was nice to meet you. Goodbye.
+>>> print("It was nice to meet you. {}".format(extra))
+It was nice to meet you. Goodbye.
+</div>
+
+
 
 # <a name="exercise"></a> Group Exercises (~30 mins)
 1. Create a list of all even values from 0 to 100.
@@ -596,10 +667,5 @@ and one using the original string. Can you think of both?
 
 
 ---
-- finish range and string formatting
--  rstep size in lists [::2]
--  Single and double quotes, escape characters, etc TODO
--  inserting variables TODO
--  variables vs objects
--  Maybe Counter() and OrderedDict() from collections (https://docs.python.org/2/library/collections.html)
+
 
