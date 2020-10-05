@@ -307,7 +307,7 @@ list(my_string_list[0])
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
 >>> my_list-my_list2
 Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
+  File 
 TypeError: unsupported operand type(s) for -: 'list' and 'list'
 >>> 
 >>> 
