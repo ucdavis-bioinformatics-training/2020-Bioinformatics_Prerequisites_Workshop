@@ -7,6 +7,9 @@ OR
 1. [MobaXterm](https://mobaxterm.mobatek.net/)
 1. [PuTTY](http://www.putty.org/)
 
+File Transfer:
+1. [FileZilla](https://filezilla-project.org/)
+1. [Cyberduck](https://cyberduck.io/download/)
 
 R and RStudio
 1. [R project](https://www.r-project.org/)
@@ -20,6 +23,6 @@ Software
 1. [IGV](http://software.broadinstitute.org/software/igv/)
 1. [MultiQC](https://multiqc.info/)
 
-Python
+Code Editors
 1. [Atom editor](https://atom.io/)
 1. [Visual Studio Code](https://code.visualstudio.com/)
