@@ -248,9 +248,76 @@ for element in a:
 ## Lets define a simple function
 
 ```
-def simple_function(
+def simple_function(some_string):
+    string_passed = True
+    if some_string:
+        final_string = "You passed the following string: %s" % some_string
+    else:
+        string_passed =False
+        final_string = None
+    return string_passed, final_string
+
+def default_function(some_string="Default string"):
+    string_passed = True
+    if some_string:
+        final_string = "You passed the following string: %s" % some_string
+    else:
+        string_passed =False
+        final_string = None
+    return string_passed, final_string
+
+
+simple_function()
+simple_function("Testing")
+default_function()
+default_function("Testing")
+
+# these are kind of advanced topics but good to briefly introduce you to
+default_function(**{"some_string": "Dictionary_testing"})
+default_function(*["some_string"])
+
 ```
 
+<div class="output">
+
+>>> def simple_function(some_string):
+...     string_passed = True
+...     if some_string:
+...         final_string = "You passed the following string: %s" % some_string
+...     else:
+...         string_passed =False
+...         final_string = None
+...     return string_passed, final_string
+... 
+>>> def default_function(some_string="Default string"):
+...     string_passed = True
+...     if some_string:
+...         final_string = "You passed the following string: %s" % some_string
+...     else:
+...         string_passed =False
+...         final_string = None
+...     return string_passed, final_string
+... 
+>>> 
+>>> simple_function()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: simple_function() missing 1 required positional argument: 'some_string'
+>>> simple_function("Testing")
+(True, 'You passed the following string: Testing')
+>>> default_function()
+(True, 'You passed the following string: Default string')
+>>> default_function("Testing")
+(True, 'You passed the following string: Testing')
+>>> 
+>>> # these are kind of advanced topics but good to briefly introduce you to
+>>> default_function(**{"some_string": "Dictionary_testing"})
+(True, 'You passed the following string: Dictionary_testing')
+>>> default_function(*["some_string"])
+(True, 'You passed the following string: some_string')
+
+
+</div>
 
 
 
