@@ -145,7 +145,7 @@ kable(data.frame(Operator=paste("<-", " =", sep=","), Description="Assignment", 
 
 kable(data.frame(Operator=c("+", "-", "*", "/", "^", "%%", "%/%"), Description=c("Addition", "Subtraction", "Multiplication", "Division", "Exponent", "Modulus", "Integer Division"), stringsAsFactors=F), align='c', caption="Arithmetic Operators in R") %>% kable_styling(bootstrap_options="striped", full_width=F, position="center")
 
-kable(data.frame(Operator=c("<", ">", "<=", ">=", "==", "!="), Description=c("Less than", "Greater than", "Less than or equal to", "Greater than or equal to", "Equal to", "Not equal to"), stringsAsFactors=F), align='c', caption="Relational Operators in R") %>% kable_styling(bootstrap_options="striped", full_width=F, position="left")
+kable(data.frame(Operator=c("<", ">", "<=", ">=", "==", "!="), Description=c("Less than", "Greater than", "Less than or equal to", "Greater than or equal to", "Equal to", "Not equal to"), stringsAsFactors=F), align='c', caption="Relational Operators in R") %>% kable_styling(bootstrap_options="striped", full_width=F, position="center")
 
 kable(data.frame(Operator=c("!", "&", "&&", "|", "||"), Description=c("Logical NOT", "Element-wise logical AND", "Logical AND", "Element-wise logical OR", "Logical OR"), stringsAsFactors=F), align='c', caption="Logical Operators in R") %>% kable_styling(bootstrap_options="striped", full_width=F, position="center")
 ```

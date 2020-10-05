@@ -5,22 +5,11 @@
 
 
 ### Schedule
-*  Part 1: Intro To Python and first program (1 - 1:30pm)
-*  Part 2: Basics of Python and data types (1:30pm-3pm)
-
-3pm Break (15 minutes)
-
-*  Part 3: Flow control (3:15 - 3:45pm) 
-    *  Breakout session 3, Practice Flow Control (3:45 - 4pm)
-*  Part 3: Continued, files, functions, documentation 
-    *  Hands on Exercises 3
-*  Part 4: Special topics (4 - 5pm)
-    -  Biopython
-    -  CSV package maybe https://docs.python.org/3/library/csv.html
-    -  Plotting Seaborn / GGPlot
-
-
-
+*  Part 1: Intro To Python (1 - 1:45pm)
+*  Part 2: Basics of Python and data types (1:45pm-3:00pm)
+*  Break
+*  Part 3: Flow control, functions (3:15 - 4:00pm) 
+*  Part 4: Working with Files (4 - 5pm)
 
 
 ## Part 1: Intro to Python

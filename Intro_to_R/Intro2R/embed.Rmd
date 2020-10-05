@@ -32,6 +32,11 @@ colFmt = function(x,color){
 knitr::opts_chunk$set(class.source = "colsel", echo=TRUE)
 ```
 
+```{r echo=F, include=FALSE}
+library(dplyr)
+library(kableExtra)
+```
+
 
 ---
 
@@ -52,9 +57,11 @@ Topics covered in this introduction to R
 Topic 1. Basic data types in R
 ====================================================
 
-### There are 5 basic atomic classes: numeric (integer, complex), character, logical
+#### There are 5 basic atomic classes: numeric (integer, complex), character, logical
 
-Examples of numeric values.
+
+##### Examples of numeric values.
+
 ```{r}
 # assign number 150 to variable a.
 a <- 150
@@ -63,8 +70,10 @@ a
 b <- 3e-2
 b
 ```
+<br>
 
-Examples of character values.
+##### Examples of character values.
+
 ```{r}
 # assign a string "BRCA1" to variable gene
 gene <- "BRCA1"
@@ -73,8 +82,10 @@ gene
 hello <- "Hello World"
 hello
 ```
+<br>
 
-Examples of logical values.
+##### Examples of logical values.
+
 ```{r}
 # assign logical value "TRUE" to variable brca1_expressed
 brca1_expressed <- TRUE
@@ -87,8 +98,10 @@ her2_expression_level <- 0
 her2_expressed <- her2_expression_level > 0
 her2_expressed
 ```
+<br>
 
-To find out the type of variable.
+##### To find out the type of variable.
+
 ```{r}
 class(her2_expressed)
 # To check whether the variable is a specific type
@@ -97,27 +110,40 @@ is.numeric(a)
 is.character(gene)
 
 ```
+<br>
 
-In the case that one compares two different classes of data, the coersion rule in R is `r colFmt("logical -> integer -> numeric -> complex -> character", 'red')` . The following is an example of converting a numeric variable to character.
+##### In the case that one compares two different classes of data, the coersion rule in R is `r colFmt("logical -> integer -> numeric -> complex -> character", 'red')` . The following is an example of converting a numeric variable to character.
 
 
 ```{r}
 b
 as.character(b)
 ```
+<br>
 
 What happens when one converts a logical variable to numeric?
 
 ```{r}
+# recall her2_expressed
+her2_expressed
+
+# conversion
 as.numeric(her2_expressed)
 
 her2_expressed + 1
 
 ```
+<br>
 
-A logical *TRUE* is converted to integer 1 and a logical *FALSE* is converted to integer 0.
+##### A logical *TRUE* is converted to integer 1 and a logical *FALSE* is converted to integer 0.
 
+<br>
 
+#### `r colFmt("Challenge:", 'blue')`
+
+* Create one variable that is named as "a" and has the value of 3. Create another variable that is named as "b" and has the value of "gene". What is the output of the operation *a + b*? What is the reason? 
+
+* Create another variable that is named as "c" and has the logical value of FALSE. What is the output of the operation *a + c*? What is the output of the operation *b + c*? Why?
 
 
 ---
@@ -128,11 +154,12 @@ Topic 2. Basic data structures in R
 
 ```{r echo=FALSE}
 
-kable(data.frame(Homogeneous=c("Atomic vector", "Matrix", "Array"), Heterogeneous=c("List", "Data frame", ""), row.names=c("1d", "2d", "Nd"), stringsAsFactors=F), align='c') %>% kable_styling(bootstrap_options="striped", full_width=F, position="left")
+kable(data.frame(Homogeneous=c("Atomic vector", "Matrix", "Array"), Heterogeneous=c("List", "Data frame", ""), row.names=c("1d", "2d", "Nd"), stringsAsFactors=F), align='c') %>% kable_styling(bootstrap_options="striped", full_width=F, position="center", font_size=18)
 ```
+<br>
 
 
-### Atomic vectors: an atomic vector is a combination of multiple values(numeric, character or logical) in the same object. An atomic vector is created using the function c() (for concatenate).
+#### Atomic vectors: an atomic vector is a combination of multiple values(numeric, character or logical) in the same object. An atomic vector is created using the function c().
 
 ```{r}
 gene_names <- c("ESR1", "p53", "PI3K", "BRCA1", "EGFR")
@@ -141,8 +168,9 @@ gene_names
 gene_expression <- c(0, 100, 50, 200, 80)
 gene_expression
 ```
+<br>
 
-One can give names to the elements of an atomic vector.
+##### One can give names to the elements of an atomic vector.
 ```{r}
 # assign names to a vector by specifying them
 names(gene_expression) <- c("ESR1", "p53", "PI3K", "BRCA1", "EGFR")
@@ -152,37 +180,40 @@ gene_expression
 names(gene_expression) <- gene_names
 gene_expression
 ```
+<br>
 
-Or One may create a vector with named elements from scratch.
+##### Or One may create a vector with named elements from scratch.
 ```{r}
 gene_expression <- c(ESR1=0, p53=100, PI3K=50, BRCA1=200, EGFR=80)
 gene_expression
 ```
+<br>
 
-To find out the length of a vector:
+##### To find out the length of a vector:
 ```{r}
 length(gene_expression)
 ```
 
    
-##### `r colFmt("NOTE: a vector can only hold elements of the same type. If there are a mixture of data types, they will be coerced according the coersion rule mentioned earlier in this documentation.", 'red')`  
+##### `r colFmt("NOTE: a vector can only hold elements of the same type. If there are a mixture of data types, they will be coerced according to the coersion rule mentioned earlier in this documentation.", 'red')`  
 
+<br>
 
-
-### Factors: a factor represents categorical variables, which are important in statistical modeling and can only take on a limited number of pre-defined values. The function factor() can be used to create a factor variable.
+#### Factors: a factor is a special vector. It stores categorical data, which are important in statistical modeling and can only take on a limited number of pre-defined values. The function factor() can be used to create a factor.
 
 ```{r}
 disease_stage <- factor(c("Stage1", "Stage2", "Stage2", "Stage3", "Stage1", "Stage4"))
 disease_stage
 ```
+<br>
 
-In R, categories are called factor levels. The function levels() can be used to access the factor levels.
+##### In R, categories of the data are stored as factor levels. The function levels() can be used to access the factor levels.
 
 ```{r}
 levels(disease_stage)
 ```
 
-A function to compactly display the internal structure of an R object is str(). Please use str() to display the internal structure of the object we just created *disease_stage*. It shows that _disease_stage_ is a factor with four levels: "Stage1", "Stage2", "Stage3", etc... The integer numbers after the colon shows that these leves are encoded under the hood by integer numbers: the first level is 1, the second level is 2, and so on. Basically, when _factor_ function is called, R first scan through the vector to determine how many different categories there are, then it converts the character vector to a vector of integer values, with each integer value associated with a category.
+##### A function to compactly display the internal structure of an R object is str(). Please use str() to display the internal structure of the object we just created *disease_stage*. It shows that _disease_stage_ is a factor with four levels: "Stage1", "Stage2", "Stage3", etc... The integer numbers after the colon shows that these levels are encoded under the hood by integer values: the first level is 1, the second level is 2, and so on. Basically, when _factor_ function is called, R first scan through the vector to determine how many different categories there are, then it converts the character vector to a vector of integer values, with each integer value labeled with a category.
 
 
 ```{r}
@@ -190,7 +221,7 @@ str(disease_stage)
 ```
 
 
-By default, R infers the factor levels by ordering the unique elements in a factor alphabetically. One may specifically define the factor levels at the creation of the factor.
+##### By default, R infers the factor levels by ordering the unique elements in a factor alphanumerically. One may specifically define the factor levels at the creation of the factor.
 
 
 ```{r}
@@ -209,11 +240,18 @@ summary(disease_stage)
 table(disease_stage)
 ```
 
-`r colFmt("Try to add a new element to a factor. This element does not match any of the levels of the factor. What will happen?", 'blue')`
+#### `r colFmt("Challenge:", 'blue')`
+
+* Try to add a new element to a factor. When the new element does not match any of the levels of the factor. What will happen? How should it be done to get a new factor with new levels and add new elements?
+
+* Look at functions _levels_ and _relevel_. What does each of them do? Which one should be used when one wants to redefine the levels of a factor?
 
 
+<br>
 
-### Matrices: A matrix is like an Excel sheet containing multiple rows and columns. It is used to combine vectors of the same type.
+---
+
+#### Matrices: A matrix is like an Excel sheet containing multiple rows and columns. It is used to combine vectors of the same type.
 
 ```{r}
 col1 <- c(1,3,8,9)
@@ -225,7 +263,7 @@ my_matrix
 
 ```
 
-One other way to create a matrix is to use *matrix()* function.
+##### One other way to create a matrix is to use *matrix()* function.
 
 ```{r}
 nums <- c(col1, col2, col3)
@@ -240,7 +278,8 @@ my_matrix
 t(my_matrix)
 ```
 
-To find out the dimension of a matrix:
+##### To find out the dimension of a matrix:
+
 ```{r}
 ncol(my_matrix)
 nrow(my_matrix)
@@ -248,7 +287,7 @@ dim(my_matrix)
 ```
 
 
-Calculations with numeric matrices.
+##### Calculations with numeric matrices.
 
 ```{r}
 my_matrix * 3
@@ -265,12 +304,12 @@ Total of each column.
 colSums(my_matrix)
 ```
 
-There is a data structure _Array_ in R, that holds multi-dimensional (d > 2) data and is a generalized version of a matrix. *Matrix* is used much more commonly than *Array*, therefore we are not going to talk about *Array* here.
+##### There is a data structure _Array_ in R, that holds multi-dimensional (d > 2) data and is a generalized version of a matrix. *Matrix* is used much more commonly than *Array*, therefore we are not going to talk about *Array* here.
 
 
-### Data frames: a data frame is like a matrix but can have columns with different types (numeric, character, logical).
+#### Data frames: a data frame is like a matrix but can have columns with different types (numeric, character, logical).
 
-A data frame can be created using the function data.frame().
+##### A data frame can be created using the function data.frame().
 
 ```{r}
 # creating a data frame using pre-defined vectors
@@ -281,7 +320,7 @@ meta.data <- data.frame(patients_name=patients_name, disease_stage=disease_stage
 meta.data
 ```
 
-To check whether a data is a data frame, use the function is.data.frame().
+###### To check whether a data is a data frame, use the function is.data.frame().
 
 ```{r}
 is.data.frame(meta.data)
@@ -291,7 +330,7 @@ is.data.frame(meta.data)
 is.data.frame(my_matrix)
 ```
 
-One can convert a matrix object to a data frame using the function as.data.frame().
+###### One can convert a matrix object to a data frame using the function as.data.frame().
 
 ```{r}
 class(my_matrix)
@@ -302,7 +341,7 @@ my_data <- as.data.frame(my_matrix)
 class(my_data)
 ```
 
-A data frame can be transposed in the similar way as a matrix.
+##### A data frame can be transposed in the similar way as a matrix. However, the result of transposing a data frame might not be a data frame anymore.
 
 ```{r}
 my_data
@@ -312,7 +351,7 @@ my_data
 t(my_data)
 ```
 
-A data frame can be extended.
+##### A data frame can be extended.
 
 ```{r}
 # add a column that has the information on harmful mutations in BRCA1/BRCA2 genes for each patient.
@@ -321,7 +360,7 @@ meta.data$BRCA <- c("YES", "NO", "YES", "YES", "YES", "NO")
 meta.data
 ```
 
-A data frame can also be extended using the functions cbind() and rbind(), for adding columns and rows respectively. When using cbind(), the number of values in the new column must match the number of rows in the data frame. When using rbind(), the two data frames must have the same variables/columns.
+##### A data frame can also be extended using the functions cbind() and rbind(), for adding columns and rows respectively. When using cbind(), the number of values in the new column must match the number of rows in the data frame. When using rbind(), the two data frames must have the same variables/columns.
 
 ```{r}
 # add a column that has the information on the racial information for each patient.
@@ -330,20 +369,26 @@ cbind(meta.data, Race=c("AJ", "AS", "AA", "NE", "NE", "AS"))
 rbind(meta.data, data.frame(patients_name="Patient7", disease_stage="S4", Family_history="Y", patients_age=48, BRCA="YES"))
 ```
 
-One may use the function *merge* to merge two data frames horizontally, based on one or more common key variables.
+##### One may use the function *merge* to merge two data frames horizontally, based on one or more common key variables.
 
 ```{r}
 expression.data <- data.frame(patients_name=c("Patient3", "Patient4", "Patient5", "Patient1", "Patient2", "Patient6"), EGFR=c(10, 472, 103784, 1782, 187, 18289), TP53=c(16493, 72, 8193, 1849, 173894, 1482))
 expression.data
 merge(meta.data, expression.data, by="patients_name")
 ```
+<br>
 
-`r colFmt("In the previous example, we created *expression.data* with the same number of patients as *meta.data*. What if *expression.data* has less number of patients? As an exercise to understand how *merge* works, you can reduce the dimention of *expression.data* and check the *merge* results.", 'blue')`
+##### `r colFmt("Challenge:", 'blue')`
 
+* In the previous example, we created *expression.data* with the same number of patients as *meta.data*. What if *expression.data* has less number of patients? As an exercise to understand how *merge* works, you can reduce the dimention of *expression.data* and check the *merge* results.
 
-### Lists: a list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames, even lists).
+<br>
 
-A list is constructed using the function list().
+---
+
+#### Lists: a list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames, even lists).
+
+##### A list is constructed using the function list().
 
 ```{r}
 my_list <- list(1:5, "a", c(TRUE, FALSE, FALSE), c(3.2, 103.0, 82.3))
@@ -351,7 +396,7 @@ my_list
 str(my_list)
 ```
 
-One could construct a list by giving names to elements.
+##### One could construct a list by giving names to elements.
 
 ```{r}
 my_list <- list(Ranking=1:5, ID="a", Test=c(TRUE, FALSE, FALSE), Score=c(3.2, 103.0, 82.3))
@@ -366,7 +411,7 @@ str(my_list)
 length(my_list)
 ```
 
-### Subsetting data
+#### Subsetting data
 
 #### Subsetting allows one to access the piece of data of interest. When combinded with assignment, subsetting can modify selected pieces of data. The operators that can be used to subset data are: [, $, and [[.
 
@@ -422,12 +467,6 @@ If the logical vector has "NA" in it, the corresponding value will be "NA" in th
 gene_names[c(TRUE, NA, FALSE, TRUE, NA)]
 ```
 
-* `r colFmt("**Nothing** returns the original vector", 'purple')`, This is more useful for matrices, data frames than for vectors.
-
-```{r}
-gene_names[]
-```
-
 * `r colFmt("**Character vectors** return elements with matching names, when the vector is named.", 'purple')`
 
 ```{r}
@@ -435,11 +474,20 @@ gene_expression
 gene_expression[c("ESR1", "p53")]
 ```
 
+* `r colFmt("**Nothing** returns the original vector", 'purple')`, This is more useful for matrices, data frames than for vectors.
+
+```{r}
+gene_names[]
+```
+
+<br>
+
 ##### Subsetting a list works in the same way as subsetting an atomic vector. Using [ will always return a list.
 
 ```{r}
 my_list[1]
 ```
+<br>
 
 ##### Subsetting a matrix can be done by simply generalizing the one dimension subsetting: one may supply a one dimension index for each dimension of the matrix. `r colFmt("Blank/Nothing subsetting is now useful in keeping all rows or all columns.", 'red')`
 
@@ -447,6 +495,7 @@ my_list[1]
 ```{r}
 my_matrix[c(TRUE, FALSE), ]
 ```
+<br>
 
 ##### Subsetting a data frame can be done similarly as subsetting a matrix. In addition, one may supply only one 1-dimensional index to subset a data frame. In this case, R will treat the data frame as a list with each column is an element in the list.
 
@@ -523,7 +572,7 @@ kable(data.frame(Simplifying=c("x[[1]]", "x[[1]]", "x[1:3, drop=T]", "x[, 1] or 
 Topic 3. Import and export data in R
 ====================================================
 
-R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
+##### R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
 
 ```{r eval=FALSE}
 # There is a very convenient way to read files from the internet.
@@ -542,15 +591,17 @@ head(data)
 ```
 
 
-Depending on the format of the file, several variants of read.table() are available to make reading a file easier.
+##### Depending on the format of the file, several variants of read.table() are available to make reading a file easier.
 
-read.csv(): for reading "comma separated value" files (.csv).
+* read.csv(): for reading "comma separated value" files (.csv).
 
-read.csv2(): variant used in countries that use a comma "," as decimal point and a semicolon ";" as field separators.
+* read.csv2(): variant used in countries that use a comma "," as decimal point and a semicolon ";" as field separators.
 
-read.delim(): for reading "tab separated value" files (".txt"). By default, point(".") is used as decimal point.
+* read.delim(): for reading "tab separated value" files (".txt"). By default, point(".") is used as decimal point.
 
-read.delim2(): for reading "tab separated value" files (".txt"). By default, comma (",") is used as decimal point.
+* read.delim2(): for reading "tab separated value" files (".txt"). By default, comma (",") is used as decimal point.
+
+<br>
 
 ```{r}
 # We are going to read a file over the internet by providing the url of the file.
@@ -560,9 +611,9 @@ data2 <- read.csv(file="https://raw.githubusercontent.com/ucdavis-bioinformatics
 head(data2)
 ```
 
+<br>
 
-
-R base function write.table() can be used to export data to a file.
+##### R base function write.table() can be used to export data to a file.
 
 ```{r}
 # To write to a file called "output.txt" in your current working directory.
@@ -580,7 +631,7 @@ write.csv2()
 
 Topic 4. Functions in R
 ====================================================
-### Invoking a function by its name, followed by the parenthesis and zero or more arguments.
+#### Invoking a function by its name, followed by the parenthesis and zero or more arguments.
 
 ```{r}
 # to find out the current working directory
@@ -606,7 +657,7 @@ rep(1:3, each=3)
 
 ```  
 
-#### `r colFmt("One useful function to find out information on an R object: str(). It compactly display the internal structure of an R object.", 'red')`  
+##### `r colFmt("One useful function to find out information on an R object: str(). It compactly display the internal structure of an R object.", 'red')`  
 
 
 ```{r}
@@ -614,7 +665,7 @@ str(data2)
 ```
 
 
-### Conditional structure
+#### Conditional structure
 
 Decision making is important in programming. This can be achieved using **if...else** statement.
 
@@ -655,7 +706,7 @@ if (gene_expression["ESR1"] > 0){
 ```
 
 
-### Loop structure
+#### Loop structure
 
 In programming, it is common that one has to do one set of specific operation on a sequence of elements. In this case, *for* loop is very useful to achieve the goal.
 
@@ -687,12 +738,17 @@ There is **while** loop in R similarly as in command line or any other programmi
 **}**
 
 
-`r colFmt("Please rewrite the calculation of the column sum using *while* loop.", 'blue')`
+##### `r colFmt("Challenge:", 'blue')`
 
+Please rewrite the calculation of the column sum using *while* loop.
 
-### A few useful functions: apply(), lapply(), sapply(), and tapply() to replace for loop
+<br>
 
-#### apply() takes array or matrix as input and output in vector, array or list.
+---
+
+#### A few useful functions: apply(), lapply(), sapply(), and tapply() to replace for loop
+
+##### apply() takes array or matrix as input and output in vector, array or list.
 
 ```{r}
 # recall my_matrix
@@ -704,7 +760,7 @@ apply(my_matrix, MARGIN=1, sum)
 ```
 
 
-#### lapply() takes list, vector or data frame as input and outputs in list.
+##### lapply() takes a list, vector or data frame as input and outputs in list.
 
 
 ```{r}
@@ -724,7 +780,7 @@ apply(data, MARGIN=1, sum)
 lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ```
 
-#### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
+##### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
 
 ```{r}
 # To check the syntax of using sapply():
@@ -733,7 +789,7 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ```
 
-#### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
+##### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
 ```{r}
 sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ```
@@ -747,7 +803,7 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 # First, load the Iris dataset
 data(iris)
 
-# Take a look at how the data looks
+# Take a look at what the data includes
 head(iris)
 
 # Generate a summary of the sepal lengths for each iris species.
@@ -778,7 +834,7 @@ my.area <- function(side1=side1, side2=side2, side3=side3){
 my.area(side1=3, side2=4, side3=5)
 ```
 
-
+<br>
 
 ---
 
@@ -862,7 +918,7 @@ dev.off()
 Topic 7. Install packages in R
 ====================================================
 
-Starting from Bioconductor version 3.8, the installation of packages is recommended to use BiocManager.
+##### Starting from Bioconductor version 3.8, the installation of packages is recommended to use BiocManager.
 
 ```{r eval=FALSE}
 if (!requireNamespace("BiocManager"))
@@ -880,7 +936,7 @@ BiocManager::install(c("devtools", "tidyverse"))
 * An indirect consequence of Bioconductor's structured release is that packages generally have more extensive dependences with one another.
 
 
-##### `r colFmt("It is always recommended to update to the most current version of R and Bioconductor. If it is not possible and R < 3.5.0, please use the legacy approach to install Bioconductor packages", 'red')`   
+##### `r colFmt("It is always recommended to update to the most current version of R and Bioconductor. If it is not possible and R < 3.5.0, please use the legacy approach to install Bioconductor packages", 'orange')`   
 
 ```{r eval=FALSE}
 source("http://bioconductor.org/biocLite.R")
@@ -890,13 +946,13 @@ biocLite()
 biocLite(c("tidyverse", "devtools"))
 ```
    
-The R function install.packages() can be used to install packages that are not part of Bioconductor.
+##### The R function install.packages() can be used to install packages that are not part of Bioconductor.
 
 ```{r eval=FALSE}
 install.packages("ggplot2", repos="http://cran.us.r-project.org")
 ```
 
-Install from source of github.
+##### Install from source of github.
 ```{r eval=FALSE}
 library(devtools)
 install_github("stephenturner/qqman")
@@ -912,17 +968,17 @@ Topic 8. Save data in R session
 #### To save history in R session
 
 ```{r}
-savehistory(file="Dec18.history")
+savehistory(file="Oct08.history")
 
-#loadhistory(file="Dec18.history")
+#loadhistory(file="Oct08.history")
 ```
 
 #### To save objects in R session
 
 ```{r}
-save(list=c("x", "data"), file="Dec18.RData")
+save(list=c("x", "data"), file="Oct08.RData")
 
-#load("Dec18.RData")
+#load("Oct08.RData")
 ```
 ---
 
@@ -950,10 +1006,10 @@ To render R notebook to html/pdf/word documents can be done using the **Preview*
 
 ---
 
-`r colFmt("Challenge", 'blue')`
+`r colFmt("Final challenge", 'blue')`
 ====================================================
 
-Working with an R notebook, load the Iris data as we did earlier in this documentation, generate a table that lists the median of each measurement (Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) for each species. Then generate a plot based on the result. Finally produce an html report with the table and the plot, such as following.
+Working with an R notebook, load the Iris data as we did earlier in this documentation, generate a table that lists the median of each measurement (Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) for each species. Then generate a plot based on the result. Finally produce an html report with the table and the plot. Below serves as an example output.
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
@@ -975,7 +1031,7 @@ tt <- dev.off()
 ![](./test.png)
 
 
-`r colFmt("Hint: in order to output a nice looking table in the final report, one may check out the documentation at https://cran.r-project.org/web/packages/htmlTable/vignettes/tables.html", 'red')`
+`r colFmt("Hint: in order to output a nice looking table in the final report, one may check out the documentation at https://cran.r-project.org/web/packages/htmlTable/vignettes/", 'red')`
 
 <br>
 
