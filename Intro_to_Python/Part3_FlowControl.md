@@ -6,9 +6,6 @@
 - [List comprehension](#listcomprehension)
 - [While, Iterators](#while)
 - [Break, Continue, Pass, Try, Except](#stoppers)
-
-TODO 
-talk about None, string formatting (%s and f)
 - [Simple Functions](#functions)
 - [Group Exercise](#exercise)
 
@@ -319,10 +316,15 @@ def simple_function(
 </div>
 
 *  Part 3: Flow control
-    - zip
-    -  Maybe list comprehension, lambda etc?
-    -  Basic file read and write
+    -  zip
+    - add this link in notes somewhere https://docs.python.org/3/library/functions.html
+    -  lambda etc?
     -  Simple functions
         -  What is "Scope" and how does it work?
         -  defining variables, passing variables, returning variables
     -  Hands on Exercises 3
+    
+    -  Single and double quotes, escape characters, etc TODO
+-  inserting variables TODO
+-  variables vs objects
+-  Maybe Counter() and OrderedDict() from collections (https://docs.python.org/2/library/collections.html)
