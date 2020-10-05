@@ -10,6 +10,8 @@
 - [String Formatting](#stringformat)
 - [Group Exercise](#exercise)
 
+A few note before we get started:
+- ....
 
 ---
 
@@ -82,6 +84,18 @@ my_string[1] # this will make more sense when we learn lists later
 ```
 
 
+<div class="output">
+>>> my_string = "Hello world!"
+>>> type(my_string)
+<class 'str'>
+>>> my_string
+'Hello world!'
+>>> print(my_string)
+Hello world!
+>>> my_string[1] # this will make more sense when we learn lists later
+'e'
+</div>
+
 
 # <a name="arithmetic"></a> Arithmetic: Adding, subtracting, multiplication, etc.
 
@@ -104,13 +118,28 @@ type(a/b)
 
 # Exponents
 4**b
+#or
+pow(4,b)
 type(a**b)
 
-# TODO (//, abs, pow(x,y))
+# Remainder 
+4 // 3
+
+# Absolute value
+abs(22-32)
+
+# Round, Floor, Ceiling
+round(3.2)
+int(3.2)
+import math
+math.ceil(3.2)
+math.floor(3.7)
+int(3.7)
 
 ```
 
-<div class="output">>>> # This is a comment
+<div class="output">
+>>> # This is a comment
 >>> type(a)
 <class 'int'>
 >>> type(b)
@@ -291,6 +320,29 @@ TypeError: unsupported operand type(s) for -: 'list' and 'list'
 </div>
 
 
+
+## Some more list features: count, pop, append, reassignment
+```
+my_string_list = ['the', 'dog', 'says', 'woof']
+my_string_list.append('the')
+my_string_list.count('the')
+my_string_list.pop()
+my_string_list.count('the')
+my_string_list.reverse()
+my_string_list
+```
+
+<div class="output"> 
+>>> my_string_list.append('the')
+>>> my_string_list.count('the')
+2
+>>> my_string_list.pop()
+'the'
+>>> my_string_list.count('the')
+1
+
+</div>
+
 ## Tuples
 
 
@@ -375,6 +427,11 @@ TypeError: 'tuple' object does not support item assignment
 (1, 2, 3, 4, 5, 6)
 
 </div>
+
+There are quite a few differences between the two and some other features we talked about earlier for lists may work with tuples. 
+I don't use tuples a ton but feel free to experiment and see what you can do with one but not the other. Check out the docs or see 
+what features a class has using `list.__dict__.keys()` and `tuple.__dict__.keys()`. (These commands will make more sense later when 
+we talk about attributes and dictionaries)
 
 ## Sets
 
@@ -505,6 +562,16 @@ True
 
 # <a name="range"></a> Range
 
+```
+
+```
+
+# <a name="stringformatting"></a> String Formatting
+
+```
+
+```
+
 # <a name="exercise"></a> Group Exercises (~30 mins)
 1. Create a list of all even values from 0 to 100.
 - What is the length of the list?
@@ -526,31 +593,13 @@ True
 and one using the original string. Can you think of both?
 
 
-4. 
 
 
-
-
-<div class="output">
- 
-</div>
-
-<div class="output">
- 
-</div>
-
-<div class="output">
- 
-</div>
-- reverse lists etc., step size in lists [::2], any, all
--  pop and append lists etc....
--  rounding
+---
+- finish range and string formatting
+-  rstep size in lists [::2]
 -  Single and double quotes, escape characters, etc TODO
 -  inserting variables TODO
--  Zero-based index, variables vs objects
+-  variables vs objects
 -  Maybe Counter() and OrderedDict() from collections (https://docs.python.org/2/library/collections.html)
-
-
-*  Part 2: Hands on exercises (1:30 - 2pm)
-    -  TODO
 
