@@ -11,19 +11,12 @@ navigation:
     url: welcome
   - title: Schedule
     url: base/schedule
-  - title: Examples of Markdown Formatting
-    url: examples
   - title: Software and Links
     url: software_scripts/software
+
   - heading: Intro CLI
-  - title: Logging in and transferring files
-    url: CLI_Intro/logging-in
-  - title: Unix & the Command Line
-    url: CLI_Intro/command-line-intro
-  - title: Unix & the Command Line- Challenge Solutions
-    url: CLI_Intro/command-line-intro-challenge-solutions
-  - title: Clusters and modules
-    url: CLI_Intro/cluster
+  - title: Introduction to the Command Line part 1
+    url: CLI_Intro/intro-cli-part1
   # - heading: Advanced CLI
   # - title: Advanced Command Line
   #   url: adv_cli/advanced_cli
