@@ -301,7 +301,7 @@ default_function(*["some_string"])
 >>> 
 >>> simple_function()
 Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
+  File
 TypeError: simple_function() missing 1 required positional argument: 'some_string'
 >>> simple_function("Testing")
 (True, 'You passed the following string: Testing')
@@ -369,29 +369,3 @@ TypeError: simple_function() missing 1 required positional argument: 'some_strin
     -  [Rosalind](http://rosalind.info/problems/tree-view/)
 
 
-
-
-
-<div class="output">
-</div>
-
-<div class="output">
-</div>
-
-<div class="output">
-
-</div>
-
-*  Part 3: Flow control
-    -  zip
-    - add this link in notes somewhere https://docs.python.org/3/library/functions.html
-    -  lambda etc?
-    -  Simple functions
-        -  What is "Scope" and how does it work?
-        -  defining variables, passing variables, returning variables
-    -  Hands on Exercises 3
-    
-    -  Single and double quotes, escape characters, etc TODO
--  inserting variables TODO
--  variables vs objects
--  Maybe Counter() and OrderedDict() from collections (https://docs.python.org/2/library/collections.html)

@@ -16,6 +16,13 @@ but if you are serious about mastering python you will need to apply yourself be
 - We bring up a lot of concepts to expose you to them but we encourage you to have a "scientific" mentality and highly
 encourage you to continue testing the waters beyond these materials. 
 
+
+Setup
+```
+cd /share/workshop/prereq_workshop/$USER/python
+python3.8
+```
+
 ---
 
 # <a name="datatypes"></a> Basic Data Types: Integers, Floating-point numbers, booleans, strings.
@@ -267,7 +274,8 @@ my_string_list[::3]
 " ".join(my_string_list)
 list(my_string_list[0])
 " ".join(my_string_list).split()
-
+" ".join(my_string_list).split('s')
+" ".join(my_string_list).replace(" ", "-")
 ```
 
 <div class="output">
@@ -329,6 +337,10 @@ TypeError: unsupported operand type(s) for -: 'list' and 'list'
 ['t', 'h', 'e']
 >>> " ".join(my_string_list).split()
 ['the', 'dog', 'says', 'woof']
+>>> " ".join(my_string_list).split('s')
+['the dog ', 'ay', ' woof']
+>>> " ".join(my_string_list).replace(" ", "-")
+'the-dog-says-woof'
 
 </div>
 
