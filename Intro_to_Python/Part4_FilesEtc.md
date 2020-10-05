@@ -132,9 +132,13 @@ print(l)
 
 Exercises
 
-1) How many bp is the first read in the file?
+1) How many base pairs long is the first read in the file?
 
-2) The ord() function will return the ASCII value for a single character. Can you read the fourth line from the fastq file and calculate the average quality value? 
+2) The ord() function will return the ASCII value for a single character. Can you read the fourth line from the fastq file and calculate the average quality value? Hints: The last character is a line return, use strip() to remove it. You can use list comprehension or a for loop to split up the characters and run ord() on each one.  
+
+3) Write some code to figure out how many total lines are in example_data.fastq.gz. How many reads is this?
+
+4) 
 
 ```python
 
@@ -235,11 +239,15 @@ with gzip.open("example_data.fastq.gz", 'rt') as h:
 
 
 max(l)
-min(l)
-statistics.mean(l)
 
-# How many reads are < 400bp?
-sum(m < 400 for m in l)
+min(l)
+
+sum(l)/len(l)
+
+# How many reads are < 427bp?
+sum(m < 429 for m in l)
+
+sum(m > 429 for m in l)
 
 ```
 
@@ -255,22 +263,96 @@ with gzip.open("example_data.fastq.gz", 'rt') as inf, gzip.open("example_data.fa
 # If you are running ipython, use less to check whether the file has been converted.
 ```
 
+
 ---------
 
 ## <a name="top">CSV package</a>
 
-It is often 
+It is commonly necessary to read or write tabular data when doing bioinformatics work. Python has a handy module to support this called [CSV](https://docs.python.org/3/library/csv.html).
 
-    maybe https://docs.python.org/3/library/csv.html
+Lets experiment with writing and reading tabular files using the DictWriter and DictReader classes. 
+
+Writing data out.
+```python
+import csv
+
+# First lets write an example file
+with open('my_data.csv', 'w') as csvfile:
+    # Create a list with the column headers
+    fieldnames = ['SampleID','Age','Treatment', 'Weight']
+    # Create a DictWriter, use tabs to delimit columns 
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter='\t')
+    # Write out the header
+    writer.writeheader()
+    
+    writer.writerow({"SampleID":"mouse1", "Age":4, "Treatment":"Control", "Weight":3.2})
+    writer.writerow({"SampleID":"mouse2", "Age":5, "Treatment":"Control", "Weight":3.6 })
+    writer.writerow({"SampleID":"mouse3", "Age":4, "Treatment":"Control", "Weight":3.8 })
+    writer.writerow({"SampleID":"mouse4", "Age":4, "Treatment":"ad libitum", "Weight":3.6 })
+    writer.writerow({"SampleID":"mouse5", "Age":4, "Treatment":"ad libitum", "Weight":3.7 })
+    writer.writerow({"SampleID":"mouse6", "Age":4, "Treatment":"ad libitum", "Weight":3.5 })
+
+# If you are running ipython, try checking the contents of the file with "cat my_data.csv"
+
+```
+
+Reading data in from a file
+```python
+import csv
+
+with open('my_data.csv', 'r') as csvfile:
+    reader = csv.DictReader(csvfile, delimiter='\t')
+    for row in reader:
+        print(f"SampleID:{row['SampleID']}, Age:{row['Age']}, Treatment:{row['Treatment']}, Weight:{row['Weight']}")
 
 
+```
 
 
-## Glob module
+Now lets try a little 
 
-Glob makes it easy to get a list of files using 
+```python
+# Create an empty dictionary
+chrcount = {}
+
+# read in each line of the fasta file, count character occurrences
+with gzip.open('example_data.fasta.gz', 'rt') as h:
+    for line in h:
+        for ch in line.strip():
+            if ch not in chrcount:
+                chrcount[ch] = 0
+            chrcount[ch] += 1
+
+# Print out the character (dictionary key) and associated value (the count):
+for k, v in chrcount.items():
+    print(f"character:{k}, count:{v}")
+
+```
+
+What if we want to print out values from most common to least? First we need a way to sort, we can use Python's "sorted" function. The sorted() function is a little bit tricky because the "key" argument has to be a function. This is very powerful because it allows flexibility, but can also be confusing.
+
+```python
+# Check how sorted works:
+sorted([4,2,5,6,2])
+
+# 
+sorted([4,2,5,6,2], reverse=True)
+
+# Sorting your dictionary by value requires some tricks:
+sorted(chrcount.items(), key=lambda x: x[1], reverse=True)
+
+# How does this work?
+def getv(x):
+    return(x[1])
+
+sorted(chrcount.items(), key=getv, reverse=True)
 
 
-## Collections 
+```
 
 
+Exercises
+
+1) Use SeqIO and the CSV package to record statistics for the reads in example_data.fastq.gz. Create a CSV with column names, (ReadID, Length, GCcontent, ) 
+
+2) Use SeqIO and a Dictionary, count the frequency of the first 15bp and last 15bp of each read in example_data.fastq.gz.   
