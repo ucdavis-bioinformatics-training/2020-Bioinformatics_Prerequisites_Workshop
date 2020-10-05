@@ -1,7 +1,7 @@
 ---
 title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
-date: "2020-09-29"
+date: "2020-10-05"
 output:
     html_document:
         keep_md: TRUE
