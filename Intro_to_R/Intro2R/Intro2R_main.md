@@ -1,7 +1,7 @@
 ---
 title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
-date: "2019-12-18"
+date: "2020-09-29"
 output:
     html_document:
         keep_md: TRUE
@@ -107,15 +107,25 @@ Programming fundamentals
 
 There are three concepts that are essential in any programming language:
 
-* <font color='purple'>Variables</font>
+* <font color='purple'>VARIABLES</font>
 
 A variable is a named storage. Creating a variable is to reserve some space in memory. In R, the name of a variable can have letters, numbers, dot and underscore. However, a valid variable name cannot start with a underscore or a number, or start with a dot that is followed by a number.
 
 
+* <font color='purple'>FUNCTIONS</font>
 
-* <font color='purple'>Operations</font>
+A function is a block of organized, reusable code that is used to perform a set of predefined operations. A function may take zero or more parameters and return a result. The way to use a function in R is:
 
-<table class="table table-striped" style="width: auto !important; ">
+**function.name(parameter1=value1, ...)**
+
+In R, to get help information on a funciton, one may use the command: 
+
+**?function.name**
+
+
+* <font color='purple'>OPERATIONS</font>
+
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Assignment Operators in R</caption>
  <thead>
   <tr>
@@ -131,7 +141,7 @@ A variable is a named storage. Creating a variable is to reserve some space in m
 </tbody>
 </table>
 
-<table class="table table-striped" style="width: auto !important; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Arithmetic Operators in R</caption>
  <thead>
   <tr>
@@ -141,15 +151,15 @@ A variable is a named storage. Creating a variable is to reserve some space in m
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:center;"> \+ </td>
+   <td style="text-align:center;"> + </td>
    <td style="text-align:center;"> Addition </td>
   </tr>
   <tr>
-   <td style="text-align:center;"> \- </td>
+   <td style="text-align:center;"> - </td>
    <td style="text-align:center;"> Subtraction </td>
   </tr>
   <tr>
-   <td style="text-align:center;"> \* </td>
+   <td style="text-align:center;"> * </td>
    <td style="text-align:center;"> Multiplication </td>
   </tr>
   <tr>
@@ -207,7 +217,7 @@ A variable is a named storage. Creating a variable is to reserve some space in m
 </tbody>
 </table>
 
-<table class="table table-striped" style="width: auto !important; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Logical Operators in R</caption>
  <thead>
   <tr>
@@ -238,14 +248,6 @@ A variable is a named storage. Creating a variable is to reserve some space in m
   </tr>
 </tbody>
 </table>
-
-* <font color='purple'>Functions</font>
-
-A function is a block of organized, reusable code that is used to perform a set of predefined operations. A function may take zero or more parameters and return a result. The way to use a function in R is:
-
-**function.name(parameter1=value1, ...)**
-
-In R, in order to get help information on a funciton, one may use the command *?function.name*.
 
 <P style="page-break-before: always">
 
@@ -327,7 +329,6 @@ if (!!window.navigator.userAgent.match("MSIE 8")) {
         });
       }
     };
-
 
     // Set the correct tab when the page loads
     showStuffFromHash(context);
