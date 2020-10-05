@@ -133,7 +133,7 @@ pow(4,b)
 type(a**b)
 
 # Remainder 
-4 // 3
+4 % 3
 
 # Absolute value
 abs(22-32)
