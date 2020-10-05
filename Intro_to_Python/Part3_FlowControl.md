@@ -301,7 +301,7 @@ default_function(*["some_string"])
 >>> 
 >>> simple_function()
 Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
+  File
 TypeError: simple_function() missing 1 required positional argument: 'some_string'
 >>> simple_function("Testing")
 (True, 'You passed the following string: Testing')

@@ -1,1 +1,13 @@
-https://mybinder.org/v2/gh/ipython/ipython-in-depth/7e5ce96cc9251083979efdfc393425f1229a4a68?filepath=binder%2Fhow-to-python%2Fpandas_for_biologists_medium%2Fpandas_for_biologists%20_breast_cancer_dataset.ipynb
+# Jupyter, Pandas, and Seaborn
+1. [Open this link](https://mybinder.org/v2/gh/ipython/ipython-in-depth/master?filepath=binder/Index.ipynb)
+2. Your screen should look something like this:
+    ![](figures/71ea6011.png)
+    
+3. Click the + button to add a new cell and copy the following into the cell:
+    ```
+    import os
+    os.system('wget ')
+    ```
+   
+4. Then go File > Open and select the new .ipynb in the directory (JupyterPandasSeabornIntro.ipynb). 
+The rest of the tutorial will take place in this notebook.
