@@ -4,6 +4,8 @@
 
 
 *  Part 4: Special topics
+    -  Notes on documenting code
+    -  Basic File Operations
     -  Biopython
         -  SeqIO, Maybe some of the NCBI support, converting files, 
             -  TODO: check the biopython tutorial/cookbook http://biopython.org/DIST/docs/tutorial/Tutorial.html
@@ -21,29 +23,72 @@
 
 ### Getting started with BioPython
 
-First start python (or ipython) if you haven't.
-```bash
-ll
+First start python (or ipython).
 
-cat helloworld.py
+Lets start by exploring Biopython Sequence objects
 
-python3 helloworld.py
+```python
+from Bio.Seq import Seq
+
+m = Seq("AGTCCGTAG")
+
+# Normal string indexing still work
+print(m[0])
+
+# Slicing still works, get the first two letters:
+m[:2]
+
+# And the last two:
+m[-2:]
+
+# Print the Positive and Negative number index
+for index, letter in enumerate(m):
+    print(f"{index} {index - len(m)} {letter}")
+
+# In some cases sequences may need to be upper/lower case:
+m.lower()
+
+m.upper()
+
+# Characters can be counted just like with strings:
+100 * (m.count('C') + m.count('G')) / len(m)
+
+# We can even join two Seq() objects, or a Seq() and a String:
+n = m + "AAAAAAAAAAA"
+
+print(n)
+
+# However Seq objects also support a number of useful functions:
+m.reverse_complement()
+
+
+m.translate(table=11)
+
+
+from Bio.Alphabet import IUPAC
+
+n = Seq("ACGTCCGTCA", IUPAC.IUPACUnambiguousDNA)
+
 ```
 
 <div class="output">
-shunter@tadpole:python$ ll
-total 5.0K
-drwxrwxr-x  2 shunter shunter 2.0K Oct  4 20:11 ./
-drwxrwx--- 26 shunter shunter 2.0K Oct  4 20:14 ../
--rw-rw-r--  1 shunter shunter   23 Oct  4 20:09 helloworld.py<br>
-
-shunter@tadpole:python$ cat helloworld.py 
-print("Hello, World!")
-
-shunter@tadpole:python$ python3 helloworld.py
-Hello, World!
 
 </div>
 
 
 ## Glob module
+
+
+>>> from Bio.Seq import Seq
+>>> from Bio.Alphabet import IUPAC
+>>> my_seq = Seq("MKQHKAMIVALIVICITAVVAALVTRKDLCEVHIRTGQTEVAVF",
+...              IUPAC.protein)
+>>> my_seq
+Seq('MKQHKAMIVALIVICITAVVAALVTRKDLCEVHIRTGQTEVAVF', IUPACProtein())
+>>> print(my_seq)
+MKQHKAMIVALIVICITAVVAALVTRKDLCEVHIRTGQTEVAVF
+>>> my_seq.alphabet
+IUPACProtein()
+File:           /usr/lib/python3/dist-packages/Bio/Seq.py
+Type:           type
+Subclasses:     UnknownSeq
