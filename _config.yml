@@ -11,19 +11,12 @@ navigation:
     url: welcome
   - title: Schedule
     url: base/schedule
-  - title: Examples of Markdown Formatting
-    url: examples
   - title: Software and Links
     url: software_scripts/software
+
   - heading: Intro CLI
-  - title: Logging in and transferring files
-    url: CLI_Intro/logging-in
-  - title: Unix & the Command Line
-    url: CLI_Intro/command-line-intro
-  - title: Unix & the Command Line- Challenge Solutions
-    url: CLI_Intro/command-line-intro-challenge-solutions
-  - title: Clusters and modules
-    url: CLI_Intro/cluster
+  - title: Introduction to the Command Line part 1
+    url: CLI_Intro/intro-cli-part1
   # - heading: Advanced CLI
   # - title: Advanced Command Line
   #   url: adv_cli/advanced_cli
@@ -33,6 +26,15 @@ navigation:
   #   url: adv_cli/environment
   # - title: Using screen to manage multiple projects
   #   url: adv_cli/screen
+  - heading: Introduction to Python
+  - title: Python Part1, Background
+    url: Intro_to_Python/Intro_To_Python
+  - title: Python Part2, Data Types
+    url: Intro_to_Python/Part2_BasicDataTypes
+  - title: Python Part3, Flow Control
+    url: Intro_to_Python/Part3_FlowControl
+  - title: Python Part4, Working with Files
+    url: Intro_to_Python/Part4_FilesEtc
   - heading: Introduction to R
   - title: Introduction to R
     url: Intro_to_R/Intro2R/Intro2R_main
