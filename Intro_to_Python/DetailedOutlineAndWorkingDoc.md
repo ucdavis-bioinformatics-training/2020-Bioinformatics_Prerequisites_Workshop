@@ -51,6 +51,7 @@
 
 
 Topics to integrate:
+    -  glob
     -  String slicing
     -  list comprehension
     -  Flow control
