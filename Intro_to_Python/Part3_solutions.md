@@ -36,10 +36,8 @@
     comp.reverse()
     ''.join(comp) 
     ```
-    Another solution i saw that i liked:
-    ```
-    seq = seq.replace(‘C’,‘Z’).replace(‘A’,‘Y’).replace(‘G’,‘C’).replace(‘T’, ‘A’).replace(‘Z’,‘G’).replace(‘Y’,‘T’)
-    ```
+
+
 2. Use the below to perform the following tasks:
    ```
    table = { 
