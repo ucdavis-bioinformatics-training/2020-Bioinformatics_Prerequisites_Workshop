@@ -12,6 +12,8 @@ Let's take a look at the 'sed' command. sed (short for stream editor) is a comma
 
 Let's copy over a simple file to work on:
 
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/region.bed
+
     cp /usr/share/common-licenses/BSD .
 
 Take a look at the file:
@@ -347,7 +349,7 @@ Awk
 
 Awk is a simple programming language that can be used to do more complex filtering of data. Awk has many capabilities, and we are only going to touch on one of them here. One really useful thing is to filter lines of a file based on the value in a column. Let's get a file with some data:
 
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Advanced_CLI/DMR.GBM2.vs.NB1.bed
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/DMR.GBM2.vs.NB1.bed
 
 Take a look at the beginning of the file:
 
