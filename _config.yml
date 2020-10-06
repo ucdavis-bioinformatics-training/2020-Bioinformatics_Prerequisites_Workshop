@@ -39,6 +39,8 @@ navigation:
     url: Intro_to_Python/Intro_To_Python
   - title: Python Part2, Data Types
     url: Intro_to_Python/Part2_BasicDataTypes
+  - title: Python Part2, Solutions
+    url: Intro_to_Python/Part2_solutions
   - title: Python Part3, Flow Control
     url: Intro_to_Python/Part3_FlowControl
   - title: Python Part4, Working with Files

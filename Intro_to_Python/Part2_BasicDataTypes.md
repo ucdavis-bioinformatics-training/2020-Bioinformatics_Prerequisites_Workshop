@@ -459,6 +459,31 @@ what features a class has using `list.__dict__.keys()` and `tuple.__dict__.keys(
 we talk about attributes and dictionaries)
 
 ## Sets
+Lets consider the events in my_set and my_set2 with respect to events A and B commonly used in denoting events in set theory. 
+With respect to the pictures in the graph below where GREEN is the results objects in the set, consider the following events:
+
+-  The relative complement is considered set difference in statistics. That is events in one group (B or `my_set2`) not in the other group (A or` my_set`).
+    + <img src="https://latex.codecogs.com/gif.latex? \text{B}-\text{A}   " />    OR   <img src="https://latex.codecogs.com/gif.latex? \text{   my\_set2}-\text{my\_set   }" />
+
+-  The relative complement is considered set difference in statistics. That is events in one group (A or `my_set`) not in the other group (B or `my_set2`).
+    + <img src="https://latex.codecogs.com/gif.latex? \text{A}-\text{B}   " />    OR   <img src="https://latex.codecogs.com/gif.latex? \text{   my\_set}-\text{my\_set2   }" />
+
+- In stats a union of two events is consider events in situation A and B. Similarly we consider `my_set` and `my_set2`.
+    + <img src="https://latex.codecogs.com/gif.latex? \text{A}\cup\text{B}   " />    OR   <img src="https://latex.codecogs.com/gif.latex? \text{   my\_set}\cup\text{my\_set2}" />
+
+- In stats a union of two events is consider events in situation A or B. Similarly we consider `my_set` or `my_set2`.
+    + <img src="https://latex.codecogs.com/gif.latex? \text{A}\cup\text{B}   " />    OR   <img src="https://latex.codecogs.com/gif.latex? \text{   my\_set}\cup\text{my\_set2}" />
+
+
+![](figures/sets.png)
+
+
+And now, just a few words to terminate:
+
+> Goodbye folks!
+
+
+
 
 ```
 my_set = {1,2,3,4,5,5}

@@ -12,7 +12,7 @@
     type(my_list)
     len(my_list)
     sum(my_list)/len(my_list)
-    sum(my_list[13:18])
+    sum(my_list[12:17])
     my_list[-17] # note when working backwards the index starts at -1 rather the 0 like when forward
     my_list[22] = 200
     sum(my_list)/len(my_list)
