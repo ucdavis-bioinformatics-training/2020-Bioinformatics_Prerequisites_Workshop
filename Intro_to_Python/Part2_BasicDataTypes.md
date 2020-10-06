@@ -10,7 +10,7 @@
 - [String Formatting](#stringformat)
 - [Group Exercise](#exercise)
 
-A few note before we get started:
+A few notes before we get started:
 - Learning all the nuances of python takes a long time! Our goal here is to introduce you to as many concepts as possible
 but if you are serious about mastering python you will need to apply yourself beyond this introduction. 
 - We bring up a lot of concepts to expose you to them but we encourage you to have a "scientific" mentality and highly
@@ -575,6 +575,10 @@ type(my_dict)
 my_dict.keys()
 my_dict.values()
 my_dict['a']
+
+# adding a new key value set to the dictionary
+my_dict['d'] = 4
+my_dict
 ```
 
 <div class="output">
@@ -588,6 +592,8 @@ dict_keys(['a', 'b', 'c'])
 dict_values([1, 2, 3])
 >>> my_dict['a']
 1
+>>> my_dict['d']
+{'a':1, 'b':2, 'c':3, 'd':4}
 </div>
 
 
@@ -701,6 +707,7 @@ It was nice to meet you. Goodbye.
 </div>
 
 
+---
 
 # <a name="exercise"></a> Group Exercises (~30 mins)
 1. Create a list of all even values from 0 to 100.

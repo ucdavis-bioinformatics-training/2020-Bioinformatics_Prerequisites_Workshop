@@ -352,6 +352,7 @@ TypeError: simple_function() missing 1 required positional argument: 'some_strin
 </div>
 
 
+---
 
 # <a name="exercise"></a> Group Exercises (~30 mins)
 1.  Use the below to perform the following tasks:
@@ -400,4 +401,4 @@ TypeError: simple_function() missing 1 required positional argument: 'some_strin
 4. If you have any free time after these tasks take a moment to check out Rosalind. It is a great platform for continuing to challenge your python and bioinformatics!
     -  [Rosalind](http://rosalind.info/problems/tree-view/)
 
-
+---
