@@ -1,79 +1,41 @@
 library(rmarkdown)
+rmarkdown::render("solution.Rmd")
+rmarkdown::render("solution.Rmd")
+library(BiocManager)
+rmarkdown::render("solution.Rmd")
 rmarkdown::render("embed.Rmd")
-a <- 3
-b <- "test"
-a + b
-"a" + "b"
-c <- FALSE
-a + c
-b + c
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+1L/2L
+1/2
+as.integer(1)/as.integer(2)
+1 %/% 2
+3 %/% 2
+is.logical(1)
+is.logical(TRUE)
+is.logical(FALSE)
+is.logical(true)
+library(xfun)
 rmarkdown::render("embed.Rmd")
-concatenat
-concatenat(3, 4)
 rmarkdown::render("embed.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("Intro2R_main.Rmd")
+getwd()
 rmarkdown::render("embed.Rmd")
-disease_stage <- factor(c("Stage1", "Stage2", "Stage2", "Stage3", "Stage1", "Stage4"))
-str(disease_stage)
-str(a)
-class(a)
-disease_stage
-?levels()
-levels(disease_stage) <- c("Stage2", "Stage1", "Stage3", "Stage4")
-str(disease_stage)
-disease_stage
-?relevel()
-disease_stage <- factor(c("Stage1", "Stage2", "Stage2", "Stage3", "Stage1", "Stage4"))
-disease_stage
-relevel(disease_stage, ref="Stage2")
-str(relevel(disease_stage, ref="Stage2"))
-summary(disease_stage)
-table(disease_stage)
-disease_stage <- c(disease_stage, "Stage5")
-disease_stage
-str(disease_stage)
-disease_stage <- c(disease_stage, factor("Stage5"))
-disease_stage
-disease_stage <- factor(c("Stage1", "Stage2", "Stage2", "Stage3", "Stage1", "Stage4"))
-str(disease_stage)
-c(disease_stage, factor("Stage5"))
-disease_stage <- factor(c("Stage1", "Stage2", "Stage2", "Stage3", "Stage1", "Stage4"))
-disease_stage <- factor(disease_stage, levels=c(levels(disease_stage), "Stage5"))
-str(disease_stage)
-disease_stage[5:10] <- c("Stage1", "Stage5", "Stage3", "Stage5", "Stage4", "Stage3", "Stage5")
-str(disease_stage)
-addNoAnswer <- function(x){
-  if(is.factor(x)) return(factor(x, levels=c(levels(x), "No Answer")))
-  return(x)
-}
-addNoAnswer(disease_stage)
-if(is.factor(disease_stage)) return(factor(disease_stage, levels=c(levels(disease_stage), "No Answer")))
-addNoAnswer <- function(x){
-if(is.factor(x)) return(factor(x, levels=c(levels(x), "No Answer")))
-}
-addNoAnswer(disease_stage)
-str(disease_stage)
-factor(disease_stage, levels=c(levels(disease_stage), "No Answer"))
-patients_name=c("Patient1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6")
-Family_history=c("Y", "N", "Y", "N", "Y", "Y")
-patients_age=c(31, 40, 39, 50, 45, 65)
-meta.data <- data.frame(patients_name=patients_name, disease_stage=disease_stage, Family_history=Family_history, patients_age=patients_age)
-disease_stage <- factor(c("Stage1", "Stage2", "Stage2", "Stage3", "Stage1", "Stage4"))
-meta.data <- data.frame(patients_name=patients_name, disease_stage=disease_stage, Family_history=Family_history, patients_age=patients_age)
-meta.data
-t(meta.data)
-meta.data[["disease_stage"]]
-meta.data[[5]]
-meta.data[5]
-disease_stage
-disease_stage[1:3, drop=T]
-disease_stage[1:3]
-meta.data[[1]]
-dim(meta.data)
+rmarkdown::render("Intro2R_main.Rmd")
 rmarkdown::render("embed.Rmd")
-data <- read.table(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2017-August-Variant-Analysis-Workshop/master/friday/Intro2R/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
-str(data)
-?apply()
-apply
-rmarkdown::render("embed.Rmd")
-head(data)
+rmarkdown::render("Intro2R_main.Rmd")
+rmarkdown::render("solution.Rmd")
 rmarkdown::render("embed.Rmd")

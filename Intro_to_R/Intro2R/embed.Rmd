@@ -1013,25 +1013,49 @@ Working with an R notebook, load the Iris data as we did earlier in this documen
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+library(lattice)
 tmp <- sapply(1:4, function(x){tapply(iris[,x], iris[[5]], median)})
 colnames(tmp) <- colnames(iris)[1:4]
 nms <- colnames(tmp)
 kable(data.frame(tmp, stringsAsFactors=F), align='c') %>% kable_styling(bootstrap_options=c("striped", "hover", "responsive"), full_width=F, position="center")
+# scatter plot of mean measurement
 species <- as.vector(levels(iris$Species))
 x <- c(1, 2, 3, 4)
-png("test.png")
 plot(x, tmp["setosa",], pch=20, col='red', ylim=c(0, max(tmp)), xaxt="n", xlab="Measurement type", ylab="Measurement results", cex.lab=1.0)
 points(x, tmp["virginica",], pch=20, col='orange')
 points(x, tmp["versicolor",], pch=20, col='blue')
 axis(1, at=x, labels=nms, las=2, cex.axis=0.7)
 text(c(1.5,1.5,1.5), c(0, 0.7, 1.4), labels=species, col=c("red", "blue", "orange"), cex=1.5)
-tt <- dev.off()
+# scatter plot of measurement by species
+xyplot(value ~ variable | Species, data=dd, scales=list(x=list(rot=90)), xlab="Measurements", ylab="Values")
+# boxplot by group
+cols <- c("red", "blue", "orange")
+boxplot(value ~ Species + variable, data=dd, col = cols, xaxt="n", yaxt="n", xlab="Measurement Type", ylab="Values")
+axis(side=1, labels=FALSE)
+axis(side=2, las=2)
+text(x=1:12, y=par("usr")[3] - 0.45, labels=c("", "Sepal.Length", "", "", "Sepal.Width", "", "", "Petal.Length", "", "", "Petal.Width", ""), xpd=NA, srt=45, cex=1)
+legend("topright", fill=cols, legend=levels(dd$Species))
 ```
 
-![](./test.png)
+
+#### `r colFmt("Hints: ", 'red')`
+
+* In order to output a nice looking table in the final report, one may consider the R package kableExtra https://github.com/haozhu233/kableExtra. One may also check out the documentation at https://cran.r-project.org/web/packages/htmlTable/vignettes/
+
+* Figure 1 can be produced using base R functions: plot(), points(), axis(), text().
+
+* Figure 2 can be produced using functions in R package lattice https://cran.r-project.org/web/packages/lattice/index.html
+
+* Figure 3 can be produced using function boxplot()
+
+#### **Solution:**
 
 
-`r colFmt("Hint: in order to output a nice looking table in the final report, one may check out the documentation at https://cran.r-project.org/web/packages/htmlTable/vignettes/", 'red')`
+```{r echo=FALSE, message=FALSE, warnings=FALSE}
+library(xfun)
+xfun::embed_file('solution.Rmd')
+```
+
 
 <br>
 
