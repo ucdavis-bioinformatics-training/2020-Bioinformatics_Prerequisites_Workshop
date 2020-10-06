@@ -27,6 +27,21 @@ navigation:
     url: CLI_Intro/logging-in
   - title: Introduction to the Command Line part 1
     url: CLI_Intro/intro-cli-part1
+
+  - heading: Introduction to Python
+  - title: Python Part1, Background
+    url: Intro_to_Python/Intro_To_Python
+  - title: Python Part2, Data Types
+    url: Intro_to_Python/Part2_BasicDataTypes
+  - title: Python Part2, Solutions
+    url: Intro_to_Python/Part2_solutions
+  - title: Python Part3, Flow Control
+    url: Intro_to_Python/Part3_FlowControl
+  - title: Python Part3, Solutions
+    url: Intro_to_Python/Part3_solutions
+  - title: Python Part4, Working with Files
+    url: Intro_to_Python/Part4_FilesEtc
+
   - heading: Advanced CLI
   - title: Advanced Command Line
     url: Advanced_CLI/advanced-command-line
@@ -42,20 +57,6 @@ navigation:
     url: software_install/conda
   - title: A Simple Bioinformatics Workflow
     url: software_install/bioworkflow
-
-  - heading: Introduction to Python
-  - title: Python Part1, Background
-    url: Intro_to_Python/Intro_To_Python
-  - title: Python Part2, Data Types
-    url: Intro_to_Python/Part2_BasicDataTypes
-  - title: Python Part2, Solutions
-    url: Intro_to_Python/Part2_solutions
-  - title: Python Part3, Flow Control
-    url: Intro_to_Python/Part3_FlowControl
-  - title: Python Part3, Solutions
-    url: Intro_to_Python/Part3_solutions
-  - title: Python Part4, Working with Files
-    url: Intro_to_Python/Part4_FilesEtc
 
   - heading: Introduction to R
   - title: Introduction to R
