@@ -10,39 +10,51 @@ Let's take a look at the 'sed' command. sed (short for stream editor) is a comma
     mkdir advanced
     cd advanced/
 
-Let's copy over a simple file to work on:
+Let's download a simple file to work on:
 
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/region.bed
-
-    cp /usr/share/common-licenses/BSD .
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/region.bed -O region.bed
 
 Take a look at the file:
 
-    cat BSD
+    cat region.bed
 
-Now, let's change every occurence of the word "Redistribution" into "Mangling":
+Now, let's make all the uppercase "CHR"s into lowercase:
 
-    cat BSD | sed 's/Redistribution/Mangling/gi'
+    cat region.bed | sed 's/CHR/chr/'
+
+What happened? Only the first CHR changed. That is because we need to add the "g" option:
+
+    cat region.bed | sed 's/CHR/chr/g'
+
+We can also do the the substitution without regards to case:
+
+    cat region.bed | sed 's/chr/chr/gi'
 
 Let's break down the argument to sed (within the single quotes)... The "s" means "substitute", the word between the 1st and 2nd forward slashes (i.e. /) is the word the substitute for, the word between the 2nd and 3rd slashes is the word to substitute with, and finally the "gi" at the end are flags for global substitution (i.e. substituting along an entire line instead of just the first occurence on a line), and for case insenstivity (i.e. it will ignore the case of the letters when doing the substitution).
 
 Note that this **doesn't** change the file itself, it is simply piping the output of the cat command to sed and outputting to the screen. If you wanted to change the file itself, you could use the "-i" option to sed:
 
-    cat BSD
-    sed -i 's/Redistribution/Mangling/gi' BSD
+    cat region.bed
+    sed -i 's/chr/chr/gi' region.bed
 
 Now if you look at the file, the lines have changed.
 
-    cat BSD
+    cat region.bed
 
 Another useful use of sed is for capturing certain lines from a file. You can select certain lines from a file:
 
-    sed '4q;d' BSD
+    sed '4q;d' region.bed
 
 This will just select the 4th line from the file.
 
+You can also extract a range of lines from a file:
+
+    sed -n '10,20p' region.bed
+
+This gets the 10th through 20th lines from the file.
+
 **CHALLENGE:**
-See if you can find a way to use sed to remove all the spaces from the BSD file.
+See if you can find a way to use sed to remove all the "CHR"s from the file.
 
 More pipes
 -----------
@@ -349,7 +361,7 @@ Awk
 
 Awk is a simple programming language that can be used to do more complex filtering of data. Awk has many capabilities, and we are only going to touch on one of them here. One really useful thing is to filter lines of a file based on the value in a column. Let's get a file with some data:
 
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/DMR.GBM2.vs.NB1.bed
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/DMR.GBM2.vs.NB1.bed -O DMR.GBM2.vs.NB1.bed
 
 Take a look at the beginning of the file:
 
