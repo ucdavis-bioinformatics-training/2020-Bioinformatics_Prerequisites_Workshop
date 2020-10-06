@@ -53,4 +53,4 @@
 8. Accept the warning from your browser about the certificate being self-signed.  This gives us encrypted, HTTPS access to RStudio without purchasing a domain name or SSL certificate.
 
 9. Login to RStudio using the credentials you provided to the AWS CloudFormation template.
-!()[images/rstudio1.png]
+![](images/rstudio1.png)
