@@ -134,9 +134,12 @@ covid.get_status_by_country_name("italy")
 
 Once you are finished, remember that you can exit Python using ctrl+D, and use deactivate to exit from the Python3 virtual environment.
 
+Bonus Exercise:
+1) MultiQC support for our Illumina read QA/QC etc application [HTStream](https://github.com/s4hts/HTStream) is almost complete. However, it has not been merged in to the official MultiQC repository yet. The only way to get it is to install it yourself from https://github.com/s4hts/MultiQC. Using what you have learned so far, try to install this version of MultiQC in your Python3 virtual environment.
+
 -----
 
-<h3><font color="red">Short break</font></h3>
+<h3><font color="red">Break</font></h3>
 
 ------
 
@@ -313,6 +316,12 @@ sorted(chrcount.items(), key=getv, reverse=True)
 ```
 <h3><font color="red">Once you have successfully completed the exercises, mark "Yes" in zoom. Post questions or problems to the Slack channel.</font></h3>
 
+-----
+
+<h3><font color="red">Break</font></h3>
+
+-----
+
 ## <a name="top">BioPython</a>
 
 <img src="figures/biopython_logo_m.png" alt="BioPython" width="25%" align="right"/>
@@ -431,7 +440,11 @@ with gzip.open("example_data.fastq.gz", 'rt') as inf, gzip.open("example_data.fa
 ```
 
 
----------
+-----
+
+<h3><font color="red">Break</font></h3>
+
+-----
 
 ## <a name="top">CSV package</a>
 
@@ -519,7 +532,7 @@ with open('my_data.csv', 'r') as csvfile:
 <br>
 
 
-## Additional things to check out
+## Additional things to check out (but mostly just Google everything)
 
 https://biopython.org/DIST/docs/tutorial/Tutorial.html
 
