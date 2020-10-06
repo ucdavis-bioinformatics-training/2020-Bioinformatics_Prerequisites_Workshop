@@ -329,6 +329,12 @@ sorted(chrcount.items(), key=getv, reverse=True)
 
 [Biopython](https://biopython.org/) is an open source collection of tools for manipulating biological data. The types of data it supports and operations it provides for these data types are documented in the [Biopython Tutorial and Cookbook](https://biopython.org/DIST/docs/tutorial/Tutorial.html) and are quite extensive. 
 
+Before we start we need to ensure that the BioPython module is loaded. On the bash command line load the biopython module and then run python3.
+
+```bash
+module load biopython
+python3
+```
 
 Explore Biopython Sequence objects
 

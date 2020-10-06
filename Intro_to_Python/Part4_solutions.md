@@ -80,7 +80,7 @@ print(i)
 <h3><font color="red">Once you have successfully completed the exercises, mark "Yes" in zoom. Post questions or problems to the Slack channel.</font></h3>
 
 ```python
-# Use SeqIO to filter the records in from example_data.fastq.gz. 
+# 1. Use SeqIO to filter the records in from example_data.fastq.gz. 
 # Create a new file called data_filtered.fastq. Only write reads that DO NOT start with "AGGG".
 from Bio import SeqIO
 import gzip
@@ -92,6 +92,8 @@ with open("data_filtered.fastq", 'w') as outh:
             SeqIO.write(record, outh, 'fastq')
             i += 1
 print(f"records: {i}")
+
+#---------
 
 # Use SeqIO and the CSV package to record statistics for the reads in example_data.fastq.gz.
 # Create a CSV file called read_stats.tsv. Create a DictWriter with column names: 
@@ -105,7 +107,11 @@ fieldnames = ['ReadID','Length','GCcontent', 'AverageQuality']
 # Create a DictWriter, use tabs to delimit columns 
 writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter='\t')
 
+for record in SeqIO.parse(gzip.open("example_data.fastq.gz", 'rt'), 'fastq'):
+    data={}
+    data['ReadID'] = record.
 
+#---------
 
 
 # Use SeqIO and a Dictionary, count the frequency of the first 15bp and last 15bp of each read in example_data.fastq.gz. What are the most common sequences?
