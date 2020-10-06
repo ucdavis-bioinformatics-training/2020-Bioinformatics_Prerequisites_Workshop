@@ -30,10 +30,8 @@ navigation:
     url: Advanced_CLI/advanced-command-line
   # - title: Advanced Challenge Solutions
   #   url: adv_cli/advanced_cli_solutions
-  # - title: Environment Variables
-  #   url: adv_cli/environment
-  # - title: Using screen to manage multiple projects
-  #   url: adv_cli/screen
+  - title: Using screen to manage multiple projects
+    url: Advanced_CLI/screen
   - heading: Introduction to Python
   - title: Python Part1, Background
     url: Intro_to_Python/Intro_To_Python

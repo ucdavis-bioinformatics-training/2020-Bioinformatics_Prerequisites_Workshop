@@ -287,6 +287,40 @@ Typing alias by itself give you a list of all the aliases:
 
 You can now put the alias command for lt in your .bash_profile and you will have it automatically when you log in.
 
+
+Environment variables
+---------------------
+
+In Linux, environment variables act as placeholders for information stored within the system that passes data to programs launched in your shell. To look at most of the environment variables currently in your shell, use the **env** command:
+
+    env
+
+In order to see the value of any one variable, you can "echo" the value using a "$" in front of the variable name:
+
+    echo $USER
+
+This gives you your user ID. Some of the most commonly used environment variables are USER, HOSTNAME, SHELL, EDITOR, TERM, and PATH.
+
+You can also create your own environment variables:
+
+    MYVAR=1
+    echo $MYVAR
+
+By convention, variable names are in all caps, but they don't have to be. You can then update the variable as well:
+
+    MYVAR=2
+    echo $MYVAR
+
+In order to use any environment variable in a program that you execute from the command-line, you need to use the **export** command:
+
+    export MYVAR=3
+
+You can also use backticks (\`) to execute a command and send the output into a variable:
+
+    MYVAR=`pwd`
+    echo $MYVAR
+
+
 More grep
 ----------
 
