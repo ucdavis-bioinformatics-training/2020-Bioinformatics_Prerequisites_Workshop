@@ -162,13 +162,7 @@ h_list
 ---
 
 <h3><font color="red">Challenge Questions:</font></h3>
-1. We have the following dna sequence. We are curious about the first and last 15 bps in the sequence.
-    ```
-    some_dna = "ATCAATGCGCGCATACGATCAATGCGCGCATACGATCAATGCGCGCATACGGGTCCATACGCAATCAATGCGCGCATA"
-    ```
-   Can you tell me if they match?
-   What is the GC content of each adapter?
-
+1. 
 ---
 
 

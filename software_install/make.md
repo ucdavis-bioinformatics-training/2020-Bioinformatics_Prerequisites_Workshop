@@ -1,13 +1,13 @@
 Installing Simple Bioinformatics Software
 ===========================================
 
-**1\.** Let's spend some more time installing software. We will first install an Illumina read trimmer called **sickle** written by members of the Bioinformatics Core. The source code for many bioinformatics software are on github.... sickle is found on the [Bioinformatics Core github page](https://github.com/ucdavis-bioinformatics).
+**1\.** Let's spend some time installing software. We will first install an Illumina read trimmer called **sickle** written by members of the Bioinformatics Core. The source code for many bioinformatics software are on github.... sickle is found on the [Bioinformatics Core github page](https://github.com/ucdavis-bioinformatics).
 
 ---
 
 **2\.** Find sickle and navigate to the page. Click on "Clone or Download" and copy the URL. In your home directory, create a "software" directory and go into it. In order to clone (get a copy of) the repository, we need to use the "git" command. Clone the git repository in the software directory:
 
-	cd /share/workshop/$USER/
+	cd /share/workshop/prereq_workshop/$USER/
 	mkdir software
 	cd software
 	git clone https://github.com/ucdavis-bioinformatics/sickle.git
@@ -57,7 +57,7 @@ Notice a few things. First, in order to assign a new value to a variable, we spe
 
 **7\.** Now you should be able to run sickle from any directory. Go back to your home directory and try to run sickle:
 
-	cd /share/workshop/$USER/
+	cd /share/workshop/prereq_workshop/$USER/
 	sickle
 	sickle pe
 
@@ -77,24 +77,24 @@ We should also add "." to our PATH so that we can run things that are in our cur
 
 ---
 
-**9\.** Now, let's try installing something a little trickier.... an alignment format manipulation software called "samtools". First, go to the [samtools website](http://www.htslib.org). Click on the blue "Source Release Details" download button. Right click (or your equivalent) on the "samtools-1.10" link and copy the link location. Use the "wget" command to retrieve the file. So it will look like this (go back to your workshop directory first):
+**9\.** Now, let's try installing something a little trickier.... an sequence alignment viewing and filtering software called "samtools". First, go to the [samtools website](http://www.htslib.org). Click on the blue "Source Release Details" download button. Right click (or your equivalent) on the "samtools-1.11" link and copy the link location. Use the "wget" command to retrieve the file. So it will look like this (go back to your workshop software directory first):
 
-	cd /share/workshop/$USER/
-	wget https://github.com/samtools/samtools/releases/download/1.10/samtools-1.10.tar.bz2
+	cd /share/workshop/prereq_workshop/$USER/software
+	wget https://github.com/samtools/samtools/releases/download/1.11/samtools-1.11.tar.bz2
 
 ---
 
-**10\.** Now you should have the "samtools-1.9.tar.bz2" file in your home directory. Next use the "tar" command to extract the archive from the file:
+**10\.** Now you should have the "samtools-1.9.tar.bz2" file in your software directory. Next use the "tar" command to extract the archive from the file:
 
-	tar -x -v -j -f samtools-1.10.tar.bz2
+	tar -x -v -j -f samtools-1.11.tar.bz2
 
-The "-x" is the extract flag, "-v" is verbose informational output, "-j" specifies the format of the compression (in this case bzip2), and "-f" specifies the file. Now you should have a directory called "samtools-1.7".
+The "-x" is the extract flag, "-v" is verbose informational output, "-j" specifies the format of the compression (in this case bzip2), and "-f" specifies the file. Now you should have a directory called "samtools-1.11".
 
 ---
 
 **11\.** Go into that directory and look at the files:
 
-	cd samtools-1.10
+	cd samtools-1.11
 	ls
 
 Take a look at the README file:
@@ -103,15 +103,15 @@ Take a look at the README file:
 
 This gives you instructions on how to install samtools, however, we're going to do something a little different. We are going to specify an installation directory. So first, let's create that directory:
 
-	mkdir /share/workshop/$USER/software/samtools
+	mkdir /share/workshop/prereq_workshop/$USER/software/samtools
 
 This creates a new, empty "samtools" directory in our previously created "software" directory.
 
 ---
 
-**12\.** Now, you will notice that the "samtools-1.10" directory has a file called "configure" in it. Whenever software has this file, you need to run it first before running "make". We are going to run it and include the directory where we want the final product to go (using the \-\-prefix flag):
+**12\.** Now, you will notice that the "samtools-1.11" directory has a file called "configure" in it. Whenever software has this file, you (almost always) need to run it first before running "make". We are going to run it and include the directory where we want the final product to go (using the \-\-prefix flag):
 
-	./configure --prefix=/share/workshop/$USER/software/samtools
+	./configure --prefix=/share/workshop/prereq_workshop/$USER/software/samtools
 
 This will scan your system and make sure it has all of the necessary components to compile samtools. Once that is done, run make:
 
@@ -127,7 +127,7 @@ This will take a few minutes.
 
 Now if you go into that directory you should see two new directories, "share" and "bin". The "bin" directory contains the final executables generated by "make". The "share" directory contains manual pages for the "man" command. 
 
-	cd /share/workshop/$USER/software/samtools
+	cd /share/workshop/prereq_workshop/$USER/software/samtools
 	ls
 	ls bin
 

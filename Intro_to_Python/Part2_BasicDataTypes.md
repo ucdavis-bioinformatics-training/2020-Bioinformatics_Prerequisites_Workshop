@@ -406,7 +406,7 @@ my_string_list
 ---
 
 <h3><font color="red">Challenge Questions:</font></h3>
-1. We have the following dna sequence. We are curious about the first and last 15 bps in the sequence.
+1. We have the following dna sequence. We are curious about the adapters of the sequence (first and last 15 bps in the sequence.)
     ```
     some_dna = "ATCAATGCGCGCATACGATCAATGCGCGCATACGATCAATGCGCGCATACGGGTCCATACGCAATCAATGCGCGCATA"
     ```

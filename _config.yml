@@ -19,21 +19,17 @@ navigation:
     url: base/slack
   - title: Software and Links
     url: software_scripts/software
+  - title: Cheat Sheets
+    url: base/cheatSheetIndex
 
   - heading: Intro CLI
   - title: Logging in
     url: CLI_Intro/logging-in
   - title: Introduction to the Command Line part 1
-    url: CLI_Intro/intro-cli-part1
-  - heading: Advanced CLI
-  - title: Advanced Command Line
-    url: adv_cli/advanced_command_line
-  # - title: Advanced Challenge Solutions
-  #   url: adv_cli/advanced_cli_solutions
-  # - title: Environment Variables
-  #   url: adv_cli/environment
-  # - title: Using screen to manage multiple projects
-  #   url: adv_cli/screen
+    url: CLI_Intro/intro-cli-part
+  - title: The cluster and modules
+    url: CLI_Intro/cluster
+
   - heading: Introduction to Python
   - title: Python Part1, Background
     url: Intro_to_Python/Intro_To_Python
@@ -47,6 +43,23 @@ navigation:
     url: Intro_to_Python/Part3_solutions
   - title: Python Part4, Working with Files
     url: Intro_to_Python/Part4_FilesEtc
+
+  - heading: Advanced CLI
+  - title: Advanced Command Line
+    url: Advanced_CLI/advanced-command-line
+  # - title: Advanced Challenge Solutions
+  #   url: adv_cli/advanced_cli_solutions
+  - title: Using screen to manage multiple projects
+    url: Advanced_CLI/screen
+
+  - heading: Software Installation
+  - title: Using make and cmake
+    url: software_install/make
+  - title: Using Conda
+    url: software_install/conda
+  - title: A Simple Bioinformatics Workflow
+    url: software_install/bioworkflow
+
   - heading: Introduction to R
   - title: Introduction to R
     url: Intro_to_R/Intro2R/Intro2R_main
@@ -64,11 +77,4 @@ navigation:
   #   url: adv_cli/advanced_cli_solutions
   # - heading: ETC
   # - title: Closing Thoughts
-  #   url: adv_cli/environment
-  # - heading: Support
-  # - title: Using Slack in this workshop
-  #   url: base/slack
-  # - title: Using Zoom in this workshop
-  #   url: base/zoom
-  # - title: Cheat Sheets
-  #   url: base/cheatSheetIndex
+
