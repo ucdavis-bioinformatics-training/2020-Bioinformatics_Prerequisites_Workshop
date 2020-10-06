@@ -32,6 +32,7 @@ navigation:
   #   url: adv_cli/advanced_cli_solutions
   - title: Using screen to manage multiple projects
     url: Advanced_CLI/screen
+
   - heading: Introduction to Python
   - title: Python Part1, Background
     url: Intro_to_Python/Intro_To_Python
@@ -60,13 +61,7 @@ navigation:
   # - heading: Bioinformatics
   # - title: A Simple Bioinformatics Workflow
   #   url: adv_cli/advanced_cli_solutions
-  # - heading: ETC
+  - heading: ETC
   # - title: Closing Thoughts
-  #   url: adv_cli/environment
-  # - heading: Support
-  # - title: Using Slack in this workshop
-  #   url: base/slack
-  # - title: Using Zoom in this workshop
-  #   url: base/zoom
-  # - title: Cheat Sheets
-  #   url: base/cheatSheetIndex
+  - title: Cheat Sheets
+    url: base/cheatSheetIndex
