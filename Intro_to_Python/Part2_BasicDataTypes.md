@@ -111,6 +111,14 @@ Hello world!
 'e'
 </div>
 
+---
+
+
+<h3><font color="red">Challenge Questions:</font></h3>
+1. What is an empty string and string in terms of a boolean value? (Hint: `bool(some_string)`)
+
+
+---
 
 # <a name="arithmetic"></a> Arithmetic: Adding, subtracting, multiplication, assignment arithmetic (assignment operators).
 <img src="figures/ed9e3c89.png" alt="if flow" width="600px"/>
@@ -210,6 +218,17 @@ a
 >>> a
 1
 </div>
+
+---
+
+
+<h3><font color="red">Challenge Questions:</font></h3>
+1. We have a value of 200 gene counts for a certain sample. One gene has a count of 7. 
+    - What is the relative proportion of reads for this gene?
+    - We find some novel information saying that all values have had `sqrt()` or `x**0.5` performed. Now what is the relative proportion?
+
+---
+
 
 # <a name="comparisons"></a> Comparisons: <, >, <= , >= , ==, !=
 <img src="figures/de235da1.png" alt="if flow" width="600px"/>
@@ -382,6 +401,20 @@ my_string_list
 1
 
 </div>
+
+
+---
+
+<h3><font color="red">Challenge Questions:</font></h3>
+1. We have the following dna sequence. We are curious about the first and last 15 bps in the sequence.
+    ```
+    some_dna = "ATCAATGCGCGCATACGATCAATGCGCGCATACGATCAATGCGCGCATACGGGTCCATACGCAATCAATGCGCGCATA"
+    ```
+   Can you tell me if they match?
+   What is the GC content of each adapter?
+
+---
+
 
 ## Tuples
 
@@ -562,6 +595,18 @@ TypeError: 'set' object is not subscriptable
 {8, 9, 7}
 </div>
 
+---
+
+<h3><font color="red">Challenge Questions:</font></h3>
+1. What is the union, intersection, and difference between the following two sets of amino acids in protein A and B?
+   ```
+   A = {'G', 'F', 'P', 'S', 'T', 'Y', 'C', 'M', 'M', 'Q'}
+   B = { 'Y', 'C', 'Q', 'G', 'F', 'P', 'T', 'W', 'E', 'N'}
+   ```
+
+---
+
+
 ## Dictionaries
 - A list of codes, terms, keys, etc., and their meanings, used by a computer program or system.
 - Dictionary values are pointed too by the keys. Values can be anything from int, float, and bool to lists, tuples, and dictionaries.
@@ -655,9 +700,11 @@ True
 
 
 # <a name="range"></a> Range
-- The range() function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default), and stops before a specified number.
-    + <img src="figures/d9454cac.png" alt="if flow" width="600px"/>
-    + Much more info is available on this [here](https://docs.python.org/3/library/stdtypes.html#range).
+The `range()` function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default), and stops before a specified number.
+
+<img src="figures/d9454cac.png" alt="if flow" width="600px"/>
+
+Much more info is available on this [here](https://docs.python.org/3/library/stdtypes.html#range).
 
 ```
 type(range(0,10))
@@ -709,7 +756,7 @@ It was nice to meet you. Goodbye.
 
 ---
 
-# <a name="exercise"></a> Group Exercises (~30 mins)
+# <a name="exercise" style="color:red"></a> Group Exercises (~30 mins)
 1. Create a list of all even values from 0 to 100.
 - What is the length of the list?
 - What is the average of the list?  
