@@ -4,58 +4,72 @@ Advanced Command-Line
 The sed command
 ----------------
 
-Let's take a look at the 'sed' command. sed (short for stream editor) is a command that allows you to manipulate character data in various ways. One useful thing it can do is substitution. First, make a directory called "advanced" to work in, for this document. If you have access to /share/workshop, then make the "advanced" directory under your username there. If you don't, just put the "advanced" directory in your home. The "$USER" variable contains your username.
+Let's take a look at the 'sed' command. sed (short for stream editor) is a command that allows you to manipulate character data in various ways. One useful thing it can do is substitution. First, make a directory called "advanced" in your user directory and go into it. The "$USER" variable contains your username.
 
-    cd /share/workshop/$USER/
+    cd /share/workshop/prereq_workshop/$USER/
     mkdir advanced
     cd advanced/
 
-Let's copy over a simple file to work on:
+Let's download a simple file to work on:
 
-    cp /usr/share/common-licenses/BSD .
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/region.bed -O region.bed
 
 Take a look at the file:
 
-    cat BSD
+    cat region.bed
 
-Now, let's change every occurence of the word "Redistribution" into "Mangling":
+Now, let's make all the uppercase "CHR"s into lowercase:
 
-    cat BSD | sed 's/Redistribution/Mangling/gi'
+    cat region.bed | sed 's/CHR/chr/'
+
+What happened? Only the first CHR changed. That is because we need to add the "g" option:
+
+    cat region.bed | sed 's/CHR/chr/g'
+
+We can also do the the substitution without regards to case:
+
+    cat region.bed | sed 's/chr/chr/gi'
 
 Let's break down the argument to sed (within the single quotes)... The "s" means "substitute", the word between the 1st and 2nd forward slashes (i.e. /) is the word the substitute for, the word between the 2nd and 3rd slashes is the word to substitute with, and finally the "gi" at the end are flags for global substitution (i.e. substituting along an entire line instead of just the first occurence on a line), and for case insenstivity (i.e. it will ignore the case of the letters when doing the substitution).
 
 Note that this **doesn't** change the file itself, it is simply piping the output of the cat command to sed and outputting to the screen. If you wanted to change the file itself, you could use the "-i" option to sed:
 
-    cat BSD
-    sed -i 's/Redistribution/Mangling/gi' BSD
+    cat region.bed
+    sed -i 's/chr/chr/gi' region.bed
 
 Now if you look at the file, the lines have changed.
 
-    cat BSD
+    cat region.bed
 
 Another useful use of sed is for capturing certain lines from a file. You can select certain lines from a file:
 
-    sed '4q;d' BSD
+    sed '4q;d' region.bed
 
 This will just select the 4th line from the file.
 
+You can also extract a range of lines from a file:
+
+    sed -n '10,20p' region.bed
+
+This gets the 10th through 20th lines from the file.
+
 **CHALLENGE:**
-See if you can find a way to use sed to remove all the spaces from the BSD file.
+See if you can find a way to use sed to remove all the "CHR"s from the file.
 
 More pipes
 -----------
 
 Now, let's delve into pipes a little more. Pipes are a very powerful way to look at and manipulate complex data using a series of simple programs. First take a look at the contents of the "/home" directory:
 
-    ls /home
+    ls /home/
 
 These are all the home directories on the system. Now let's say we wanted to find out how many directory names begin with each letter. First we cut out the first letter of the directories:
 
-    ls /home | cut -c1
+    ls /home/ | cut -c1
 
 In order to do the counting, we first need to sort the data and then send it to the "uniq" command to keep only the unique occurences of a letter. The "-c" option counts up the number of occurences:
 
-    ls /home | cut -c1 | sort | uniq -c
+    ls /home/ | cut -c1 | sort | uniq -c
 
 
 Now let's look at some fastq files. Link a few files into the advanced directory:
@@ -66,7 +80,7 @@ Since the files are gzipped files we need to use "zcat" to look at them. zcat is
 
     zcat C61_S67_L006_R1_001.fastq.gz | head
 
-Notice that each header line has the barcode for that read at the end of the line. Let's count the number of each barcode. In order to do that we need to just capture the header lines from this file. We can use "sed" to do that:
+Fastq records are 4 lines per sequence, a header line, the sequence, a plus sign (which is historical), and then the quality encoding for the sequence. Notice that each header line has the barcode for that read at the end of the line. Let's count the number of each barcode. In order to do that we need to just capture the header lines from this file. We can use "sed" to do that:
 
     zcat C61_S67_L006_R1_001.fastq.gz | sed -n '1~4p' | head
 
@@ -84,25 +98,9 @@ Finally, as before, we need to sort the data and then use "uniq -c" to count. Th
 
 Now you have a list of how many reads were categorized into each barcode. Here is a [sed tutorial](https://www.digitalocean.com/community/tutorials/the-basics-of-using-the-sed-stream-editor-to-manipulate-text-in-linux) for more exercises.
 
-One final thing to know is that if a program does not take input from STDIN (which is needed to use it in a pipe), but instead wants a filename, you can use a single dash by itself in place of the filename and the shell will interpret that to be input from STDIN. So it would look something like this:
-
-<div class="output">cat FILENAME | COMMAND -f - -otheroptions | ....
-</div>
-
 **CHALLENGE:**
 Find the distribution of the first 5 bases of all the reads in C61_S67_L006_R1_001.fastq.gz. I.e., count the number of times the first 5 bases of every read occurs across all reads.
 
-Process substitution
----------------------
-
-Next, we will cover process substitution. Process substitution is a way of using the output of some software as the input file to another software without having to create intermediate files. We will use a quality-based trimmer called "sickle". We want to do quality-based read trimming on one of our fastq.gz files, but we need to give sickle an uncompressed file as input. In order to do that, we use the "gunzip" command with the "-c" option. This unzips the file and sends the output to STDOUT, instead of unzipping the file in place which is the default (This will take a few minutes to run):
-
-    module load sickle
-    sickle se -f <(gunzip -c C61_S67_L006_R1_001.fastq.gz) -t sanger -o trimmed.fa
-
-So we are putting the gunzip command inside parentheses with a less-than symbol like so: <(COMMAND). When we do this, the output of the COMMAND gets manipulated by the shell so that sickle thinks it is a file. Sickle then uses this "file" as the input file. Take a look at the output file:
-
-    less trimmed.fa
 
 Loops
 ------
@@ -289,6 +287,40 @@ Typing alias by itself give you a list of all the aliases:
 
 You can now put the alias command for lt in your .bash_profile and you will have it automatically when you log in.
 
+
+Environment variables
+---------------------
+
+In Linux, environment variables act as placeholders for information stored within the system that passes data to programs launched in your shell. To look at most of the environment variables currently in your shell, use the **env** command:
+
+    env
+
+In order to see the value of any one variable, you can "echo" the value using a "$" in front of the variable name:
+
+    echo $USER
+
+This gives you your user ID. Some of the most commonly used environment variables are USER, HOSTNAME, SHELL, EDITOR, TERM, and PATH.
+
+You can also create your own environment variables:
+
+    MYVAR=1
+    echo $MYVAR
+
+By convention, variable names are in all caps, but they don't have to be. You can then update the variable as well:
+
+    MYVAR=2
+    echo $MYVAR
+
+In order to use any environment variable in a program that you execute from the command-line, you need to use the **export** command:
+
+    export MYVAR=3
+
+You can also use backticks (\`) to execute a command and send the output into a variable:
+
+    MYVAR=`pwd`
+    echo $MYVAR
+
+
 More grep
 ----------
 
@@ -347,7 +379,7 @@ Awk
 
 Awk is a simple programming language that can be used to do more complex filtering of data. Awk has many capabilities, and we are only going to touch on one of them here. One really useful thing is to filter lines of a file based on the value in a column. Let's get a file with some data:
 
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Advanced_CLI/DMR.GBM2.vs.NB1.bed
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/DMR.GBM2.vs.NB1.bed -O DMR.GBM2.vs.NB1.bed
 
 Take a look at the beginning of the file:
 
@@ -367,8 +399,28 @@ You can also use it to extract lines with a particular word in a column:
 
 A double equals (==) is used for equality comparisons. This will pull out lines where the chromosome column is "chr3".
 
+Let's say you wanted only the lines where the p-value<0.00000005 AND only on chr3:
+
+    cat DMR.GBM2.vs.NB1.bed | awk '$1 == "chr3" && $10 < 0.00000005'
+
 Take a look at the [awk manual](https://www.gnu.org/software/gawk/manual/gawk.html) to learn more about the capabilities of awk.
 
 **HARD CHALLENGE**:
 Go through the list of genomes (as in the Find section) and this time only search down a maximum of 6 directories and also follow symbolic links in the search. Then extract only those files that are part of either the zebrafish or C. elegans genomes. For each of those files, get the number of characters in the file and then only print files whose character count is less than 10000. You will have to probably use find, grep, xargs, wc, and awk. You will need to look at the manual pages for each of those commands. You should be able to do this just using pipes and the commands (i.e. no intermediate files).
 
+
+Process substitution
+---------------------
+
+Next, we will cover process substitution. Process substitution is a way of using the output of some software as the input file to another software without having to create intermediate files. We will use a quality-based trimmer called "sickle". We want to do quality-based read trimming on one of our fastq.gz files, but we need to give sickle an uncompressed file as input. In order to do that, we use the "gunzip" command with the "-c" option. This unzips the file and sends the output to STDOUT, instead of unzipping the file in place which is the default (This will take a few minutes to run):
+
+    module load sickle
+    sickle se -f <(gunzip -c C61_S67_L006_R1_001.fastq.gz) -t sanger -o trimmed.fa
+
+So we are putting the gunzip command inside parentheses with a less-than symbol like so: <(COMMAND). When we do this, the output of the COMMAND gets manipulated by the shell so that sickle thinks it is a file. Sickle then uses this "file" as the input file. Take a look at the output file:
+
+    less trimmed.fa
+
+One final thing to know is that if a program does not take input from STDIN (which is needed to use it in a pipe), but instead wants a filename, you can use a single dash by itself in place of the filename and the shell will interpret that to be input from STDIN. So it would look something like this:
+
+    zcat C61_S67_L006_R1_001.fastq.gz | sickle se -f - -t sanger -o trimmed.fa
