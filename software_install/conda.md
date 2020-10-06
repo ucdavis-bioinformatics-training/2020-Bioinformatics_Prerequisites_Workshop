@@ -59,7 +59,6 @@ First, let's search for htstream:
 
 	conda search htstream
 
-Output:
 <div class="output">(base) joshi@tadpole:/share/workshop/prereq_workshop/joshi/software$ conda search htstream
 Loading channels: done
 # Name                       Version           Build  Channel             
@@ -68,7 +67,7 @@ htstream                       1.1.0      h5ca1c16_0  bioconda
 htstream                       1.2.0      h5ca1c16_0  bioconda            
 htstream                       1.3.1      h5ca1c16_0  bioconda            
 htstream                       1.3.2      h5ca1c16_0  bioconda            
-<div>
+</div>
 
 You see that there are multiple versions of htstream you could install. And that the software is available on the "bioconda" channel. If you run "conda info" you can see information about the install including the channels that are searched.
 
@@ -105,7 +104,7 @@ You see that there are multiple versions of htstream you could install. And that
                 UID:GID : 20331:2019
              netrc file : None
            offline mode : False
-<div>
+</div>
 
 So since the bioconda channel is already available, we do not have to specify it when we create the environment and install the software:
 
