@@ -1,7 +1,7 @@
 ---
 title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
-date: "2020-10-05"
+date: "2020-10-06"
 output:
     html_document:
         keep_md: TRUE
@@ -114,7 +114,11 @@ A variable is a named storage. Creating a variable is to reserve some space in m
 
 * <font color='purple'>FUNCTIONS</font>
 
-A function is a block of organized, reusable code that is used to perform a set of predefined operations. A function may take zero or more parameters and return a result. The way to use a function in R is:
+A function is a block of organized, reusable code that is used to perform a set of predefined operations. A function may take zero or more parameters and return a result.
+
+![](./func.png)
+
+The way to use a function in R is:
 
 **function.name(parameter1=value1, ...)**
 
