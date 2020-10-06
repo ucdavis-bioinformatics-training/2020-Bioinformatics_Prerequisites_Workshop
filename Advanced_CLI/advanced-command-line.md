@@ -80,7 +80,7 @@ Since the files are gzipped files we need to use "zcat" to look at them. zcat is
 
     zcat C61_S67_L006_R1_001.fastq.gz | head
 
-Notice that each header line has the barcode for that read at the end of the line. Let's count the number of each barcode. In order to do that we need to just capture the header lines from this file. We can use "sed" to do that:
+Fastq records are 4 lines per sequence, a header line, the sequence, a plus sign (which is historical), and then the quality encoding for the sequence. Notice that each header line has the barcode for that read at the end of the line. Let's count the number of each barcode. In order to do that we need to just capture the header lines from this file. We can use "sed" to do that:
 
     zcat C61_S67_L006_R1_001.fastq.gz | sed -n '1~4p' | head
 
@@ -98,25 +98,9 @@ Finally, as before, we need to sort the data and then use "uniq -c" to count. Th
 
 Now you have a list of how many reads were categorized into each barcode. Here is a [sed tutorial](https://www.digitalocean.com/community/tutorials/the-basics-of-using-the-sed-stream-editor-to-manipulate-text-in-linux) for more exercises.
 
-One final thing to know is that if a program does not take input from STDIN (which is needed to use it in a pipe), but instead wants a filename, you can use a single dash by itself in place of the filename and the shell will interpret that to be input from STDIN. So it would look something like this:
-
-<div class="output">cat FILENAME | COMMAND -f - -otheroptions | ....
-</div>
-
 **CHALLENGE:**
 Find the distribution of the first 5 bases of all the reads in C61_S67_L006_R1_001.fastq.gz. I.e., count the number of times the first 5 bases of every read occurs across all reads.
 
-Process substitution
----------------------
-
-Next, we will cover process substitution. Process substitution is a way of using the output of some software as the input file to another software without having to create intermediate files. We will use a quality-based trimmer called "sickle". We want to do quality-based read trimming on one of our fastq.gz files, but we need to give sickle an uncompressed file as input. In order to do that, we use the "gunzip" command with the "-c" option. This unzips the file and sends the output to STDOUT, instead of unzipping the file in place which is the default (This will take a few minutes to run):
-
-    module load sickle
-    sickle se -f <(gunzip -c C61_S67_L006_R1_001.fastq.gz) -t sanger -o trimmed.fa
-
-So we are putting the gunzip command inside parentheses with a less-than symbol like so: <(COMMAND). When we do this, the output of the COMMAND gets manipulated by the shell so that sickle thinks it is a file. Sickle then uses this "file" as the input file. Take a look at the output file:
-
-    less trimmed.fa
 
 Loops
 ------
@@ -381,8 +365,28 @@ You can also use it to extract lines with a particular word in a column:
 
 A double equals (==) is used for equality comparisons. This will pull out lines where the chromosome column is "chr3".
 
+Let's say you wanted only the lines where the p-value<0.00000005 AND only on chr3:
+
+    cat DMR.GBM2.vs.NB1.bed | awk '$1 == "chr3" && $10 < 0.00000005'
+
 Take a look at the [awk manual](https://www.gnu.org/software/gawk/manual/gawk.html) to learn more about the capabilities of awk.
 
 **HARD CHALLENGE**:
 Go through the list of genomes (as in the Find section) and this time only search down a maximum of 6 directories and also follow symbolic links in the search. Then extract only those files that are part of either the zebrafish or C. elegans genomes. For each of those files, get the number of characters in the file and then only print files whose character count is less than 10000. You will have to probably use find, grep, xargs, wc, and awk. You will need to look at the manual pages for each of those commands. You should be able to do this just using pipes and the commands (i.e. no intermediate files).
 
+
+Process substitution
+---------------------
+
+Next, we will cover process substitution. Process substitution is a way of using the output of some software as the input file to another software without having to create intermediate files. We will use a quality-based trimmer called "sickle". We want to do quality-based read trimming on one of our fastq.gz files, but we need to give sickle an uncompressed file as input. In order to do that, we use the "gunzip" command with the "-c" option. This unzips the file and sends the output to STDOUT, instead of unzipping the file in place which is the default (This will take a few minutes to run):
+
+    module load sickle
+    sickle se -f <(gunzip -c C61_S67_L006_R1_001.fastq.gz) -t sanger -o trimmed.fa
+
+So we are putting the gunzip command inside parentheses with a less-than symbol like so: <(COMMAND). When we do this, the output of the COMMAND gets manipulated by the shell so that sickle thinks it is a file. Sickle then uses this "file" as the input file. Take a look at the output file:
+
+    less trimmed.fa
+
+One final thing to know is that if a program does not take input from STDIN (which is needed to use it in a pipe), but instead wants a filename, you can use a single dash by itself in place of the filename and the shell will interpret that to be input from STDIN. So it would look something like this:
+
+    zcat C61_S67_L006_R1_001.fastq.gz | sickle se -f - -t sanger -o trimmed.fa
