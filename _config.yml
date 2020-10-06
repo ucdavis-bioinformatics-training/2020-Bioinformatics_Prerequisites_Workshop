@@ -19,6 +19,8 @@ navigation:
     url: base/slack
   - title: Software and Links
     url: software_scripts/software
+  - title: Cheat Sheets
+    url: base/cheatSheetIndex
 
   - heading: Intro CLI
   - title: Logging in
@@ -32,11 +34,15 @@ navigation:
   #   url: adv_cli/advanced_cli_solutions
   - title: Using screen to manage multiple projects
     url: Advanced_CLI/screen
+
   - heading: Software Installation
   - title: Using make and cmake
     url: software_install/make
   - title: Using Conda
     url: software_install/conda
+  - title: A Simple Bioinformatics Workflow
+    url: software_install/bioworkflow
+
   - heading: Introduction to Python
   - title: Python Part1, Background
     url: Intro_to_Python/Intro_To_Python
@@ -50,6 +56,7 @@ navigation:
     url: Intro_to_Python/Part3_solutions
   - title: Python Part4, Working with Files
     url: Intro_to_Python/Part4_FilesEtc
+
   - heading: Introduction to R
   - title: Introduction to R
     url: Intro_to_R/Intro2R/Intro2R_main
@@ -65,7 +72,6 @@ navigation:
   # - heading: Bioinformatics
   # - title: A Simple Bioinformatics Workflow
   #   url: adv_cli/advanced_cli_solutions
-  - heading: ETC
+  # - heading: ETC
   # - title: Closing Thoughts
-  - title: Cheat Sheets
-    url: base/cheatSheetIndex
+
