@@ -41,7 +41,7 @@ Collecting package metadata (current_repodata.json): done
 Solving environment: done
 </div>
 
-You will see a bunch of messages about packages being installed, and then it will ask you if you want to initialize Miniconda3. Type "yes". The initialization just creates a file called "\~/.bashrc" which we will need to source to initialize:
+You will see a bunch of messages about packages being installed, and then it will ask you if you want to initialize Miniconda3. Type "yes". The initialization just creates a file called "\~/.bashrc" which we will need to source to actually initialize:
 
 	source ~/.bashrc
 
@@ -49,7 +49,7 @@ You will see that your prompt changes to have "(base)" at the beginning.
 
 # Installing software
 
-Conda is useful for software installation because you can create an "environment" for each piece of software and that environment will have exactly the right packages it needs with the exact versions it needs. Different software will have different requirements in terms of which packages and versions it needs, so it is useful to compartmentalize those. Now lets create an environment and install some software. Here we want to install HTStream, a tool for High Throughput Sequencing Read Processing.
+Conda is useful for software installation because you can create an "environment" for each piece of software and that environment will have exactly the right packages it needs with the exact versions it needs. Different software will have different requirements in terms of which packages and versions it needs, so it is useful to compartmentalize those. Now let's create an environment and install some software. Here we want to install HTStream, a tool for High Throughput Sequencing Read Processing.
 
 [HTSream Homepage](https://github.com/s4hts/HTStream)
 
@@ -59,7 +59,7 @@ First, let's search for htstream:
 
 	conda search htstream
 
-
+Output:
 <div class="output">(base) joshi@tadpole:/share/workshop/prereq_workshop/joshi/software$ conda search htstream
 Loading channels: done
 # Name                       Version           Build  Channel             
@@ -341,8 +341,6 @@ Compared to typical installations such as the one shown above, conda installs on
 
 ### When running conda on your own computer you will need to add channels, which is where conda will look when performing package installs
 
-```
-conda config --add channels defaults
-conda config --add channels bioconda
-conda config --add channels conda-forge
-```
+	conda config --add channels defaults
+	conda config --add channels bioconda
+	conda config --add channels conda-forge
