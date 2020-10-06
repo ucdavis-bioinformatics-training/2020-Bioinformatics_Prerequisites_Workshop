@@ -109,7 +109,11 @@ writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter='\t')
 
 for record in SeqIO.parse(gzip.open("example_data.fastq.gz", 'rt'), 'fastq'):
     data={}
-    data['ReadID'] = record.
+    data['ReadID'] = record.name
+    data['Length'] = len(record)
+    data['GCcontent'] = 100 * (record.seq.count('C') + record.seq.count('G')) / len(record)
+    data['AverageQuality'] = sum(record.letter_annotations['phred_quality'])/len(record) 
+    
 
 #---------
 

@@ -157,7 +157,12 @@ The steps are:
 
 #### Writing to a file:
 
+**NOTE we need python 3.6 or later to run the code below**
+
 ```python
+# First, make sure that a more recent version of python is available:
+module load anaconda3
+
 # 1) Open a file handle to write text to:
 handle = open("test_file.txt", "w")
 
