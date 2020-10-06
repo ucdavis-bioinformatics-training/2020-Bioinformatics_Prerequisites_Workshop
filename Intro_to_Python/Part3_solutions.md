@@ -5,12 +5,41 @@
    - What is the complement of this strand of DNA?
    - What is the reverse complement of this strand of DNA?
     ```
-    comp = ["A" if bp=="T" else "T" if bp=="A" else "G" if bp=="C" else "C" if bp=="G" for bp in seq]
+    comp = ["A" if bp=="T" else "T" if bp=="A" else "G" if bp=="C" else "C" for bp in seq]
     ''.join(comp)
     comp.reverse()
     ''.join(comp) 
     ```
-
+    OR without list comprehension is a bit cleaner
+    ```
+    comp_dict = {"A":"T", "T":"A", "G":"C", "C":"G"}
+    comp = []
+    for bp in seq:
+        comp.append(comp_dict[bp])
+    ''.join(comp)
+    comp.reverse()
+    ''.join(comp) 
+    ```
+    OR with if statements instead
+    ```
+    comp = []
+    for bp in seq:
+        if bp == "T":
+            comp.append("A")
+        elif bp == "A":
+            comp.append("T")
+        elif bp == "G":
+            comp.append("C")
+        else: 
+            comp.append("G")
+    ''.join(comp)
+    comp.reverse()
+    ''.join(comp) 
+    ```
+    Another solution i saw that i liked:
+    ```
+    seq = seq.replace(‘C’,‘Z’).replace(‘A’,‘Y’).replace(‘G’,‘C’).replace(‘T’, ‘A’).replace(‘Z’,‘G’).replace(‘Y’,‘T’)
+    ```
 2. Use the below to perform the following tasks:
    ```
    table = { 
@@ -44,7 +73,8 @@
    ```
    
    - OPTIONAL: What are ALL the possible proteins possible from this rna string given any start position?
-
+    ```
+    ```
 
 
 3.  Use the below to perform the following tasks:
