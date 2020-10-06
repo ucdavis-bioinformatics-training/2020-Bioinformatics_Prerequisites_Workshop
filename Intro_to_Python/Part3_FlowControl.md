@@ -13,6 +13,11 @@
 ---
 
 # <a name="ifs"></a> If, else if, else.
+- If, elif (else if), and else statements are used in python to control what happens based on the circumstance of one or more events:
+    +  <img src="figures/cf16e796.png" alt="if flow" width="600px"/>
+
+- The following are valid orders of statements. In both scenarios where elif is, as many elif statements can be there as desired.
+    +  <img src="figures/92a150bb.png" alt="if flow" width="600px"/>
 
 ```
 if True:
@@ -31,8 +36,6 @@ elif 1:
     print("Any value other then 0 is treated as True")
 else:
     print("This won't be printed")
-
-# Be sure to include a couple of enters here so it all executes!
 
 ```
 <div class="output">
@@ -65,7 +68,7 @@ Any value other then 0 is treated as True
 
 # <a name="fors"></a> For loops
 
-## Iterating through lists
+### Iterating through lists
 
 ```
 wizard_list = ["Harry", "Ron", "Hermione", "Fred", "George"]
@@ -87,7 +90,15 @@ George says Wingardium Leviosa
 </div>
 
 
-## Iterating through dictionaries
+### Iterating through dictionaries
+- Looping through the keys in a dictionary, or iterating through other objects while construction a dictionary
+ is a valuable way to construct robust objects that are easy to build upon.
+- We can loop through the `.keys()` or `.values()` as well `.items()` which is both the key and value pair together like this.
+       ```
+       for key, value in d.items(): 
+            print(key, value)
+       ``` 
+  
 
 ```
 wizard_dict = {"Harry": "Lumos", "Ron": "Alohomora", "Hermione": "Wingardium Leviosa", "Fred": "Riddikulus", "George": "Sectumsempra"} 
@@ -124,6 +135,8 @@ A wizard says Sectumsempra
 
 # <a name="listcomprehension"></a> List Comprehension
 
+- In python you can construct extremely custom lists in just a line of code.
+- List comprehensions enables a lot of really cool 1-liners using a for loop and if, elif, else statements in a 1-line format.
 ```
 wizard_dict = {"Harry Potter": "Lumos", "Ron Weasley": "Alohomora", "Hermione Granger": "Wingardium Leviosa", \
 "Fred Weasley": "Riddikulus", "George Weasley": "Sectumsempra"} 
@@ -147,7 +160,14 @@ h_list
 
 # <a name="while"></a> While and Iterators
 
-## 
+### Iterators
+- Lists, tuples, dictionaries, and sets are all iterable objects. They are iterable containers which you can get an iterator from.
+- All these objects have a `iter()` method which is used to get an iterator.
+- We can also use a for loop to iterate through an iterable object or `next(some_iterator)` to ge the next object.
+
+### While loops
+- Evaluated as long as the condition is true. Instead of a True False value (boolean) it can also be a non-empty list or empty list, respectively.
+    +  <img src="figures/fb993839.png" alt="if flow" width="600px"/>
 
 ```
 h_iter = iter(h_list)
@@ -193,8 +213,10 @@ Harry Potter
 </div>
 
 # <a name="stoppers"></a> Break, continue, pass, try, except
-
-## Continue vs pass vs break
+### Break vs Continue vs Pass
+- **Pass**: When you call pass, the rest of the code outside of the if, elif, else statements will continue to execute.
+- **Continue**: When you call continue, the continue will immediately return to the next part of the for loop.
+- **Break**: When you call break nothing within the for loop, including the for loop will continue execution.
 
 ```
 a = [0, 1, 2]
@@ -215,7 +237,6 @@ for element in a:
         break
     print(element)
 ```
-
 
 <div class="output">
 >>> a = [0, 1, 2]
@@ -242,10 +263,21 @@ for element in a:
 </div>
 
 
+### Try and Except:
+- **Try**:
+- **Except**:
+
+```
+
+```
+
+
 
 # <a name="functions"></a> Simple Functions: parameters, scope, returning, passing
 
-## Lets define a simple function
+### Lets define two functions or definitions
+The two following functions are used to compare the different way that parameters can or can not have default arguments defined.
+- simple_function: 
 
 ```
 def simple_function(some_string):

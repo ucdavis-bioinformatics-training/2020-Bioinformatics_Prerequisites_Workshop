@@ -27,7 +27,8 @@ python3.8
 
 # <a name="datatypes"></a> Basic Data Types: Integers, Floating-point numbers, booleans, strings.
 
-## Integers
+### Integers
+whole numbers, negative or positive
 
 ```
 a = 1
@@ -43,7 +44,8 @@ a
 </div>
 
 
-## Floats
+### Floats
+similar to decimal field
 
 ```
 b = 1.2
@@ -59,7 +61,7 @@ b
 </div>
 
 
-## Booleans
+### Booleans
 
 "In computer science, the Boolean data type is a data type that has one of two possible values (usually denoted true 
 and false) which is intended to represent the two truth values of logic and Boolean algebra. It is named after George 
@@ -84,12 +86,13 @@ True
 0
 </div>
 
-## Strings
+### Strings
 ```
 my_string = "Hello world!"
 type(my_string)
 my_string
 print(my_string)
+my_string + my_string
 my_string[1] # this will make more sense when we learn lists later
 ```
 
@@ -102,12 +105,15 @@ my_string[1] # this will make more sense when we learn lists later
 'Hello world!'
 >>> print(my_string)
 Hello world!
+>>> my_string + my_string
+'Hello world!Hello world!'
 >>> my_string[1] # this will make more sense when we learn lists later
 'e'
 </div>
 
 
-# <a name="arithmetic"></a> Arithmetic: Adding, subtracting, multiplication, etc.
+# <a name="arithmetic"></a> Arithmetic: Adding, subtracting, multiplication, assignment arithmetic (assignment operators).
+<img src="figures/ed9e3c89.png" alt="if flow" width="600px"/>
 
 ```
 # This is a comment
@@ -180,8 +186,12 @@ int(3.7)
 <class 'float'>
 </div>
 
+Notice the error in the subtraction that produces 0.19999999999996 that should be 0.2
+- [Python subtraction error](https://stackoverflow.com/questions/14120340/python-error-in-basic-subtraction)
 
-## A few other things
+
+## Assignment operators
+<img src="figures/e652b5fc.png" alt="if flow" width="600px"/>
 
 ```
 a += 1
@@ -201,7 +211,8 @@ a
 1
 </div>
 
-# <a name="comparisons"></a> Comparisons: <, >, <= , >= , ==,
+# <a name="comparisons"></a> Comparisons: <, >, <= , >= , ==, !=
+<img src="figures/de235da1.png" alt="if flow" width="600px"/>
 
 ```
 1<1
@@ -234,6 +245,10 @@ False
 # <a name="datastructures"></a> Basic Data Structures: Lists, Sets, Tuples, Dictionaries.
 
 ## Lists
++  <img src="figures/44b15102.png" alt="if flow" width="600px"/>
++  <img src="figures/2b36588e.png" alt="if flow" width="600px"/>
++  <img src="figures/93dd9342.png" alt="if flow" width="600px"/>
+
 ```
 my_list = [1,2,3,4,5,6]
 type(my_list)
@@ -346,7 +361,7 @@ TypeError: unsupported operand type(s) for -: 'list' and 'list'
 
 
 
-## Some more list features: count, pop, append, reassignment
+### Some more list features: count, pop, append, reassignment
 ```
 my_string_list = ['the', 'dog', 'says', 'woof']
 my_string_list.append('the')
@@ -431,6 +446,8 @@ TypeError: unsupported operand type(s) for -: 'tuple' and 'tuple'
 </div>
 
 ## Tuples vs Lists
+<img src="figures/b783230c.png" alt="if flow" width="600px"/>
+
 
 ```
 my_list[0] = 135
@@ -475,13 +492,8 @@ With respect to the pictures in the graph below where GREEN is the results objec
     + <img src="https://latex.codecogs.com/gif.latex? \text{A}\cup\text{B}   " />    OR   <img src="https://latex.codecogs.com/gif.latex? \text{   my\_set}\cup\text{my\_set2}" />
 
 
-![](figures/sets.png)
-
-
-And now, just a few words to terminate:
-
-> Goodbye folks!
-
+<img src="figures/sets.png" alt="if flow" width="600px"/>
+<img src="figures/b028c7d8.png" alt="if flow" width="600px"/>
 
 
 
@@ -551,6 +563,11 @@ TypeError: 'set' object is not subscriptable
 </div>
 
 ## Dictionaries
+- A list of codes, terms, keys, etc., and their meanings, used by a computer program or system.
+- Dictionary values are pointed too by the keys. Values can be anything from int, float, and bool to lists, tuples, and dictionaries.
+    + <img src="figures/abda21dc.png" alt="if flow" width="600px"/>
+
+
 ```
 my_dict = {'a':1, 'b':2, 'c':3}
 type(my_dict)
@@ -575,6 +592,8 @@ dict_values([1, 2, 3])
 
 
 # <a name="operations"></a> Boolean Operations: and, or, not 
+<img src="figures/6d14333b.png" alt="if flow" width="600px"/>
+<img src="figures/33ec5c8c.png" alt="if flow" width="600px"/>
 
 ```
 1 and 1
@@ -630,16 +649,16 @@ True
 
 
 # <a name="range"></a> Range
-
-Much more info is available on this [here](https://docs.python.org/3/library/stdtypes.html#range) but these 
-simple cases work for 95% of tasks for me.
+- The range() function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default), and stops before a specified number.
+    + <img src="figures/d9454cac.png" alt="if flow" width="600px"/>
+    + Much more info is available on this [here](https://docs.python.org/3/library/stdtypes.html#range).
 
 ```
 type(range(0,10))
+
 # first arg is start, 2nd is finish, 3rd is gap size (default is 1)
 list(range(0,10))
 list(range(0,10,5))
-list(range(0,1.1,0.1))
 ```
 
 <div class="output">
@@ -657,6 +676,9 @@ list(range(0,1.1,0.1))
 
 This is just a brief intro. There are lots of features to this topic but this seems to solve 95% of tasks/cases for me.
 If you interested in more info regarding the other featrures checkout [Pyformat](https://pyformat.info/).
+
+<img src="figures/1a9dfa16.png" alt="if flow" width="600px"/>
+
 ```
 extra = "Goodbye."
 print("It was nice to meet you. %s" %extra)
