@@ -32,7 +32,11 @@ navigation:
   #   url: adv_cli/advanced_cli_solutions
   - title: Using screen to manage multiple projects
     url: Advanced_CLI/screen
-
+  - heading: Software Installation
+  - title: Using make and cmake
+    url: software_install/make
+  - title: Using Conda
+    url: software_install/conda
   - heading: Introduction to Python
   - title: Python Part1, Background
     url: Intro_to_Python/Intro_To_Python
