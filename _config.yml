@@ -62,6 +62,10 @@ navigation:
   - title: A Simple Bioinformatics Workflow
     url: software_install/bioworkflow
 
+  - heading: Getting set up with AWS
+  - title: AWS Event Engine
+    url: Intro_to_R/AWS/README
+
   - heading: Introduction to R
   - title: Introduction to R
     url: Intro_to_R/Intro2R/Intro2R_main
