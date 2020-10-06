@@ -27,6 +27,8 @@ navigation:
     url: CLI_Intro/logging-in
   - title: Introduction to the Command Line part 1
     url: CLI_Intro/intro-cli-part1
+  - title: Introduction to the Command Line part 2
+    url: CLI_Intro/intro-cli-part2
   - title: The cluster and modules
     url: CLI_Intro/cluster
 
@@ -77,4 +79,3 @@ navigation:
   #   url: adv_cli/advanced_cli_solutions
   # - heading: ETC
   # - title: Closing Thoughts
-
