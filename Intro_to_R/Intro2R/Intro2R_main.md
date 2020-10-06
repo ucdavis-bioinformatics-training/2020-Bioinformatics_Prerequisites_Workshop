@@ -159,15 +159,15 @@ In R, to get help information on a funciton, one may use the command:
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:center;"> \+ </td>
+   <td style="text-align:center;"> + </td>
    <td style="text-align:center;"> Addition </td>
   </tr>
   <tr>
-   <td style="text-align:center;"> \- </td>
+   <td style="text-align:center;"> - </td>
    <td style="text-align:center;"> Subtraction </td>
   </tr>
   <tr>
-   <td style="text-align:center;"> \* </td>
+   <td style="text-align:center;"> * </td>
    <td style="text-align:center;"> Multiplication </td>
   </tr>
   <tr>
