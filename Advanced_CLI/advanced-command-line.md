@@ -4,9 +4,9 @@ Advanced Command-Line
 The sed command
 ----------------
 
-Let's take a look at the 'sed' command. sed (short for stream editor) is a command that allows you to manipulate character data in various ways. One useful thing it can do is substitution. First, make a directory called "advanced" to work in, for this document. If you have access to /share/workshop, then make the "advanced" directory under your username there. If you don't, just put the "advanced" directory in your home. The "$USER" variable contains your username.
+Let's take a look at the 'sed' command. sed (short for stream editor) is a command that allows you to manipulate character data in various ways. One useful thing it can do is substitution. First, make a directory called "advanced" in your user directory and go into it. The "$USER" variable contains your username.
 
-    cd /share/workshop/$USER/
+    cd /share/workshop/prereq_workshop/$USER/
     mkdir advanced
     cd advanced/
 
@@ -47,15 +47,15 @@ More pipes
 
 Now, let's delve into pipes a little more. Pipes are a very powerful way to look at and manipulate complex data using a series of simple programs. First take a look at the contents of the "/home" directory:
 
-    ls /home
+    ls /home/
 
 These are all the home directories on the system. Now let's say we wanted to find out how many directory names begin with each letter. First we cut out the first letter of the directories:
 
-    ls /home | cut -c1
+    ls /home/ | cut -c1
 
 In order to do the counting, we first need to sort the data and then send it to the "uniq" command to keep only the unique occurences of a letter. The "-c" option counts up the number of occurences:
 
-    ls /home | cut -c1 | sort | uniq -c
+    ls /home/ | cut -c1 | sort | uniq -c
 
 
 Now let's look at some fastq files. Link a few files into the advanced directory:

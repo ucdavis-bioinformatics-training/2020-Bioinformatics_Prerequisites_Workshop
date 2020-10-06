@@ -10,7 +10,7 @@
 - [String Formatting](#stringformat)
 - [Group Exercise](#exercise)
 
-A few note before we get started:
+A few notes before we get started:
 - Learning all the nuances of python takes a long time! Our goal here is to introduce you to as many concepts as possible
 but if you are serious about mastering python you will need to apply yourself beyond this introduction. 
 - We bring up a lot of concepts to expose you to them but we encourage you to have a "scientific" mentality and highly
@@ -27,7 +27,8 @@ python3.8
 
 # <a name="datatypes"></a> Basic Data Types: Integers, Floating-point numbers, booleans, strings.
 
-## Integers
+### Integers
+whole numbers, negative or positive
 
 ```
 a = 1
@@ -43,7 +44,8 @@ a
 </div>
 
 
-## Floats
+### Floats
+similar to decimal field
 
 ```
 b = 1.2
@@ -59,7 +61,7 @@ b
 </div>
 
 
-## Booleans
+### Booleans
 
 "In computer science, the Boolean data type is a data type that has one of two possible values (usually denoted true 
 and false) which is intended to represent the two truth values of logic and Boolean algebra. It is named after George 
@@ -84,12 +86,13 @@ True
 0
 </div>
 
-## Strings
+### Strings
 ```
 my_string = "Hello world!"
 type(my_string)
 my_string
 print(my_string)
+my_string + my_string
 my_string[1] # this will make more sense when we learn lists later
 ```
 
@@ -102,12 +105,23 @@ my_string[1] # this will make more sense when we learn lists later
 'Hello world!'
 >>> print(my_string)
 Hello world!
+>>> my_string + my_string
+'Hello world!Hello world!'
 >>> my_string[1] # this will make more sense when we learn lists later
 'e'
 </div>
 
+---
 
-# <a name="arithmetic"></a> Arithmetic: Adding, subtracting, multiplication, etc.
+
+<h3><font color="red">Challenge Questions:</font></h3>
+1. What is an empty string and string in terms of a boolean value? (Hint: `bool(some_string)`)
+
+
+---
+
+# <a name="arithmetic"></a> Arithmetic: Adding, subtracting, multiplication, assignment arithmetic (assignment operators).
+<img src="figures/ed9e3c89.png" alt="if flow" width="600px"/>
 
 ```
 # This is a comment
@@ -133,7 +147,7 @@ pow(4,b)
 type(a**b)
 
 # Remainder 
-4 // 3
+4 % 3
 
 # Absolute value
 abs(22-32)
@@ -180,8 +194,12 @@ int(3.7)
 <class 'float'>
 </div>
 
+Notice the error in the subtraction that produces 0.19999999999996 that should be 0.2
+- [Python subtraction error](https://stackoverflow.com/questions/14120340/python-error-in-basic-subtraction)
 
-## A few other things
+
+## Assignment operators
+<img src="figures/e652b5fc.png" alt="if flow" width="600px"/>
 
 ```
 a += 1
@@ -201,7 +219,19 @@ a
 1
 </div>
 
-# <a name="comparisons"></a> Comparisons: <, >, <= , >= , ==,
+---
+
+
+<h3><font color="red">Challenge Questions:</font></h3>
+1. We have a value of 200 gene counts for a certain sample. One gene has a count of 7. 
+    - What is the relative proportion of reads for this gene?
+    - We find some novel information saying that all values have had `sqrt()` or `x**0.5` performed. Now what is the relative proportion?
+
+---
+
+
+# <a name="comparisons"></a> Comparisons: <, >, <= , >= , ==, !=
+<img src="figures/de235da1.png" alt="if flow" width="600px"/>
 
 ```
 1<1
@@ -234,6 +264,10 @@ False
 # <a name="datastructures"></a> Basic Data Structures: Lists, Sets, Tuples, Dictionaries.
 
 ## Lists
++  <img src="figures/44b15102.png" alt="if flow" width="600px"/>
++  <img src="figures/2b36588e.png" alt="if flow" width="600px"/>
++  <img src="figures/93dd9342.png" alt="if flow" width="600px"/>
+
 ```
 my_list = [1,2,3,4,5,6]
 type(my_list)
@@ -274,7 +308,8 @@ my_string_list[::3]
 " ".join(my_string_list)
 list(my_string_list[0])
 " ".join(my_string_list).split()
-
+" ".join(my_string_list).split('s')
+" ".join(my_string_list).replace(" ", "-")
 ```
 
 <div class="output">
@@ -336,12 +371,16 @@ TypeError: unsupported operand type(s) for -: 'list' and 'list'
 ['t', 'h', 'e']
 >>> " ".join(my_string_list).split()
 ['the', 'dog', 'says', 'woof']
+>>> " ".join(my_string_list).split('s')
+['the dog ', 'ay', ' woof']
+>>> " ".join(my_string_list).replace(" ", "-")
+'the-dog-says-woof'
 
 </div>
 
 
 
-## Some more list features: count, pop, append, reassignment
+### Some more list features: count, pop, append, reassignment
 ```
 my_string_list = ['the', 'dog', 'says', 'woof']
 my_string_list.append('the')
@@ -362,6 +401,20 @@ my_string_list
 1
 
 </div>
+
+
+---
+
+<h3><font color="red">Challenge Questions:</font></h3>
+1. We have the following dna sequence. We are curious about the first and last 15 bps in the sequence.
+    ```
+    some_dna = "ATCAATGCGCGCATACGATCAATGCGCGCATACGATCAATGCGCGCATACGGGTCCATACGCAATCAATGCGCGCATA"
+    ```
+   Can you tell me if they match?
+   What is the GC content of each adapter?
+
+---
+
 
 ## Tuples
 
@@ -426,6 +479,8 @@ TypeError: unsupported operand type(s) for -: 'tuple' and 'tuple'
 </div>
 
 ## Tuples vs Lists
+<img src="figures/b783230c.png" alt="if flow" width="600px"/>
+
 
 ```
 my_list[0] = 135
@@ -454,6 +509,26 @@ what features a class has using `list.__dict__.keys()` and `tuple.__dict__.keys(
 we talk about attributes and dictionaries)
 
 ## Sets
+Lets consider the events in my_set and my_set2 with respect to events A and B commonly used in denoting events in set theory. 
+With respect to the pictures in the graph below where GREEN is the results objects in the set, consider the following events:
+
+-  The relative complement is considered set difference in statistics. That is events in one group (B or `my_set2`) not in the other group (A or` my_set`).
+    + <img src="https://latex.codecogs.com/gif.latex? \text{B}-\text{A}   " />    OR   <img src="https://latex.codecogs.com/gif.latex? \text{   my\_set2}-\text{my\_set   }" />
+
+-  The relative complement is considered set difference in statistics. That is events in one group (A or `my_set`) not in the other group (B or `my_set2`).
+    + <img src="https://latex.codecogs.com/gif.latex? \text{A}-\text{B}   " />    OR   <img src="https://latex.codecogs.com/gif.latex? \text{   my\_set}-\text{my\_set2   }" />
+
+- In stats a union of two events is consider events in situation A and B. Similarly we consider `my_set` and `my_set2`.
+    + <img src="https://latex.codecogs.com/gif.latex? \text{A}\cup\text{B}   " />    OR   <img src="https://latex.codecogs.com/gif.latex? \text{   my\_set}\cup\text{my\_set2}" />
+
+- In stats a union of two events is consider events in situation A or B. Similarly we consider `my_set` or `my_set2`.
+    + <img src="https://latex.codecogs.com/gif.latex? \text{A}\cup\text{B}   " />    OR   <img src="https://latex.codecogs.com/gif.latex? \text{   my\_set}\cup\text{my\_set2}" />
+
+
+<img src="figures/sets.png" alt="if flow" width="600px"/>
+<img src="figures/b028c7d8.png" alt="if flow" width="600px"/>
+
+
 
 ```
 my_set = {1,2,3,4,5,5}
@@ -520,7 +595,24 @@ TypeError: 'set' object is not subscriptable
 {8, 9, 7}
 </div>
 
+---
+
+<h3><font color="red">Challenge Questions:</font></h3>
+1. What is the union, intersection, and difference between the following two sets of amino acids in protein A and B?
+   ```
+   A = {'G', 'F', 'P', 'S', 'T', 'Y', 'C', 'M', 'M', 'Q'}
+   B = { 'Y', 'C', 'Q', 'G', 'F', 'P', 'T', 'W', 'E', 'N'}
+   ```
+
+---
+
+
 ## Dictionaries
+- A list of codes, terms, keys, etc., and their meanings, used by a computer program or system.
+- Dictionary values are pointed too by the keys. Values can be anything from int, float, and bool to lists, tuples, and dictionaries.
+    + <img src="figures/abda21dc.png" alt="if flow" width="600px"/>
+
+
 ```
 my_dict = {'a':1, 'b':2, 'c':3}
 type(my_dict)
@@ -528,6 +620,10 @@ type(my_dict)
 my_dict.keys()
 my_dict.values()
 my_dict['a']
+
+# adding a new key value set to the dictionary
+my_dict['d'] = 4
+my_dict
 ```
 
 <div class="output">
@@ -541,10 +637,14 @@ dict_keys(['a', 'b', 'c'])
 dict_values([1, 2, 3])
 >>> my_dict['a']
 1
+>>> my_dict['d']
+{'a':1, 'b':2, 'c':3, 'd':4}
 </div>
 
 
 # <a name="operations"></a> Boolean Operations: and, or, not 
+<img src="figures/6d14333b.png" alt="if flow" width="600px"/>
+<img src="figures/33ec5c8c.png" alt="if flow" width="600px"/>
 
 ```
 1 and 1
@@ -600,16 +700,18 @@ True
 
 
 # <a name="range"></a> Range
+The `range()` function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default), and stops before a specified number.
 
-Much more info is available on this [here](https://docs.python.org/3/library/stdtypes.html#range) but these 
-simple cases work for 95% of tasks for me.
+<img src="figures/d9454cac.png" alt="if flow" width="600px"/>
+
+Much more info is available on this [here](https://docs.python.org/3/library/stdtypes.html#range).
 
 ```
 type(range(0,10))
+
 # first arg is start, 2nd is finish, 3rd is gap size (default is 1)
 list(range(0,10))
 list(range(0,10,5))
-list(range(0,1.1,0.1))
 ```
 
 <div class="output">
@@ -627,6 +729,9 @@ list(range(0,1.1,0.1))
 
 This is just a brief intro. There are lots of features to this topic but this seems to solve 95% of tasks/cases for me.
 If you interested in more info regarding the other featrures checkout [Pyformat](https://pyformat.info/).
+
+<img src="figures/1a9dfa16.png" alt="if flow" width="600px"/>
+
 ```
 extra = "Goodbye."
 print("It was nice to meet you. %s" %extra)
@@ -649,8 +754,9 @@ It was nice to meet you. Goodbye.
 </div>
 
 
+---
 
-# <a name="exercise"></a> Group Exercises (~30 mins)
+# <a name="exercise" style="color:red"></a> Group Exercises (~30 mins)
 1. Create a list of all even values from 0 to 100.
 - What is the length of the list?
 - What is the average of the list?  

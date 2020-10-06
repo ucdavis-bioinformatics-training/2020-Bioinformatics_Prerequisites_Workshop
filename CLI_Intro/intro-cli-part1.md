@@ -167,8 +167,8 @@ Using tab-completion is a must on the command line. A single tab auto-completes 
 
 touch updates the timestamp on a file, here we use it to create three empty files.
 
-    mkdir -p /share/workshop/prereq_workshop/tmp
-    cd /share/workshop/prereq_workshop/tmp
+    mkdir -p /share/workshop/prereq_workshop/$USER/tmp
+    cd /share/workshop/prereq_workshop/$USER/tmp
     touch one seven september
     ls o
 
