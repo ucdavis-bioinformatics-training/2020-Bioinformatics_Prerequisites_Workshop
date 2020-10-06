@@ -116,7 +116,8 @@ A variable is a named storage. Creating a variable is to reserve some space in m
 
 A function is a block of organized, reusable code that is used to perform a set of predefined operations. A function may take zero or more parameters and return a result.
 
-![](./func.png){width=15%, align='c'}
+<img src="./func.png" width="15%" />
+
 
 The way to use a function in R is:
 
