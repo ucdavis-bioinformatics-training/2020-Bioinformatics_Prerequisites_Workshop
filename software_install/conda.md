@@ -12,6 +12,8 @@
 
 ## Getting and using conda
 
+# Download miniconda
+
 Anaconda is the name of the software where we get conda from. However, it is quite large, so we are going to instead download a smaller version called miniconda. Go to the [miniconda website](https://docs.conda.io/en/latest/miniconda.html) and get the link for the Linux 64 bit python 3.8 installer. Then download the installer:
 
 	wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -22,8 +24,7 @@ Run the installer:
 
 Press Enter to continue the installer and then scroll through the EULA using the spacebar. Then type "yes" to accept the terms. Now, we want to change the default install location, so enter "/share/workshop/prereq_workshop/$USER/software/miniconda3":
 
-<pre>
-Do you accept the license terms? [yes|no]
+<div class="output">Do you accept the license terms? [yes|no]
 [no] >>> yes       
 
 Miniconda3 will now be installed into this location:
@@ -38,8 +39,9 @@ PREFIX=/share/workshop/prereq_workshop/joshi/software/miniconda3
 Unpacking payload ...
 Collecting package metadata (current_repodata.json): done                                                          
 Solving environment: done
-</pre>
+</div>
 
+You will see a bunch of messages about packages being installed, and then it will ask you if you want to initialize Miniconda3. Type "yes".
 
 Now lets create an environment in a specific path of interest. Here we want to download HTStream a tool for High Throughput Sequencing Read Processing.
 
