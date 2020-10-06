@@ -55,5 +55,5 @@ All posted times are **Pacific** time zone. At least one break will be provided 
 **10:00 am** Linear models in R __hands on__     
 **12:00 pm** Lunch  
 **1:00 pm**  Working with spreadsheets __lecture and hands on__     
-**4:00 pm**  Closing thoughts __lecture__
+**4:00 pm**  Closing thoughts __lecture__  
 **5:00  pm**  Zoom session ends  
