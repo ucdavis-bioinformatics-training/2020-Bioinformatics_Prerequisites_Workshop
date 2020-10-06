@@ -10,13 +10,36 @@
 
      - Installability of 98 randomly selected published software tools across 22 life-science journals over a span of 15 years. Error bars, where present, indicate SEM. (A) Pie chart showing the percentage of tools with various levels of installability. (B) A pie chart showing the proportion of evaluated tools that required no deviation from the documented installation procedure. (C) Tools that require no manual intervention (pass automatic installation test) exhibit decreased installation time. (D) Tools installed exhibit increased citation per year compared with tools that were not installed (Kruskal-Wallis, p-value = 0.035). (E) Tools that are easy to install include a decreased portion of undocumented commands (Not Installed versus Easy Install: Mann-Whitney U test, p-value = 0.01, Easy Install versus Complex Install: Mann-Whitney U test, p-value = 8.3 × 10 −8 ). (F) Tools available in well-maintained package managers such as Bioconda were always installable, whereas tools not shipped via package managers were prone to problems in 32% of the studied cases. SEM, standard error of the mean. https://doi.org/10.1371/journal.pbio.3000333.g002
 
-## What are some of the main components of the conda CLI?
-https://bioconda.github.io/recipes/htstream/README.html
+## Getting and using conda
 
-First lets load the module for anaconda. Anaconda is the a set of packages, including conda, typically needed for a given environment.  
-```
-module load anaconda3
-```
+Anaconda is the name of the software where we get conda from. However, it is quite large, so we are going to instead download a smaller version called miniconda. Go to the [miniconda website](https://docs.conda.io/en/latest/miniconda.html) and get the link for the Linux 64 bit python 3.8 installer. Then download the installer:
+
+	wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+Run the installer:
+
+	sh Miniconda3-latest-Linux-x86_64.sh
+
+Press Enter to continue the installer and then scroll through the EULA using the spacebar. Then type "yes" to accept the terms. Now, we want to change the default install location, so enter "/share/workshop/prereq_workshop/$USER/software/miniconda3":
+
+<pre>
+Do you accept the license terms? [yes|no]
+[no] >>> yes       
+
+Miniconda3 will now be installed into this location:
+/home/joshi/miniconda3
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify a different location below
+
+[/home/joshi/miniconda3] >>> /share/workshop/prereq_workshop/$USER/software/miniconda3
+PREFIX=/share/workshop/prereq_workshop/joshi/software/miniconda3
+Unpacking payload ...
+Collecting package metadata (current_repodata.json): done                                                          
+Solving environment: done
+</pre>
+
 
 Now lets create an environment in a specific path of interest. Here we want to download HTStream a tool for High Throughput Sequencing Read Processing.
 
