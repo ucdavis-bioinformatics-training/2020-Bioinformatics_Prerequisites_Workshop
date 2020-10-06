@@ -1,5 +1,13 @@
 ## Special Topics
 
+-----
+
+<img src="figures/python-poll.png" alt="BioPython" width="75%" align="center"/>
+
+#### Based on our poll results, some people want more background on Python, while others are more interested in being able to install and use tools. We will try to address a bit more of both in this section.
+
+-----
+
 
 <h3><font color="red">Before we start, please log out of the server (ctrl+d or exit), then log back in to make sure that you have a clean new session.</font></h3>
 
@@ -490,18 +498,25 @@ with open('my_data.csv', 'r') as csvfile:
 
 ## Wrapping up
 
-*  Learning a new programming language takes time and patience. This rapid overview may have felt a little overwhelming, especially if you haven't programmed before.
+*  Learning a new programming language takes time and patience. This rapid overview may have felt overwhelming, especially if you haven't programmed before. That is pretty normal.
 *  Keep practicing, hands-on programming is the only way to learn. A great option is to just "play" and see what happens.
-    *  Employ the Scientific Method: 1) Form a hypothesis about how Python works, 2) design an experiment to test your hypothesis, 3) Reject or accept your hypothesis depending on the results.
-    *  There are also a nearly overwhelming number of free tutorials online. Working through these tutorials is a great way to keep learning. 
+    *  Employ the Scientific Method: 1) Form a hypothesis about how Python works, 2) Design an experiment to test your hypothesis, 3) Reject or accept your hypothesis depending on the results.
+    *  There are a nearly overwhelming number of free tutorials online. Working through these tutorials is a great way to keep learning. 
 *  Many of the ideas we discussed today are common to most programming languages, even if some details of syntax differ. During the intro to R section, look for similarities (and differences). If you understand the concepts, you can always Google for syntax.
+
+
+
 *  If you get stuck solving a problem, try to break it down into a set of simple steps.
     *  Define (write down) your inputs.
     *  Define (write down) your outputs.
-    *  Often once you have inputs and outputs defined, you will see a path to the solution.
+    *  Once you have inputs and outputs defined, you often will see a path to the solution.
     *  If not, look for a first simple step (e.g. How should I load the data?, How should I store the data?).
     *  Continue to identify steps that lead you towards the set of outputs you defined.
-    *  Each of these steps will help you understand your data and the problem better.
+    *  Each of these steps will help you understand your data and the problem better, and eventually help you find the path to a solution.
+
+<br>
+<img src="figures/SolvingProblems.png" alt="BioPython" width="100%" align="center"/>
+<br>
 
 
 ## Additional things to check out
