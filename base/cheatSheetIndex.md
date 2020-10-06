@@ -4,6 +4,10 @@
 
 * [fwunixref.pdf](https://files.fosswire.com/2007/08/fwunixref.pdf)
 
+### Python
+
+* [beginners_python_cheat_sheet_pcc_all.pdf](https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_all.pdf)
+
 ### Conda
 
 * [conda-cheatsheet.pdf](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
