@@ -27,7 +27,7 @@ navigation:
     url: CLI_Intro/intro-cli-part1
   - heading: Advanced CLI
   - title: Advanced Command Line
-    url: adv_cli/advanced_cli
+    url: adv_cli/advanced_command_line
   # - title: Advanced Challenge Solutions
   #   url: adv_cli/advanced_cli_solutions
   # - title: Environment Variables
