@@ -10,19 +10,19 @@ Let's take a look at the 'sed' command. sed (short for stream editor) is a comma
     mkdir advanced
     cd advanced/
 
-Let's copy over a simple file to work on:
+Let's download a simple file to work on:
 
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/region.bed
-
-    cp /usr/share/common-licenses/BSD .
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/region.bed -O region.bed
 
 Take a look at the file:
 
-    cat BSD
+    cat region.bed
 
-Now, let's change every occurence of the word "Redistribution" into "Mangling":
+Now, let's make all the uppercase "CHR"s into lowercase:
 
-    cat BSD | sed 's/Redistribution/Mangling/gi'
+    cat region.bed | sed 's/CHR/chr/'
+
+We could 
 
 Let's break down the argument to sed (within the single quotes)... The "s" means "substitute", the word between the 1st and 2nd forward slashes (i.e. /) is the word the substitute for, the word between the 2nd and 3rd slashes is the word to substitute with, and finally the "gi" at the end are flags for global substitution (i.e. substituting along an entire line instead of just the first occurence on a line), and for case insenstivity (i.e. it will ignore the case of the letters when doing the substitution).
 
@@ -349,7 +349,7 @@ Awk
 
 Awk is a simple programming language that can be used to do more complex filtering of data. Awk has many capabilities, and we are only going to touch on one of them here. One really useful thing is to filter lines of a file based on the value in a column. Let's get a file with some data:
 
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/DMR.GBM2.vs.NB1.bed
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_CLI/DMR.GBM2.vs.NB1.bed -O DMR.GBM2.vs.NB1.bed
 
 Take a look at the beginning of the file:
 
