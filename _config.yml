@@ -64,7 +64,7 @@ navigation:
 
   - heading: Getting set up with AWS
   - title: AWS Event Engine
-    url: Intro_to_R/AWS/README
+    url: Intro_to_R/AWS/
 
   - heading: Introduction to R
   - title: Introduction to R
