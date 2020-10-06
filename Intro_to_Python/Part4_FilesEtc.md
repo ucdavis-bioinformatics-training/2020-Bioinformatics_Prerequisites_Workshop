@@ -1,13 +1,136 @@
 ## Special Topics
 
 
-## Outline 
+<h3><font color="red">Before we start, please log out of the server (ctrl+d or exit), then log back in to make sure that you have a clean new session.</font></h3>
 
-*  [Part 4: Special topics](#top)
-    -  [Basic File Operations](#files)
-    -  [Biopython](#Biopython)
-    -  [CSV package](#CSV)
- 
+
+## Installing Software
+
+### Virtual Environments
+[Virtual environments](https://docs.python.org/3/tutorial/venv.html) give you the option to create a lightweight, self contained Python install where you can specify each module that is installed. This is a great option for keeping your system neat and tidy, and also keeps development versions of specific software isolated from your main Python library folders.
+
+Another great thing about virtual environments is that you can use them to "snapshot" a set of modules for a project. As updates are released for these modules, the version you used for your project may become obsolete or unavailable. Keeping a virtual environment associated with the project ensures that you can always run the exact same versions of the software.
+
+--- 
+### Python2 virtual environment and software install
+Lets try it out by installing an older software package that hasn't yet been updated to support Python3.
+
+https://github.com/ibest/ARC
+
+
+Log into the server and run the following commands.
+
+##### Setup
+```bash
+cd /share/workshop/prereq_workshop/$USER/python
+
+# Create the virtual environment:
+virtualenv py2ARC.venv
+
+# Activate virtual environment (note the change in your command prompt):
+source /share/workshop/prereq_workshop/$USER/python/py2ARC.venv/bin/activate
+```
+<h3><font color="red">At this point your bash prompt should start with (py2ARC.venv). If it does, click "Yes", if you are stuck click "No" or post a question on Slack.</font></h3>
+
+
+
+
+##### Install software using pip and a [setup.py build script for setuptools](https://packaging.python.org/tutorials/packaging-projects/).
+
+Installing biopython can take a little while. If you want you can learn what ARC does and review the installation instructions [here](http://ibest.github.io/ARC/#ARCInstallation).
+
+```bash
+# First we need to install dependencies:
+# Biopython v1.76 was the last version released for Python 2.7.x
+pip install biopython==1.76
+
+# Clone a copy of the repository:
+git clone https://github.com/ibest/ARC.git
+
+# Install the software
+cd ARC
+python setup.py install
+
+
+# Now you can test the install, but first we need to put a mapper and assembler in our path:
+module load bowtie2
+module load spades
+
+cd test_data
+
+ARC
+
+```
+
+<h3><font color="red">At this point you should see a lot of text scrolling up the screen. This is ARC performing an iterative assembly process on some test data. If you see this, click "Yes", if you are stuck click "No" or post a question on Slack.</font></h3>
+
+You can interrupt the assembly at any time using ctrl+c.
+
+Once you are finished working in the Virtual Environment, you can exit it with the deactivate command. This will set your path and environment variables back to their normal state.
+
+```bash
+deactivate
+```
+
+
+-----
+
+
+
+### Python3 virtual environment and software install
+
+Python3 [virtual environments](https://docs.python.org/3/tutorial/venv.html) are basically the same, but require slightly different commands.
+
+Make sure that your python2 environment has been deactivated and then run the following.
+
+```bash
+# We need a different version of python3 that supports virtual environments:
+module load anaconda3
+python3 -m venv py3venv
+
+source py3venv/bin/activate
+
+```
+**Note that if you get an error while creating the py3venv environment, you may have to delete it and try again after making sure to load the anaconda3 module.**
+
+<h3><font color="red">At this point your bash prompt should start with (py3venv). If it does, click "Yes", if you are stuck click "No" or post a question on Slack.</font></h3>
+
+
+Now we are ready to install modules into our Python3 virtual environment. Lets try out the [covid](https://pypi.org/project/covid/) package to query data on the novel corona virus.
+
+To do this we will use [pip](https://pypi.org/project/pip/), the package installer for Python. Pip will automatically download and install all of the dependencies needed for the covid package.
+
+Again, this process might take a little while, so while you wait, visit the [covid](https://pypi.org/project/covid/) page, scroll down to the "How to use" section of the page and review the usage instructions. The covid package installs includes a command line tool written in Python (you can look at some of the source code using ```less ./py3venv/lib/python3.6/site-packages/covid/cli.py```). Try to determine the number of confirmed cases based on worldometers and john_hopkins data sources. Are they the same?
+
+
+```bash
+# Installing is easy, just use pip!
+
+pip install covid
+
+# Once the install has finished, run python:
+python
+```
+
+
+Try running the following code to fetch the latest data on Italy. What kind of data type does get_status_by_country_name() return? You should be able to access elements of the dataset using information from yesterday's course material.
+
+```python
+from covid import Covid
+
+covid = Covid()
+
+
+covid.get_status_by_country_name("italy")
+```
+
+Once you are finished, remember that you can exit Python using ctrl+D, and use deactivate to exit from the Python3 virtual environment.
+
+-----
+
+<h3><font color="red">Short break</font></h3>
+
+------
 
 
 ## <a name="top">Basic File Operations</a>
@@ -120,7 +243,7 @@ print(l)
 handle.close()
 ```
 
-What if we wanted to process the whole file and count how many times we see each character?
+Lets pretend that for some reason we want to process the whole file and count how many times we see each character? Can you figure out how this code works?
 
 ```python
 # Create an empty dictionary
@@ -355,9 +478,40 @@ with open('my_data.csv', 'r') as csvfile:
 
 1. Use SeqIO and a Dictionary, count the frequency of the first 15bp and last 15bp of each read in example_data.fastq.gz. What are the most common sequences?
 
+1. Using the covid module, download the latest data and export it to a CSV file. Save a copy somewhere and make some informative plots using R later in the week.
+
 <h3><font color="red">Once you have successfully completed the exercises, mark "Yes" in zoom. Post questions or problems to the Slack channel.</font></h3>
 
 ```python
 
 
 ```
+
+
+## Wrapping up
+
+*  Learning a new programming language takes time and patience. This rapid overview may have felt a little overwhelming, especially if you haven't programmed before.
+*  Keep practicing, hands-on programming is the only way to learn. A great option is to just "play" and see what happens.
+    *  Employ the Scientific Method: 1) Form a hypothesis about how Python works, 2) design an experiment to test your hypothesis, 3) Reject or accept your hypothesis depending on the results.
+    *  There are also a nearly overwhelming number of free tutorials online. Working through these tutorials is a great way to keep learning. 
+*  Many of the ideas we discussed today are common to most programming languages, even if some details of syntax differ. During the intro to R section, look for similarities (and differences). If you understand the concepts, you can always Google for syntax.
+*  If you get stuck solving a problem, try to break it down into a set of simple steps.
+    *  Define (write down) your inputs.
+    *  Define (write down) your outputs.
+    *  Often once you have inputs and outputs defined, you will see a path to the solution.
+    *  If not, look for a first simple step (e.g. How should I load the data?, How should I store the data?).
+    *  Continue to identify steps that lead you towards the set of outputs you defined.
+    *  Each of these steps will help you understand your data and the problem better.
+
+
+## Additional things to check out
+
+https://biopython.org/DIST/docs/tutorial/Tutorial.html
+
+https://realpython.com/
+
+https://seaborn.pydata.org/
+
+http://ggplot.yhathq.com/
+
+
