@@ -30,7 +30,7 @@ All posted times are **Pacific** time zone. At least one break will be provided 
 **9:00 am**  Advanced CLI __lecture and hands on__   
 **12:00 pm** Lunch  
 **1:00 pm**  Getting set up with AWS __lecture and hands on__   
-**2:00 pm**  Advanced CLI __lecture and hands on__
+**2:00 pm**  Advanced CLI __lecture and hands on__  
 **3:30 pm**  Introduction to R __lecture__     
 **4:45 pm**  Wrap-up and homework  
 **5:00 pm**  Zoom session ends  
