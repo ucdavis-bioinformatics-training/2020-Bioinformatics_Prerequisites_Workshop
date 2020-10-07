@@ -367,23 +367,6 @@ You can also do all kinds of fancy things in your prompt, like color and highlig
 When you have a prompt you like, you can put it in your .bash_profile/.bashrc so that it is automatically set when you log in.
 
 
-Process substitution
----------------------
-
-Next, we will cover process substitution. Process substitution is a way of using the output of some software as the input file to another software without having to create intermediate files. We will use a quality-based trimmer called "sickle". We want to do quality-based read trimming on one of our fastq.gz files, but we need to give sickle an uncompressed file as input. In order to do that, we use the "gunzip" command with the "-c" option. This unzips the file and sends the output to STDOUT, instead of unzipping the file in place which is the default (This will take a few minutes to run):
-
-    module load sickle
-    sickle se -f <(gunzip -c C61_S67_L006_R1_001.fastq.gz) -t sanger -o trimmed.fa
-
-So we are putting the gunzip command inside parentheses with a less-than symbol like so: <(COMMAND). When we do this, the output of the COMMAND gets manipulated by the shell so that sickle thinks it is a file. Sickle then uses this "file" as the input file. Take a look at the output file:
-
-    less trimmed.fa
-
-One final thing to know is that if a program does not take input from STDIN (which is needed to use it in a pipe), but instead wants a filename, you can use a single dash by itself in place of the filename and the shell will interpret that to be input from STDIN. So it would look something like this:
-
-    zcat C61_S67_L006_R1_001.fastq.gz | sickle se -f - -t sanger -o trimmed.fa
-
-
 Awk
 ----
 
