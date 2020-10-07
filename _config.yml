@@ -54,8 +54,8 @@ navigation:
   # - title: Using screen to manage multiple projects
   #   url: Advanced_CLI/screen
   - title: A Simple Bioinformatics Workflow
-    url: software_install/bioworkflow
-    
+    url: Advanced_CLI/bioworkflow
+
   - heading: Software Installation
   - title: Using make and cmake
     url: software_install/make
