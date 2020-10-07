@@ -1,9 +1,8 @@
 A Simple Bioinformatics Workflow
 =================================
 
-**1\.** First, log into a node and then let's make a directory for our analysis:
+**1\.** First, let's make a directory for our analysis:
 
-    srun -t 60 -c 10 -n 1 --mem 8000 --reservation workshop --partition production --pty /bin/bash
 	cd /share/workshop/prereq_workshop/$USER
 	mkdir rnaseq
 	cd rnaseq
