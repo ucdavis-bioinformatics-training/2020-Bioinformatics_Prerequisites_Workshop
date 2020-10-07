@@ -51,8 +51,8 @@ navigation:
     url: Advanced_CLI/advanced-command-line
   # - title: Advanced Challenge Solutions
   #   url: adv_cli/advanced_cli_solutions
-  - title: Using screen to manage multiple projects
-    url: Advanced_CLI/screen
+  # - title: Using screen to manage multiple projects
+  #   url: Advanced_CLI/screen
 
   - heading: Software Installation
   - title: Using make and cmake
