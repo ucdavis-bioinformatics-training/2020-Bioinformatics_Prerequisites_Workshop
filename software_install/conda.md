@@ -18,7 +18,7 @@ Anaconda is the name of the software where we get conda from. However, it is qui
 
 	wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-Run the installer:
+This is a shell script so we need to use the "sh" command to run it. Run the installer:
 
 	sh Miniconda3-latest-Linux-x86_64.sh
 
