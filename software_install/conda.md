@@ -12,10 +12,17 @@
 
 ## Getting and using conda
 
+### Logging into a node if tadpole isn't working
+
+	srun -t 00:30:00 -c 1 -n 1 --mem 500 --partition production --account prereq_workshop --reservation prereq_workshop --pty /bin/bash
+	kinit
+	aklog
+
 ### Download miniconda
 
 Anaconda is the name of the software where we get conda from. However, it is quite large, so we are going to instead download a smaller version called miniconda. Go to the [miniconda website](https://docs.conda.io/en/latest/miniconda.html) and get the link for the Linux 64 bit python 3.8 installer. Then download the installer:
 
+	cd /share/workshop/prereq_workshop/$USER/software
 	wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 This is a shell script so we need to use the "sh" command to run it. Run the installer:
