@@ -12,7 +12,7 @@
 
 ## Getting and using conda
 
-# Download miniconda
+### Download miniconda
 
 Anaconda is the name of the software where we get conda from. However, it is quite large, so we are going to instead download a smaller version called miniconda. Go to the [miniconda website](https://docs.conda.io/en/latest/miniconda.html) and get the link for the Linux 64 bit python 3.8 installer. Then download the installer:
 
@@ -47,7 +47,7 @@ You will see a bunch of messages about packages being installed, and then it wil
 
 You will see that your prompt changes to have "(base)" at the beginning.
 
-# Installing software
+### Installing software
 
 Conda is useful for software installation because you can create an "environment" for each piece of software and that environment will have exactly the right packages it needs with the exact versions it needs. Different software will have different requirements in terms of which packages and versions it needs, so it is useful to compartmentalize those. Now let's create an environment and install some software. Here we want to install HTStream, a tool for High Throughput Sequencing Read Processing.
 
@@ -110,7 +110,7 @@ So since the bioconda channel is already available, we do not have to specify it
 
 	conda create -n htstream-1.3.2 htstream
 
-Enter "y" when prompted. So this command is creating an environment called "htstream-1.3.2" and installing the "htstream" package into it. By default, it installs the latest version. This might take a little while to run.
+Enter "y" when prompted. This command is creating an environment called "htstream-1.3.2" and installing the "htstream" package into it. By default, it installs the latest version. This might take a little while to run.
 
 <div class="output">(base) joshi@rafter-5:/share/workshop/prereq_workshop/joshi/software$ conda create -n htstream-1.3.2 htstream
 Collecting package metadata (current_repodata.json): done
