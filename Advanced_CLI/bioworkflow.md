@@ -42,7 +42,7 @@ Take a look at the stats log file output:
 
 Now, go back to the command (by using the up arrow) and change it so that all the filenames are for the other sample. You can use <Ctrl>-Arrow keys to go left and right by entire words to make it easier to get to the parts you need to change. You need to figure this out and run it!
 
-**FIGURE OUT THE COMMAND**
+**\*\*FIGURE OUT THE COMMAND\*\***
 
 Take a look at that stats file:
 
@@ -56,7 +56,7 @@ Here is the [STAR github page](https://github.com/alexdobin/STAR)
 
 You will know if it worked if you can run STAR from any directory.
 
-**YOU HAVE TO FIGURE OUT HOW TO GET STAR**
+**\*\*YOU HAVE TO FIGURE OUT HOW TO INSTALL STAR\*\***
 
 ---
 
