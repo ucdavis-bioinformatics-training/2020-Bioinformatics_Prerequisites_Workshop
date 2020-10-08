@@ -61,7 +61,7 @@ By familiarizing yourself with the tidyverse, you "future proof" yourself. If th
 
 ***
 
-### Getting started
+## Getting started
 
 In the R console run the following commands to ensure that you have packages installed:
 
