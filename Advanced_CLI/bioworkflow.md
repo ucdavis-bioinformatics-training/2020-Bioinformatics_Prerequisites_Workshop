@@ -34,7 +34,7 @@ Take a look at the options:
 
 **3\.** Now, let's run it. We are going to use our subsetted raw input files, fastq output prefix, and a stats log file that gives us statistics about the state of the reads before and after the command. We are going to use the "--no-orphans" option to make things easier so that we only have to deal with a pair of files per sample.
 
-	hts_AdapterTrimmer -F --read1-input ../00-RawData/C61subset/C61subset_S67_L006_R1_001.fastq.gz --read2-input ../00-RawData/C61subset/C61subset_S67_L006_R2_001.fastq.gz -fastq-output C61_trimmed --stats-file C61.stats.log
+	hts_AdapterTrimmer -F --read1-input ../00-RawData/C61subset/C61subset_S67_L006_R1_001.fastq.gz --read2-input ../00-RawData/C61subset/C61subset_S67_L006_R2_001.fastq.gz --fastq-output C61_trimmed --stats-file C61.stats.log
 
 Take a look at the stats log file output:
 
