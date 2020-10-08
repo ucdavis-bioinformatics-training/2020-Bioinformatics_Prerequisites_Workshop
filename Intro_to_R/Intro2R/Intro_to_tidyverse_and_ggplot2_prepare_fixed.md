@@ -70,11 +70,12 @@ In the R console run the following commands to ensure that you have packages ins
 if (!any(rownames(installed.packages()) == "knitr")){
   install.packages("knitr")
 }
-library(knitr)
 
 if (!any(rownames(installed.packages()) == "tidyverse")){
   install.packages("tidyverse")
 }
+
+library(knitr)
 library(tidyverse)
 ```
 
