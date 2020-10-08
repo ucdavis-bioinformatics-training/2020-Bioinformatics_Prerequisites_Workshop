@@ -43,15 +43,17 @@ A full course in linear models would take months, so this is a first introductio
 # Linear models
 
 A linear model is a model for a continuous outcome Y of the form
-$$Y = \beta_0 + \beta_{1}X_{1} + \beta_{2}X_{2} + \dots + \beta_{p}X_{p} + \epsilon$$
+
+Y = &beta;<sub>0</sub> +  &beta;<sub>1</sub> X<sub>1</sub> +  &beta;<sub>2</sub> X<sub>2</sub> + ... +  &beta;<sub>p</sub> X<sub>p</sub> + &epsilon;
+
 The covariates X can be:
 
 * a continuous variable (age, weight, temperature, etc.)
 * Dummy variables coding a categorical covariate (more later)
 
-The $\beta$'s are unknown parameters to be estimated, the "coefficients".
+The &beta;'s are unknown parameters to be estimated, the "coefficients".
 
-The error term $\epsilon$ is assumed to be normally distributed with a variance that is constant across the range of the data, the "residuals".
+The error term &epsilon; is assumed to be normally distributed with a variance that is constant across the range of the data, the "residuals".
 
 Models with all categorical covariates are referred to as ANOVA models and models with continuous covariates are referred to as linear regression models. These are all linear models, and R doesn't distinguish between them.
 
@@ -100,7 +102,7 @@ summary(oneway.model)
 ```
 In the output:
 
-* "Coefficients" refer to the $\beta$'s
+* "Coefficients" refer to the &beta;'s
 * "Estimate" is the estimate of each coefficient
 * "Std. Error" is the standard error of the estimate
 * "t value" is the coefficient divided by its standard error
@@ -221,7 +223,7 @@ For a model with more than one coefficient, `summary` provides estimates and tes
 
 Recall:
 
-$$Y = \beta_0 + \beta_{1}X_{1} + \beta_{2}X_{2} + \dots + \beta_{p}X_{p} + \epsilon$$
+Y = &beta;<sub>0</sub> + &beta;<sub>1</sub> X<sub>1</sub> + &beta;<sub>2</sub> X<sub>2</sub> + ... + &beta;<sub>p</sub> X<sub>p</sub> + &epsilon;
 
 model.matrix help you visualize the covariates for each sample.
 
