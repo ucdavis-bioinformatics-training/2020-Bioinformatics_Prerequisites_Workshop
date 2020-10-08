@@ -29,7 +29,7 @@ Understanding linear modelling in R is **critical** in implementing these types 
 
 We will not discuss:
 
-* Diagnostic plots 
+* Diagnostic plots
 * Data-driven model selection
 * Anything that doesn't scale well when applied to 1000's of genes/SNPs/proteins
 
@@ -59,7 +59,7 @@ Models with all categorical covariates are referred to as ANOVA models and model
 
 Read in 'lm_example_data.csv`:
 ```{r}
-dat <- read.csv("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Advanced_R/lm_example_data.csv")
+dat <- read.csv("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_R/lm_example_data.csv")
 dim(dat)
 head(dat)
 tail(dat)
@@ -133,9 +133,9 @@ For our simple design:
 ```{r}
 # Get means in each treatment
 treatmentmeans <- tapply(dat$expression, dat$treatment, mean)
-treatmentmeans["A"] 
+treatmentmeans["A"]
 # Difference in means gives you the "treatmentB" coefficient from oneway.model
-treatmentmeans["B"] - treatmentmeans["A"] 
+treatmentmeans["B"] - treatmentmeans["A"]
 ```
 
 What if you don't want reference group coding?  Another option is to fit a model without an intercept:
@@ -251,7 +251,7 @@ The notation `treatment*time` refers to treatment, time, and the interaction eff
 
 Interpretation of coefficients:
 
-* Each coefficient for treatment represents the difference between the indicated group and the reference group _at the reference level for the other covariates_ 
+* Each coefficient for treatment represents the difference between the indicated group and the reference group _at the reference level for the other covariates_
 * For example, "treatmentB" is the difference in expression between treatment B and treatment A at time 1
 * Similarly, "timetime2" is the difference in expression between time2 and time1 for treatment A
 * The interaction effects (coefficients with ":") estimate the difference between treatment groups in the effect of time
@@ -287,7 +287,7 @@ coef(other.2way.model)
 We get the same estimates for the effect of treatment B vs. A at time 1:
 ```{r}
 c1 <- coef(twoway.model)
-c1["treatmentB"] 
+c1["treatmentB"]
 c2 <- coef(other.2way.model)
 c2["tx.timeB.time1"] - c2["tx.timeA.time1"]
 ```
@@ -306,13 +306,13 @@ c2 <- coef(other.2way.model)
 (c2["tx.timeB.time2"] - c2["tx.timeA.time2"]) - (c2["tx.timeB.time1"] - c2["tx.timeA.time1"])
 ```
 
-(See 
+(See
 https://www.bioconductor.org/packages/3.7/bioc/vignettes/limma/inst/doc/usersguide.pdf
 for more details on this parameterization)
 
 ### Exercises and Things to Think About
 - How much do the parameter estimates for treatment change when batch is added?  
-- The data frame dat has a column called 'temperature'.  What formula would you use if you wanted to look at differences between treatments, adjusting for temperature? 
+- The data frame dat has a column called 'temperature'.  What formula would you use if you wanted to look at differences between treatments, adjusting for temperature?
 
 ## Continuous Covariates
 Linear models with continuous covariates ("regression models") are fitted in much the same way:
@@ -348,4 +348,3 @@ cor(dat$expression, dat$temperature)
 - Convert temperature to Farenheit by replacing temperature with I(9/5*temperature + 32) in the model formula.  Does the p-value for the association with expression change?
 - Look at the documentation for limma [here](https://bioconductor.org/packages/release/bioc/vignettes/limma/inst/doc/usersguide.pdf) to see a bioinformatics application of what you just learned.
 - *For your experiment, what would the model formula look like?*
-
