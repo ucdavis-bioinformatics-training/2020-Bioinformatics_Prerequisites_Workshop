@@ -71,17 +71,9 @@ navigation:
   - heading: Introduction to R
   - title: Introduction to R
     url: Intro_to_R/Intro2R/Intro2R_main
-  # - title: Introduction to tidyverse, part I
-  #   url: intro_R/tidyverse1
+  - title: Introduction to tidyverse
+    url: intro_R/Intro_to_tidyverse_and_ggplot2_prepare_fixed
   # - title: Introduction to tidyverse, part II
   #   url: intro_R/tidyverse2
   # - title: Linear modeling in R
   #   url: intro_R/linear_models
-  # - heading: Spreadsheets
-  # - title: Working with spreadsheets
-  #   url: adv_cli/advanced_cli
-  # - heading: Bioinformatics
-  # - title: A Simple Bioinformatics Workflow
-  #   url: adv_cli/advanced_cli_solutions
-  # - heading: ETC
-  # - title: Closing Thoughts
