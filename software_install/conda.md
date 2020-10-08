@@ -113,9 +113,9 @@ You see that there are multiple versions of htstream you could install. And that
            offline mode : False
 </div>
 
-So since the bioconda channel is already available, we do not have to specify it when we create the environment and install the software:
+So since the bioconda channel is already available, we do not have to specify it when we create the environment and install the software. However, if it is not available, you will need to do so:
 
-	conda create -n htstream-1.3.2 htstream
+	conda create -c bioconda -n htstream-1.3.2 htstream
 
 Enter "y" when prompted. This command is creating an environment called "htstream-1.3.2" and installing the "htstream" package into it. By default, it installs the latest version. This might take a little while to run.
 
