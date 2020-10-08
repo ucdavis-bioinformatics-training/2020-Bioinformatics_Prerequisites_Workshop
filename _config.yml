@@ -65,6 +65,8 @@ navigation:
   - heading: Getting set up with AWS
   - title: AWS Event Engine
     url: Intro_to_R/AWS/
+  - title: Starting and Stopping your AWS Instance
+    url: Intro_to_R/AWS/start_stop/
 
   - heading: Introduction to R
   - title: Introduction to R
