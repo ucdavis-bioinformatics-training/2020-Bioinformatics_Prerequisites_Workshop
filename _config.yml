@@ -75,7 +75,7 @@ navigation:
     url: Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2_prepare_fixed
   - title: Organizing, manipulating, and visualizing data in the tidyverse
     url: Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2
-  # - title: Introduction to tidyverse, part II
-  #   url: intro_R/tidyverse2
-  # - title: Linear modeling in R
-  #   url: intro_R/linear_models
+
+  - heading: Advanced R
+  - title: Linear models in R
+    url: Advanced_R/linear_models
