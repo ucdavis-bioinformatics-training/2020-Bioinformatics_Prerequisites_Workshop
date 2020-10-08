@@ -31,14 +31,13 @@ All posted times are **Pacific** time zone. At least one break will be provided 
 **12:00 pm** Lunch  
 **1:00 pm**  Getting set up with AWS __lecture and hands on__   
 **2:00 pm**  Advanced CLI __lecture and hands on__  
-**3:30 pm**  Introduction to R __lecture__     
-**4:45 pm**  Wrap-up and homework  
 **5:00 pm**  Zoom session ends  
 
 ### Thursday, October 8
 
 **8:50 am**  Zoom session starts  
-**9:00 am**  Getting started with R and Rstudio __hands on__   
+**9:00 pm**  Introduction to R __lecture__     
+**9:30 am**  Getting started with R and Rstudio __hands on__   
 **12:00 pm** Lunch  
 **1:00 pm**  Introduction to tidyverse in R __lecture__   
 **1:30 pm**  Introduction to tidyverse in R __hands on__     
