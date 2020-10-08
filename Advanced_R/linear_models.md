@@ -31,6 +31,13 @@ We will not discuss:
 * Data-driven model selection
 * Anything that doesn't scale well when applied to 1000's of genes/SNPs/proteins
 
+## Goals
+A full course in linear models would take months, so this is a first introduction rather than a comprehensive how-to.  After this session you should:
+
+* Have a general idea of what a linear model is
+* Understand where linear models are used in bioinformatics
+* Begin to understand model specification in R
+
 # Linear models
 
 A linear model is a model for a continuous outcome Y of the form
@@ -93,9 +100,9 @@ str(dat)
 ## 'data.frame':	25 obs. of  6 variables:
 ##  $ sample     : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ expression : num  1.214 1.48 1.088 1.444 0.637 ...
-##  $ batch      : Factor w/ 2 levels "Batch1","Batch2": 1 1 1 1 1 1 1 1 1 1 ...
-##  $ treatment  : Factor w/ 5 levels "A","B","C","D",..: 1 1 1 1 1 2 2 2 2 2 ...
-##  $ time       : Factor w/ 2 levels "time1","time2": 1 2 1 2 1 2 1 2 1 2 ...
+##  $ batch      : chr  "Batch1" "Batch1" "Batch1" "Batch1" ...
+##  $ treatment  : chr  "A" "A" "A" "A" ...
+##  $ time       : chr  "time1" "time2" "time1" "time2" ...
 ##  $ temperature: num  11.8 12.2 10.5 10.1 12 ...
 ```
 
@@ -209,7 +216,7 @@ levels(dat$treatment)
 ```
 
 ```
-## [1] "A" "B" "C" "D" "E"
+## NULL
 ```
 
 For our simple design:
@@ -321,16 +328,7 @@ coefs["treatmentB"] - coefs["treatmentA"]
 if (!("emmeans" %in% rownames(installed.packages())))
   install.packages("emmeans")
 library(emmeans)
-```
 
-```
-## Welcome to emmeans.
-## NOTE -- Important change from versions <= 1.41:
-##     Indicator predictors are now treated as 2-level factors by default.
-##     To revert to old behavior, use emm_options(cov.keep = character(0))
-```
-
-```r
 oneway.model.emm <- emmeans(oneway.model, "treatment")
 pairs(oneway.model.emm)
 ```
@@ -369,7 +367,7 @@ You can relevel your treatment, if say treatment "E" should be considered your c
 
 
 ```r
-dat$treatment <- relevel(dat$treatment, "E")
+dat$treatment <- relevel(factor(dat$treatment), "E")
 oneway.model <- lm(expression ~ treatment, data = dat)
 coef(oneway.model)
 ```
@@ -407,6 +405,11 @@ summary(oneway.model)
 ## F-statistic: 15.22 on 4 and 20 DF,  p-value: 7.275e-06
 ```
 
+```r
+# undo releveling so it doesn't mess up remaining examples
+dat$treatment <- relevel(factor(dat$treatment), "A")
+```
+
 
 # The Design Matrix
 
@@ -424,12 +427,12 @@ X
 ```
 
 ```
-##    (Intercept) treatmentA treatmentB treatmentC treatmentD
-## 1            1          1          0          0          0
-## 2            1          1          0          0          0
-## 3            1          1          0          0          0
-## 4            1          1          0          0          0
-## 5            1          1          0          0          0
+##    (Intercept) treatmentE treatmentB treatmentC treatmentD
+## 1            1          0          0          0          0
+## 2            1          0          0          0          0
+## 3            1          0          0          0          0
+## 4            1          0          0          0          0
+## 5            1          0          0          0          0
 ## 6            1          0          1          0          0
 ## 7            1          0          1          0          0
 ## 8            1          0          1          0          0
@@ -445,11 +448,11 @@ X
 ## 18           1          0          0          0          1
 ## 19           1          0          0          0          1
 ## 20           1          0          0          0          1
-## 21           1          0          0          0          0
-## 22           1          0          0          0          0
-## 23           1          0          0          0          0
-## 24           1          0          0          0          0
-## 25           1          0          0          0          0
+## 21           1          1          0          0          0
+## 22           1          1          0          0          0
+## 23           1          1          0          0          0
+## 24           1          1          0          0          0
+## 25           1          1          0          0          0
 ## attr(,"assign")
 ## [1] 0 1 1 1 1
 ## attr(,"contrasts")
@@ -488,12 +491,12 @@ summary(batch.model)
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)   10.274      1.763   5.827 1.30e-05 ***
-## treatmentA    -9.102      1.926  -4.725 0.000147 ***
-## treatmentB    -8.656      1.926  -4.494 0.000249 ***
-## treatmentC    -7.186      1.267  -5.673 1.81e-05 ***
-## treatmentD    -4.860      1.097  -4.431 0.000287 ***
-## batchBatch2   -1.688      1.583  -1.066 0.299837    
+## (Intercept)   1.1725     0.7757   1.512 0.147108    
+## treatmentE    9.1017     1.9263   4.725 0.000147 ***
+## treatmentB    0.4455     1.0970   0.406 0.689186    
+## treatmentC    1.9154     1.4512   1.320 0.202561    
+## treatmentD    4.2414     1.9263   2.202 0.040231 *  
+## batchBatch2  -1.6877     1.5834  -1.066 0.299837    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -515,12 +518,12 @@ model.matrix(~treatment + batch, data = dat)
 ```
 
 ```
-##    (Intercept) treatmentA treatmentB treatmentC treatmentD batchBatch2
-## 1            1          1          0          0          0           0
-## 2            1          1          0          0          0           0
-## 3            1          1          0          0          0           0
-## 4            1          1          0          0          0           0
-## 5            1          1          0          0          0           0
+##    (Intercept) treatmentE treatmentB treatmentC treatmentD batchBatch2
+## 1            1          0          0          0          0           0
+## 2            1          0          0          0          0           0
+## 3            1          0          0          0          0           0
+## 4            1          0          0          0          0           0
+## 5            1          0          0          0          0           0
 ## 6            1          0          1          0          0           0
 ## 7            1          0          1          0          0           0
 ## 8            1          0          1          0          0           0
@@ -536,11 +539,11 @@ model.matrix(~treatment + batch, data = dat)
 ## 18           1          0          0          0          1           1
 ## 19           1          0          0          0          1           1
 ## 20           1          0          0          0          1           1
-## 21           1          0          0          0          0           1
-## 22           1          0          0          0          0           1
-## 23           1          0          0          0          0           1
-## 24           1          0          0          0          0           1
-## 25           1          0          0          0          0           1
+## 21           1          1          0          0          0           1
+## 22           1          1          0          0          0           1
+## 23           1          1          0          0          0           1
+## 24           1          1          0          0          0           1
+## 25           1          1          0          0          0           1
 ## attr(,"assign")
 ## [1] 0 1 1 1 1 2
 ## attr(,"contrasts")
@@ -558,8 +561,8 @@ coef(batch.model)
 ```
 
 ```
-## (Intercept)  treatmentA  treatmentB  treatmentC  treatmentD batchBatch2 
-##   10.274160   -9.101666   -8.656141   -7.186269   -4.860297   -1.687702
+## (Intercept)  treatmentE  treatmentB  treatmentC  treatmentD batchBatch2 
+##   1.1724940   9.1016661   0.4455249   1.9153967   4.2413688  -1.6877019
 ```
 
 The response if then of course
@@ -594,16 +597,16 @@ summary(twoway.model)
 ## 
 ## Coefficients:
 ##                      Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)           10.8414     0.6924  15.658 1.06e-10 ***
-## treatmentA            -9.8618     0.9792 -10.071 4.55e-08 ***
-## treatmentB            -9.4554     1.0948  -8.637 3.31e-07 ***
-## treatmentC            -8.8537     0.9792  -9.042 1.85e-07 ***
-## treatmentD            -6.7891     1.0948  -6.202 1.70e-05 ***
-## timetime2             -5.6375     1.0948  -5.150 0.000119 ***
-## treatmentA:timetime2   6.1196     1.5482   3.953 0.001277 ** 
-## treatmentB:timetime2   6.0241     1.5482   3.891 0.001448 ** 
-## treatmentC:timetime2   5.8562     1.5482   3.783 0.001807 ** 
-## treatmentD:timetime2   5.0939     1.5482   3.290 0.004958 ** 
+## (Intercept)           0.97965    0.69239   1.415  0.17752    
+## treatmentE            9.86180    0.97918  10.071 4.55e-08 ***
+## treatmentB            0.40637    1.09476   0.371  0.71568    
+## treatmentC            1.00813    0.97918   1.030  0.31953    
+## treatmentD            3.07266    1.09476   2.807  0.01328 *  
+## timetime2             0.48211    1.09476   0.440  0.66594    
+## treatmentE:timetime2 -6.11958    1.54822  -3.953  0.00128 ** 
+## treatmentB:timetime2 -0.09544    1.54822  -0.062  0.95166    
+## treatmentC:timetime2 -0.26339    1.54822  -0.170  0.86718    
+## treatmentD:timetime2 -1.02568    1.54822  -0.662  0.51771    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -617,14 +620,14 @@ coef(twoway.model)
 ```
 
 ```
-##          (Intercept)           treatmentA           treatmentB 
-##            10.841449            -9.861798            -9.455430 
+##          (Intercept)           treatmentE           treatmentB 
+##           0.97965110           9.86179766           0.40636785 
 ##           treatmentC           treatmentD            timetime2 
-##            -8.853665            -6.789143            -5.637476 
-## treatmentA:timetime2 treatmentB:timetime2 treatmentC:timetime2 
-##             6.119584             6.024143             5.856191 
+##           1.00813264           3.07265513           0.48210723 
+## treatmentE:timetime2 treatmentB:timetime2 treatmentC:timetime2 
+##          -6.11958364          -0.09544075          -0.26339279 
 ## treatmentD:timetime2 
-##             5.093901
+##          -1.02568281
 ```
 The notation `treatment*time` refers to treatment, time, and the interaction effect of treatment by time.  (This is different from other statistical software).
 
@@ -646,7 +649,7 @@ coefs["treatmentB"] + coefs["treatmentB:timetime2"]
 
 ```
 ## treatmentB 
-##  -3.431287
+##  0.3109271
 ```
 We can see from `summary` that one of the interaction effects is significant.  Here's what that interaction effect looks like graphically:
 
@@ -670,7 +673,7 @@ dat$tx.time
 ##  [1] A.time1 A.time2 A.time1 A.time2 A.time1 B.time2 B.time1 B.time2 B.time1
 ## [10] B.time2 C.time1 C.time2 C.time1 C.time2 C.time1 D.time2 D.time1 D.time2
 ## [19] D.time1 D.time2 E.time1 E.time2 E.time1 E.time2 E.time1
-## 10 Levels: E.time1 A.time1 B.time1 C.time1 D.time1 E.time2 A.time2 ... D.time2
+## 10 Levels: A.time1 E.time1 B.time1 C.time1 D.time1 A.time2 E.time2 ... D.time2
 ```
 
 ```r
@@ -679,14 +682,14 @@ table(dat$tx.time, dat$treatment)
 
 ```
 ##          
-##           E A B C D
-##   E.time1 3 0 0 0 0
-##   A.time1 0 3 0 0 0
+##           A E B C D
+##   A.time1 3 0 0 0 0
+##   E.time1 0 3 0 0 0
 ##   B.time1 0 0 2 0 0
 ##   C.time1 0 0 0 3 0
 ##   D.time1 0 0 0 0 2
-##   E.time2 2 0 0 0 0
-##   A.time2 0 2 0 0 0
+##   A.time2 2 0 0 0 0
+##   E.time2 0 2 0 0 0
 ##   B.time2 0 0 3 0 0
 ##   C.time2 0 0 0 2 0
 ##   D.time2 0 0 0 0 3
@@ -699,13 +702,13 @@ table(dat$tx.time, dat$time)
 ```
 ##          
 ##           time1 time2
-##   E.time1     3     0
 ##   A.time1     3     0
+##   E.time1     3     0
 ##   B.time1     2     0
 ##   C.time1     3     0
 ##   D.time1     2     0
-##   E.time2     0     2
 ##   A.time2     0     2
+##   E.time2     0     2
 ##   B.time2     0     3
 ##   C.time2     0     2
 ##   D.time2     0     3
@@ -728,13 +731,13 @@ summary(other.2way.model)
 ## 
 ## Coefficients:
 ##                Estimate Std. Error t value Pr(>|t|)    
-## tx.timeE.time1  10.8414     0.6924  15.658 1.06e-10 ***
 ## tx.timeA.time1   0.9797     0.6924   1.415 0.177524    
+## tx.timeE.time1  10.8414     0.6924  15.658 1.06e-10 ***
 ## tx.timeB.time1   1.3860     0.8480   1.634 0.122968    
 ## tx.timeC.time1   1.9878     0.6924   2.871 0.011662 *  
 ## tx.timeD.time1   4.0523     0.8480   4.779 0.000244 ***
-## tx.timeE.time2   5.2040     0.8480   6.137 1.90e-05 ***
 ## tx.timeA.time2   1.4618     0.8480   1.724 0.105290    
+## tx.timeE.time2   5.2040     0.8480   6.137 1.90e-05 ***
 ## tx.timeB.time2   1.7727     0.6924   2.560 0.021751 *  
 ## tx.timeC.time2   2.2065     0.8480   2.602 0.020018 *  
 ## tx.timeD.time2   3.5087     0.6924   5.068 0.000139 ***
@@ -751,10 +754,10 @@ coef(other.2way.model)
 ```
 
 ```
-## tx.timeE.time1 tx.timeA.time1 tx.timeB.time1 tx.timeC.time1 tx.timeD.time1 
-##     10.8414488      0.9796511      1.3860189      1.9877837      4.0523062 
-## tx.timeE.time2 tx.timeA.time2 tx.timeB.time2 tx.timeC.time2 tx.timeD.time2 
-##      5.2039723      1.4617583      1.7726854      2.2064982      3.5087306
+## tx.timeA.time1 tx.timeE.time1 tx.timeB.time1 tx.timeC.time1 tx.timeD.time1 
+##      0.9796511     10.8414488      1.3860189      1.9877837      4.0523062 
+## tx.timeA.time2 tx.timeE.time2 tx.timeB.time2 tx.timeC.time2 tx.timeD.time2 
+##      1.4617583      5.2039723      1.7726854      2.2064982      3.5087306
 ```
 We get the same estimates for the effect of treatment B vs. A at time 1:
 
@@ -765,7 +768,7 @@ c1["treatmentB"]
 
 ```
 ## treatmentB 
-##   -9.45543
+##  0.4063679
 ```
 
 ```r
@@ -786,7 +789,7 @@ c1["treatmentB"] + c1["treatmentB:timetime2"]
 
 ```
 ## treatmentB 
-##  -3.431287
+##  0.3109271
 ```
 
 ```r
@@ -807,7 +810,7 @@ c1["treatmentB:timetime2"]
 
 ```
 ## treatmentB:timetime2 
-##             6.024143
+##          -0.09544075
 ```
 
 ```r
@@ -945,5 +948,6 @@ cor(dat$expression, dat$temperature)
 ### Exercises and things to think about
 - Look at the documentation for formula again using ?formula.  How would you change the formula statement if you wanted to add a quadratic term?
 - Convert temperature to Farenheit by replacing temperature with I(9/5*temperature + 32) in the model formula.  Does the p-value for the association with expression change?
+- Look at the documentation for limma [here](https://bioconductor.org/packages/release/bioc/vignettes/limma/inst/doc/usersguide.pdf) to see a bioinformatics application of what you just learned.
 - *For your experiment, what would the model formula look like?*
 

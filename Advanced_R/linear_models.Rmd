@@ -33,6 +33,13 @@ We will not discuss:
 * Data-driven model selection
 * Anything that doesn't scale well when applied to 1000's of genes/SNPs/proteins
 
+## Goals
+A full course in linear models would take months, so this is a first introduction rather than a comprehensive how-to.  After this session you should:
+
+* Have a general idea of what a linear model is
+* Understand where linear models are used in bioinformatics
+* Begin to understand model specification in R
+
 # Linear models
 
 A linear model is a model for a continuous outcome Y of the form
@@ -168,10 +175,13 @@ coef(pairs(oneway.model.emm))
 You can relevel your treatment, if say treatment "E" should be considered your control and you'd like the intercept to be the control treatment.
 
 ```{r}
-dat$treatment <- relevel(dat$treatment, "E")
+dat$treatment <- relevel(factor(dat$treatment), "E")
 oneway.model <- lm(expression ~ treatment, data = dat)
 coef(oneway.model)
 summary(oneway.model)
+
+# undo releveling so it doesn't mess up remaining examples
+dat$treatment <- relevel(factor(dat$treatment), "A")
 ```
 
 
@@ -334,5 +344,6 @@ cor(dat$expression, dat$temperature)
 ### Exercises and things to think about
 - Look at the documentation for formula again using ?formula.  How would you change the formula statement if you wanted to add a quadratic term?
 - Convert temperature to Farenheit by replacing temperature with I(9/5*temperature + 32) in the model formula.  Does the p-value for the association with expression change?
+- Look at the documentation for limma [here](https://bioconductor.org/packages/release/bioc/vignettes/limma/inst/doc/usersguide.pdf) to see a bioinformatics application of what you just learned.
 - *For your experiment, what would the model formula look like?*
 
