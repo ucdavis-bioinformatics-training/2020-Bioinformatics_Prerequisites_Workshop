@@ -49,8 +49,8 @@ navigation:
   - heading: Advanced CLI
   - title: Advanced Command Line
     url: Advanced_CLI/advanced-command-line
-  # - title: Advanced Challenge Solutions
-  #   url: adv_cli/advanced_cli_solutions
+  - title: Advanced Challenge Solutions
+    url: Advanced_CLI/advanced_cli_solutions
   # - title: Using screen to manage multiple projects
   #   url: Advanced_CLI/screen
   - title: A Simple Bioinformatics Workflow
