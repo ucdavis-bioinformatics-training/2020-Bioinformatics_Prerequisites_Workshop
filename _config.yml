@@ -72,7 +72,7 @@ navigation:
   - title: Introduction to R
     url: Intro_to_R/Intro2R/Intro2R_main
   - title: Introduction to tidyverse
-    url: intro_R/Intro_to_tidyverse_and_ggplot2_prepare_fixed
+    url: Intro2R/Intro_to_tidyverse_and_ggplot2_prepare_fixed
   # - title: Introduction to tidyverse, part II
   #   url: intro_R/tidyverse2
   # - title: Linear modeling in R
