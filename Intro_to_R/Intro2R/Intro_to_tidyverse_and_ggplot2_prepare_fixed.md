@@ -38,8 +38,8 @@ The tidyverse packages are very popular, but not everyone agrees that tidyverse 
 * Tidyverse makes learning harder, due to adding much complexity leading to **cognitive overload**
   * tidyverse tends to be verbose, with some packages containing hundreds of functions
 * Adoption of Tidyverse may give Rstudio too much control of the open source R project
-* RStudio provides frequent [training sessions and webinars](https://resources.rstudio.com/webinars)
-* Widespread adoption of Tidyverse may limit adpotion of technologically superior packages in the future
+* RStudio provides frequent [training sessions and webinars](https://resources.rstudio.com/webinars), which may result in new users not being exposed to alternatives
+* Widespread adoption of Tidyverse may limit adoption of technologically superior packages in the future
 
 While users don't *have* to choose between tidyverse and base R, many people have picked a camp. You can find out how and why people pick sides:
 
@@ -55,7 +55,7 @@ While users don't *have* to choose between tidyverse and base R, many people hav
 
 Although there are many alternatives, we'll be spending time on learning tidyverse packages in this workshop because data science and tidyverse are increasingly intertwined.
 
-![](./Intro_to_tidyverse_and_ggplot2_images/popularity.png){width=500}
+![](./Intro_to_tidyverse_and_ggplot2_images/popularity.png)
 
 By familiarizing yourself with the tidyverse, you "future proof" yourself. If the next generation of R users are mostly tidyverse users, knowing tidyverse is a marketable skill, and performing analyses using tidyverse packages may improve the availability of code examples and help for the types of projects that interest you.
 
