@@ -29,7 +29,7 @@ Understanding linear modelling in R is **critical** in implementing these types 
 
 We will not discuss:
 
-* Diagnostic plots
+* Diagnostic plots 
 * Data-driven model selection
 * Anything that doesn't scale well when applied to 1000's of genes/SNPs/proteins
 
@@ -59,7 +59,8 @@ Models with all categorical covariates are referred to as ANOVA models and model
 
 Read in 'lm_example_data.csv`:
 ```{r}
-dat <- read.csv("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_R/lm_example_data.csv")
+dat <- read.csv("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Advanced_R/lm_example_data.csv")
+dat$treatment <- factor(dat$treatment)
 dim(dat)
 head(dat)
 tail(dat)
@@ -106,8 +107,8 @@ In the output:
 * "Estimate" is the estimate of each coefficient
 * "Std. Error" is the standard error of the estimate
 * "t value" is the coefficient divided by its standard error
-* "Pr(>|t|)" is the p-value for the coefficient
-* The residual standard error is the estimate of the variance of $\epsilon$
+* "Pr(>\|t\|)" is the p-value for the coefficient
+* The residual standard error is the estimate of the variance of &epsilon;
 * Degrees of freedom is the sample size minus # of coefficients estimated
 * R-squared is (roughly) the proportion of variance in the outcome explained by the model
 * The F-statistic compares the fit of the model _as a whole_ to the null model (with no covariates)
@@ -133,9 +134,9 @@ For our simple design:
 ```{r}
 # Get means in each treatment
 treatmentmeans <- tapply(dat$expression, dat$treatment, mean)
-treatmentmeans["A"]
+treatmentmeans["A"] 
 # Difference in means gives you the "treatmentB" coefficient from oneway.model
-treatmentmeans["B"] - treatmentmeans["A"]
+treatmentmeans["B"] - treatmentmeans["A"] 
 ```
 
 What if you don't want reference group coding?  Another option is to fit a model without an intercept:
@@ -177,13 +178,13 @@ coef(pairs(oneway.model.emm))
 You can relevel your treatment, if say treatment "E" should be considered your control and you'd like the intercept to be the control treatment.
 
 ```{r}
-dat$treatment <- relevel(factor(dat$treatment), "E")
+dat$treatment <- relevel(dat$treatment, "E")
 oneway.model <- lm(expression ~ treatment, data = dat)
 coef(oneway.model)
 summary(oneway.model)
 
 # undo releveling so it doesn't mess up remaining examples
-dat$treatment <- relevel(factor(dat$treatment), "A")
+dat$treatment <- relevel(dat$treatment, "A")
 ```
 
 
@@ -191,7 +192,7 @@ dat$treatment <- relevel(factor(dat$treatment), "A")
 
 For the RNASeq analysis programs, ex. `limma` and `edgeR`, the model is specified through the _design matrix_.
 
-The design matrix $\mathbf{X}$ has one row for each observation and one column for each model coefficient.
+The design matrix *X* has one row for each observation and one column for each model coefficient.
 
 Sound complicated?  The good news is that the design matrix can be specified through the `model.matrix` function using the same syntax as for `lm`, just without a response:
 
@@ -251,7 +252,7 @@ The notation `treatment*time` refers to treatment, time, and the interaction eff
 
 Interpretation of coefficients:
 
-* Each coefficient for treatment represents the difference between the indicated group and the reference group _at the reference level for the other covariates_
+* Each coefficient for treatment represents the difference between the indicated group and the reference group _at the reference level for the other covariates_ 
 * For example, "treatmentB" is the difference in expression between treatment B and treatment A at time 1
 * Similarly, "timetime2" is the difference in expression between time2 and time1 for treatment A
 * The interaction effects (coefficients with ":") estimate the difference between treatment groups in the effect of time
@@ -287,7 +288,7 @@ coef(other.2way.model)
 We get the same estimates for the effect of treatment B vs. A at time 1:
 ```{r}
 c1 <- coef(twoway.model)
-c1["treatmentB"]
+c1["treatmentB"] 
 c2 <- coef(other.2way.model)
 c2["tx.timeB.time1"] - c2["tx.timeA.time1"]
 ```
@@ -306,13 +307,13 @@ c2 <- coef(other.2way.model)
 (c2["tx.timeB.time2"] - c2["tx.timeA.time2"]) - (c2["tx.timeB.time1"] - c2["tx.timeA.time1"])
 ```
 
-(See
+(See 
 https://www.bioconductor.org/packages/3.7/bioc/vignettes/limma/inst/doc/usersguide.pdf
 for more details on this parameterization)
 
 ### Exercises and Things to Think About
 - How much do the parameter estimates for treatment change when batch is added?  
-- The data frame dat has a column called 'temperature'.  What formula would you use if you wanted to look at differences between treatments, adjusting for temperature?
+- The data frame dat has a column called 'temperature'.  What formula would you use if you wanted to look at differences between treatments, adjusting for temperature? 
 
 ## Continuous Covariates
 Linear models with continuous covariates ("regression models") are fitted in much the same way:
@@ -344,7 +345,8 @@ cor(dat$expression, dat$temperature)
 ```
 
 ### Exercises and things to think about
-- Look at the documentation for formula again using ?formula.  How would you change the formula statement if you wanted to add a quadratic term?
+- Look at the documentation for formula again using ?formula.  How would you change the formula statement if you wanted to add a quadratic term?  Is a model with a quadratic term still a linear model?
 - Convert temperature to Farenheit by replacing temperature with I(9/5*temperature + 32) in the model formula.  Does the p-value for the association with expression change?
 - Look at the documentation for limma [here](https://bioconductor.org/packages/release/bioc/vignettes/limma/inst/doc/usersguide.pdf) to see a bioinformatics application of what you just learned.
 - *For your experiment, what would the model formula look like?*
+
