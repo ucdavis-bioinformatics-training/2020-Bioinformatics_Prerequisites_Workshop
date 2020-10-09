@@ -4,7 +4,7 @@
 
 <img src="figures/python-poll.png" alt="BioPython" width="75%" align="center"/>
 
-#### Based on our poll results, some people want more background on Python, while others are more interested in being able to install and use tools. We will try to address a bit more of both in this section.
+### Based on our poll results, some people want more background on Python, while others are more interested in being able to install and use tools. We will try to address a bit more of both in this section.
 
 -----
 
@@ -91,7 +91,7 @@ deactivate
 
 
 
-### Python3 virtual environment and software install
+### Python3 virtual environment and software install (and using an API)
 
 Python3 [virtual environments](https://docs.python.org/3/tutorial/venv.html) are basically the same, but require slightly different commands.
 
