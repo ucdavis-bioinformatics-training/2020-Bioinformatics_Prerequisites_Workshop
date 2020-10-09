@@ -20,7 +20,7 @@ Participants must have access to a computer with a strong internet connection, w
 
 Who should attend? … Prior course participants have included faculty, post docs, grad students, staff, and industry researchers.
 
-What are the prerequisites? … There are no prerequisites other than familiarity with general biological concepts and an enthusiasm for learning bioinformatics data analysis. Some familiarity with the command-line and R is desirable.  However, we will dedicate time on the first day to bringing everyone up-to-speed to be able to run the commands needed during this workshop.
+What are the prerequisites? … There are no prerequisites other than familiarity with general biological concepts and an enthusiasm for learning bioinformatics data analysis.
 
 What do I need to bring? … access to a computer with a strong internet connection, which should have a recent version of R, Rstudio, and an application that allows them to ssh into a server (e.g. Bash for Windows, or Terminal for Apple). Computational exercises will be performed on a remote server. We can help with setup early on in the workshop. If your department does not allow you to install software on the computer you’ll be using, please contact us ahead of time.
 

@@ -145,6 +145,24 @@ her2_expressed + 1
 
 * Create another variable that is named as "c" and has the logical value of FALSE. What is the output of the operation *a + c*? What is the output of the operation *b + c*? Why?
 
+#### `r colFmt("Solution:", 'skyblue')`
+
+* Error occurs as following. The reason is that "+" is an arithmatic operator and requires numeric variables. Since "b" is a character variable, R cannot carry out the operation.
+
+
+```{r error=TRUE}
+a <- 3
+b <- "gene"
+a + b
+```
+
+* Because logical values can be converted to numeric values, this operation can be carried out properly by converting "c" to numerical value 0 first.
+
+```{r}
+c <- FALSE
+a + c
+```
+
 
 ---
 
@@ -245,6 +263,12 @@ table(disease_stage)
 * Try to add a new element to a factor. When the new element does not match any of the levels of the factor. What will happen? How should it be done to get a new factor with new levels and add new elements?
 
 * Look at functions _levels_ and _relevel_. What does each of them do? Which one should be used when one wants to redefine the levels of a factor?
+
+#### `r colFmt("Solution:", 'skyblue')`
+
+* When new elements have to be added to a factor, the most secure way to do it is to first combine the original vector data with the new data points first, then make the combined vector to a factor, at the same time define the desired levels.
+
+* First, by using the commands _?levels_ and _?relevel_, we can learn that _levels_ function provides the levels attribute of a factor, while _relevel_ function is to re-order the levels of a factor using the _ref_ level defined by user. In short, when one would like to redefine the levels of a factor, _relevel_ function should be used.
 
 
 <br>
@@ -381,6 +405,19 @@ merge(meta.data, expression.data, by="patients_name")
 ##### `r colFmt("Challenge:", 'blue')`
 
 * In the previous example, we created *expression.data* with the same number of patients as *meta.data*. What if *expression.data* has less number of patients? As an exercise to understand how *merge* works, you can reduce the dimention of *expression.data* and check the *merge* results.
+
+
+#### `r colFmt("Solution:", 'skyblue')`
+
+```{r}
+# subset the expression.data, which we learn later in the document
+new.expression.data <- expression.data[1:3,]
+merge(meta.data, new.expression.data, by="patients_name")
+# the above command matched the patients_name in new.expression.data to the patients_name in meta.data and merged the columns of those matched.
+# to include the rows in meta.data that has no matching patients_name from new.expression.data, one would have to modify one more parameter.
+merge(meta.data, new.expression.data, by="patients_name", all.x=TRUE)
+```
+
 
 <br>
 
@@ -742,6 +779,17 @@ There is **while** loop in R similarly as in command line or any other programmi
 
 Please rewrite the calculation of the column sum using *while* loop.
 
+#### `r colFmt("Solution:", 'skyblue')`
+
+```{r}
+while (i <= dim(my_matrix)[1]){
+  out <- sum(my_matrix[i,])
+  print(out)
+  i <- i + 1
+}
+```
+
+
 <br>
 
 ---
@@ -1013,25 +1061,51 @@ Working with an R notebook, load the Iris data as we did earlier in this documen
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+library(lattice)
+library(reshape2)
 tmp <- sapply(1:4, function(x){tapply(iris[,x], iris[[5]], median)})
 colnames(tmp) <- colnames(iris)[1:4]
 nms <- colnames(tmp)
 kable(data.frame(tmp, stringsAsFactors=F), align='c') %>% kable_styling(bootstrap_options=c("striped", "hover", "responsive"), full_width=F, position="center")
+# scatter plot of mean measurement
 species <- as.vector(levels(iris$Species))
 x <- c(1, 2, 3, 4)
-png("test.png")
 plot(x, tmp["setosa",], pch=20, col='red', ylim=c(0, max(tmp)), xaxt="n", xlab="Measurement type", ylab="Measurement results", cex.lab=1.0)
 points(x, tmp["virginica",], pch=20, col='orange')
 points(x, tmp["versicolor",], pch=20, col='blue')
 axis(1, at=x, labels=nms, las=2, cex.axis=0.7)
 text(c(1.5,1.5,1.5), c(0, 0.7, 1.4), labels=species, col=c("red", "blue", "orange"), cex=1.5)
-tt <- dev.off()
+# scatter plot of measurement by species
+dd <- melt(iris)
+xyplot(value ~ variable | Species, data=dd, scales=list(x=list(rot=90)), xlab="Measurements", ylab="Values")
+# boxplot by group
+cols <- c("red", "blue", "orange")
+boxplot(value ~ Species + variable, data=dd, col = cols, xaxt="n", yaxt="n", xlab="Measurement Type", ylab="Values")
+axis(side=1, labels=FALSE)
+axis(side=2, las=2)
+text(x=1:12, y=par("usr")[3] - 0.85, labels=c("", "Sepal.Length", "", "", "Sepal.Width", "", "", "Petal.Length", "", "", "Petal.Width", ""), xpd=NA, srt=35, cex=1)
+legend("topright", fill=cols, legend=levels(dd$Species))
 ```
 
-![](./test.png)
+
+#### `r colFmt("Hints: ", 'red')`
+
+* In order to output a nice looking table in the final report, one may consider the R package kableExtra https://github.com/haozhu233/kableExtra. One may also check out the documentation at https://cran.r-project.org/web/packages/htmlTable/vignettes/
+
+* Figure 1 can be produced using base R functions: plot(), points(), axis(), text().
+
+* Figure 2 can be produced using functions in R package lattice https://cran.r-project.org/web/packages/lattice/index.html
+
+* Figure 3 can be produced using function boxplot()
+
+#### **Solution:**
 
 
-`r colFmt("Hint: in order to output a nice looking table in the final report, one may check out the documentation at https://cran.r-project.org/web/packages/htmlTable/vignettes/", 'red')`
+```{r echo=FALSE, message=FALSE, warnings=FALSE}
+library(xfun)
+xfun::embed_file('solution.Rmd')
+```
+
 
 <br>
 

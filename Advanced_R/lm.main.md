@@ -31,6 +31,14 @@ We will not discuss:
 * Data-driven model selection
 * Anything that doesn't scale well when applied to 1000's of genes/SNPs/proteins
 
+## Goals
+A full course in linear models would take months, so this is a first introduction rather than a comprehensive how-to.  After this session you should:
+
+* Have a general idea of what a linear model is
+* Understand where linear models are used in bioinformatics
+* Begin to understand model specification in R
+
+
 <P style="page-break-before: always">
 
 
@@ -111,7 +119,6 @@ if (!!window.navigator.userAgent.match("MSIE 8")) {
         });
       }
     };
-
 
     // Set the correct tab when the page loads
     showStuffFromHash(context);

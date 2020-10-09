@@ -132,3 +132,9 @@ Now if you go into that directory you should see two new directories, "share" an
 	ls bin
 
 Now, as an exercise, add the correct directory to your path so that you can run samtools from anywhere.
+
+---
+
+**14\.** CHALLENGE: Install the software from this repo:
+
+https://github.com/pezmaster31/bamtools

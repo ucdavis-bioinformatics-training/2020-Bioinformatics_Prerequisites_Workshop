@@ -41,7 +41,13 @@ The R language has its roots in the S language and environment which was develop
 
 Some of R's strengths:
 
-* The ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.
+* The ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control. Such as examples like the following (extracted from http://web.stanford.edu/class/bios221/book/Chap-Graphics.html):
+
+```{r echo=FALSE, message=FALSE, error=FALSE, out.width="32%", fig.align='default'}
+library(knitr)
+include_graphics(c("chap3-rgraphics-heatmap-1.png", "chap3-rgraphics-darned1-1.png", "chap3-rgraphics-twodsp4-1.png"))
+```
+
 * It compiles and runs on a wide variety of UNIX platforms and similar systems (including FreeBSD and Linux), Windows and MacOS.
 * R can be extended (easily) via packages.
 * R has its own LaTeX-like documentation format, which is used to supply comprehensive documentation, both on-line in a number of formats and in hardcopy.
@@ -129,8 +135,7 @@ A variable is a named storage. Creating a variable is to reserve some space in m
 
 A function is a block of organized, reusable code that is used to perform a set of predefined operations. A function may take zero or more parameters and return a result.
 
-```{r out.width="15%", align='c', echo=FALSE, message=F}
-library(knitr)
+```{r out.width="15%", fig.align='center', echo=FALSE, message=F}
 include_graphics("./func.png")
 ```
 

@@ -29,28 +29,37 @@ Understanding linear modelling in R is **critical** in implementing these types 
 
 We will not discuss:
 
-* Diagnostic plots 
+* Diagnostic plots
 * Data-driven model selection
 * Anything that doesn't scale well when applied to 1000's of genes/SNPs/proteins
+
+## Goals
+A full course in linear models would take months, so this is a first introduction rather than a comprehensive how-to.  After this session you should:
+
+* Have a general idea of what a linear model is
+* Understand where linear models are used in bioinformatics
+* Begin to understand model specification in R
 
 # Linear models
 
 A linear model is a model for a continuous outcome Y of the form
-$$Y = \beta_0 + \beta_{1}X_{1} + \beta_{2}X_{2} + \dots + \beta_{p}X_{p} + \epsilon$$
+
+Y = &beta;<sub>0</sub> +  &beta;<sub>1</sub> X<sub>1</sub> +  &beta;<sub>2</sub> X<sub>2</sub> + ... +  &beta;<sub>p</sub> X<sub>p</sub> + &epsilon;
+
 The covariates X can be:
 
 * a continuous variable (age, weight, temperature, etc.)
 * Dummy variables coding a categorical covariate (more later)
 
-The $\beta$'s are unknown parameters to be estimated, the "coefficients".
+The &beta;'s are unknown parameters to be estimated, the "coefficients".
 
-The error term $\epsilon$ is assumed to be normally distributed with a variance that is constant across the range of the data, the "residuals".
+The error term &epsilon; is assumed to be normally distributed with a variance that is constant across the range of the data, the "residuals".
 
 Models with all categorical covariates are referred to as ANOVA models and models with continuous covariates are referred to as linear regression models. These are all linear models, and R doesn't distinguish between them.
 
 Read in 'lm_example_data.csv`:
 ```{r}
-dat <- read.csv("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-Winter-Bioinformatics_Command_Line_and_R_Prerequisites_Workshop/master/Advanced_R/lm_example_data.csv")
+dat <- read.csv("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Advanced_R/lm_example_data.csv")
 dim(dat)
 head(dat)
 tail(dat)
@@ -93,7 +102,7 @@ summary(oneway.model)
 ```
 In the output:
 
-* "Coefficients" refer to the $\beta$'s
+* "Coefficients" refer to the &beta;'s
 * "Estimate" is the estimate of each coefficient
 * "Std. Error" is the standard error of the estimate
 * "t value" is the coefficient divided by its standard error
@@ -124,9 +133,9 @@ For our simple design:
 ```{r}
 # Get means in each treatment
 treatmentmeans <- tapply(dat$expression, dat$treatment, mean)
-treatmentmeans["A"] 
+treatmentmeans["A"]
 # Difference in means gives you the "treatmentB" coefficient from oneway.model
-treatmentmeans["B"] - treatmentmeans["A"] 
+treatmentmeans["B"] - treatmentmeans["A"]
 ```
 
 What if you don't want reference group coding?  Another option is to fit a model without an intercept:
@@ -168,10 +177,13 @@ coef(pairs(oneway.model.emm))
 You can relevel your treatment, if say treatment "E" should be considered your control and you'd like the intercept to be the control treatment.
 
 ```{r}
-dat$treatment <- relevel(dat$treatment, "E")
+dat$treatment <- relevel(factor(dat$treatment), "E")
 oneway.model <- lm(expression ~ treatment, data = dat)
 coef(oneway.model)
 summary(oneway.model)
+
+# undo releveling so it doesn't mess up remaining examples
+dat$treatment <- relevel(factor(dat$treatment), "A")
 ```
 
 
@@ -211,7 +223,7 @@ For a model with more than one coefficient, `summary` provides estimates and tes
 
 Recall:
 
-$$Y = \beta_0 + \beta_{1}X_{1} + \beta_{2}X_{2} + \dots + \beta_{p}X_{p} + \epsilon$$
+Y = &beta;<sub>0</sub> + &beta;<sub>1</sub> X<sub>1</sub> + &beta;<sub>2</sub> X<sub>2</sub> + ... + &beta;<sub>p</sub> X<sub>p</sub> + &epsilon;
 
 model.matrix help you visualize the covariates for each sample.
 
@@ -239,7 +251,7 @@ The notation `treatment*time` refers to treatment, time, and the interaction eff
 
 Interpretation of coefficients:
 
-* Each coefficient for treatment represents the difference between the indicated group and the reference group _at the reference level for the other covariates_ 
+* Each coefficient for treatment represents the difference between the indicated group and the reference group _at the reference level for the other covariates_
 * For example, "treatmentB" is the difference in expression between treatment B and treatment A at time 1
 * Similarly, "timetime2" is the difference in expression between time2 and time1 for treatment A
 * The interaction effects (coefficients with ":") estimate the difference between treatment groups in the effect of time
@@ -275,7 +287,7 @@ coef(other.2way.model)
 We get the same estimates for the effect of treatment B vs. A at time 1:
 ```{r}
 c1 <- coef(twoway.model)
-c1["treatmentB"] 
+c1["treatmentB"]
 c2 <- coef(other.2way.model)
 c2["tx.timeB.time1"] - c2["tx.timeA.time1"]
 ```
@@ -294,13 +306,13 @@ c2 <- coef(other.2way.model)
 (c2["tx.timeB.time2"] - c2["tx.timeA.time2"]) - (c2["tx.timeB.time1"] - c2["tx.timeA.time1"])
 ```
 
-(See 
+(See
 https://www.bioconductor.org/packages/3.7/bioc/vignettes/limma/inst/doc/usersguide.pdf
 for more details on this parameterization)
 
 ### Exercises and Things to Think About
 - How much do the parameter estimates for treatment change when batch is added?  
-- The data frame dat has a column called 'temperature'.  What formula would you use if you wanted to look at differences between treatments, adjusting for temperature? 
+- The data frame dat has a column called 'temperature'.  What formula would you use if you wanted to look at differences between treatments, adjusting for temperature?
 
 ## Continuous Covariates
 Linear models with continuous covariates ("regression models") are fitted in much the same way:
@@ -334,5 +346,5 @@ cor(dat$expression, dat$temperature)
 ### Exercises and things to think about
 - Look at the documentation for formula again using ?formula.  How would you change the formula statement if you wanted to add a quadratic term?
 - Convert temperature to Farenheit by replacing temperature with I(9/5*temperature + 32) in the model formula.  Does the p-value for the association with expression change?
+- Look at the documentation for limma [here](https://bioconductor.org/packages/release/bioc/vignettes/limma/inst/doc/usersguide.pdf) to see a bioinformatics application of what you just learned.
 - *For your experiment, what would the model formula look like?*
-

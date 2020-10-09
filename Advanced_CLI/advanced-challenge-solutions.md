@@ -3,7 +3,7 @@ ADVANCED CHALLENGE SOLUTIONS
 
 CHALLENGE 1
 -----------
-    cat BSD | sed 's/ //g'
+    cat region.bed | sed 's/CHR//gi'
 
 CHALLENGE 2
 -----------

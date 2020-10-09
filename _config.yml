@@ -49,37 +49,33 @@ navigation:
   - heading: Advanced CLI
   - title: Advanced Command Line
     url: Advanced_CLI/advanced-command-line
-  # - title: Advanced Challenge Solutions
-  #   url: adv_cli/advanced_cli_solutions
-  - title: Using screen to manage multiple projects
-    url: Advanced_CLI/screen
+  - title: Advanced Challenge Solutions
+    url: Advanced_CLI/advanced-challenge-solutions
+  # - title: Using screen to manage multiple projects
+  #   url: Advanced_CLI/screen
+  - title: A Simple Bioinformatics Workflow
+    url: Advanced_CLI/bioworkflow
 
   - heading: Software Installation
   - title: Using make and cmake
     url: software_install/make
   - title: Using Conda
     url: software_install/conda
-  - title: A Simple Bioinformatics Workflow
-    url: software_install/bioworkflow
 
   - heading: Getting set up with AWS
   - title: AWS Event Engine
     url: Intro_to_R/AWS/
+  - title: Starting and Stopping your AWS Instance
+    url: Intro_to_R/AWS/start_stop/
 
   - heading: Introduction to R
   - title: Introduction to R
     url: Intro_to_R/Intro2R/Intro2R_main
-  # - title: Introduction to tidyverse, part I
-  #   url: intro_R/tidyverse1
-  # - title: Introduction to tidyverse, part II
-  #   url: intro_R/tidyverse2
-  # - title: Linear modeling in R
-  #   url: intro_R/linear_models
-  # - heading: Spreadsheets
-  # - title: Working with spreadsheets
-  #   url: adv_cli/advanced_cli
-  # - heading: Bioinformatics
-  # - title: A Simple Bioinformatics Workflow
-  #   url: adv_cli/advanced_cli_solutions
-  # - heading: ETC
-  # - title: Closing Thoughts
+  - title: Introduction to tidyverse
+    url: Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2_prepare_fixed
+  - title: Organizing, manipulating, and visualizing data in the tidyverse
+    url: Intro_to_R/Intro2R/Intro_to_tidyverse_and_ggplot2
+
+  - heading: Advanced R
+  - title: Linear models in R
+    url: Advanced_R/linear_models
