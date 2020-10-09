@@ -151,7 +151,7 @@ To read the file and store it in an object, we assign the output of the read_tsv
 
 
 ```r
-mpg <- read_tsv('mpg.tsv')
+mpg <- read_tsv("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Intro_to_R/Intro2R/mpg.tsv")
 ```
 
 ```
