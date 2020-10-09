@@ -26,14 +26,14 @@ Now in our 13th year of training researchers, the UC Davis Bioinformatics Core i
 
 ### Anticipated 2021 slate of Workshop include
 
-#### Multi-day Top
+#### Continuous Workshops
 * RNA Sequencing Analysis (At UCD/ At UCSF/ Virtual)
 * Intro to Single Cell RNA Sequencing Analysis (At UCD/ At UCSF/ Virtual)
 * Genome Wide Association and DNA Variant Analysis (At UCD)
 * Microbial Community Analysis (At UCD)
 * Metagenomes/Metatranscriptomes (At UCD)
 
-#### Broken 1/2 - full day series
+#### Multiday Broken 1/2 - full day series
 * Bioinformatics Prerequisites (Dual onsite and virtual)
     * Bash for biologists
     * Python for biologists
