@@ -28,8 +28,11 @@ https://github.com/ibest/ARC
 
 Log into the server and run the following commands.
 
-##### Setup
+
+**run in bash $**
 ```bash
+# This path should have already been created, but we can make sure:
+mkdir -p /share/workshop/prereq_workshop/$USER/python
 cd /share/workshop/prereq_workshop/$USER/python
 
 # Create the virtual environment:
@@ -47,6 +50,7 @@ source /share/workshop/prereq_workshop/$USER/python/py2ARC.venv/bin/activate
 
 Installing biopython can take a little while. If you want you can learn what ARC does and review the installation instructions [here](http://ibest.github.io/ARC/#ARCInstallation).
 
+**run in bash $**
 ```bash
 # First we need to install dependencies:
 # Biopython v1.76 was the last version released for Python 2.7.x
@@ -67,7 +71,6 @@ module load spades
 cd test_data
 
 ARC
-
 ```
 
 <h3><font color="red">At this point you should see a lot of text scrolling up the screen. This is ARC performing an iterative assembly process on some test data. If you see this, click "Yes", if you are stuck click "No" or post a question on Slack.</font></h3>
@@ -76,7 +79,10 @@ You can interrupt the assembly at any time using ctrl+c.
 
 Once you are finished working in the Virtual Environment, you can exit it with the deactivate command. This will set your path and environment variables back to their normal state.
 
+
+**run in bash $**
 ```bash
+# Deactivate the virtual environment (look for a change in your prompt)
 deactivate
 ```
 
@@ -91,11 +97,18 @@ Python3 [virtual environments](https://docs.python.org/3/tutorial/venv.html) are
 
 Make sure that your python2 environment has been deactivated and then run the following.
 
+**run in bash $** 
 ```bash
-# We need a different version of python3 that supports virtual environments:
-module load anaconda3
+# Make sure you are back in the right directory
+cd /share/workshop/prereq_workshop/$USER/python
+
+# We need a version of python3 that supports virtual environments.
+source /share/biocore/shunter/opt/bin/setpath
+
+# Create the python3 virtual environment, notice the difference in syntax.
 python3 -m venv py3venv
 
+# Activate the python3 virtual environment.
 source py3venv/bin/activate
 
 ```
@@ -104,13 +117,13 @@ source py3venv/bin/activate
 <h3><font color="red">At this point your bash prompt should start with (py3venv). If it does, click "Yes", if you are stuck click "No" or post a question on Slack.</font></h3>
 
 
-Now we are ready to install modules into our Python3 virtual environment. Lets try out the [covid](https://pypi.org/project/covid/) package to query data on the novel corona virus.
+Now we are ready to install modules into our Python3 virtual environment. Lets try out the [covid package](https://pypi.org/project/covid/) to query data on the novel corona virus.
 
-To do this we will use [pip](https://pypi.org/project/pip/), the package installer for Python. Pip will automatically download and install all of the dependencies needed for the covid package.
+To do this we will use [pip, the package installer for Python](https://pypi.org/project/pip/). Pip will automatically download and install all of the dependencies needed for the covid package.
 
-Again, this process might take a little while, so while you wait, visit the [covid](https://pypi.org/project/covid/) page, scroll down to the "How to use" section of the page and review the usage instructions. The covid package installs includes a command line tool written in Python (you can look at some of the source code using ```less ./py3venv/lib/python3.6/site-packages/covid/cli.py```). Try to determine the number of confirmed cases based on worldometers and john_hopkins data sources. Are they the same?
+Again, this process might take a little while, so while you wait, visit the [covid package page](https://pypi.org/project/covid/), scroll down to the "How to use" section of the page and review the usage instructions. The covid package installs includes a command line tool written in Python (you can look at some of the source code using ```less ./py3venv/lib/python3.6/site-packages/covid/cli.py```). Try to determine the number of confirmed cases based on worldometers and john_hopkins data sources. Are they the same?
 
-
+**run in bash $**
 ```bash
 # Installing is easy, just use pip!
 
@@ -123,6 +136,7 @@ python
 
 Try running the following code to fetch the latest data on Italy. What kind of data type does get_status_by_country_name() return? You should be able to access elements of the dataset using information from yesterday's course material.
 
+**run in python >>>**
 ```python
 from covid import Covid
 
@@ -132,10 +146,22 @@ covid = Covid()
 covid.get_status_by_country_name("italy")
 ```
 
+
+
 Once you are finished, remember that you can exit Python using ctrl+D, and use deactivate to exit from the Python3 virtual environment.
 
 Bonus Exercise:
+
 1) MultiQC support for our Illumina read QA/QC etc application [HTStream](https://github.com/s4hts/HTStream) is almost complete. However, it has not been merged in to the official MultiQC repository yet. The only way to get it is to install it yourself from https://github.com/s4hts/MultiQC. Using what you have learned so far, try to install this version of MultiQC in your Python3 virtual environment.
+    *  Once you have the multiqc package installed, you can get some test data to try on using the following commands.
+
+```bash
+wget "https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Intro_to_Python/multiqcData.tar.gz"
+
+tar xvf multiqcData.tar.gz
+
+```
+    
 
 -----
 
@@ -155,14 +181,21 @@ The steps are:
 2) Read or write data.
 3) Close file handle.
 
-#### Writing to a file:
+### Writing to a file:
 
-**NOTE we need python 3.6 or later to run the code below**
+**run in bash $**
+```bash
+# Make sure you are back in the right directory
+cd /share/workshop/prereq_workshop/$USER/python
 
-```python
 # First, make sure that a more recent version of python is available:
-module load anaconda3
+source /share/biocore/shunter/opt/bin/setpath
+```
 
+**NOTE we need python 3.8 to run the code below**
+
+**run in python >>>**
+```python
 # 1) Open a file handle to write text to:
 handle = open("test_file.txt", "w")
 
@@ -174,14 +207,22 @@ for i in range(0,20):
 handle.close()
 
 # If you are running ipython try "cat test_file.txt" to check the contents of the file.
+# If you are not running ipython, either connect to the server in another terminal 
+# window to look at the contents of the file, or exit from python, cat the file and start python again.
 ```
 
-#### Reading from a file:
+### Reading from a file:
 
-Now lets reverse the process and read the information back in from the file. This time we will try an alternative approach that automatically closes the file for us when we are done:
+Now lets reverse the process and read the information back in from the file. 
 
+This time we will try at a few alternative approaches.
+
+The first two automatically close the file for us when we are done because we use the **with** statement.
+
+The final example shows how to manually read one line from the file with the *next()* method. Note that the file handle is an **iterable object**. The *next()* statement can be used to request the next line from a file handle **iterator** (the file handle is technically an iterable object AND an iterator). In the first example, the **for** loop calls *next()* over and over, storing the resulting value in a variable called *line* that we use in the *print()* statement.
+
+**run in python >>>**
 ```python
-
 # Option 1, iterates over the file line by line:
 with open("test_file.txt", "r") as handle:
     for line in handle:
@@ -191,7 +232,7 @@ with open("test_file.txt", "r") as handle:
 with open("test_file.txt", "r") as handle:
     print(handle.read())
 
-# Bonus: What if we want to look at the file manually?
+# Bonus: What if we want to look at the file manually one line at a time?
 handle = open("test_file.txt", "r")
 line = next(handle)
 print(line)
@@ -201,13 +242,17 @@ handle.close()
 
 -------
 
-#### What about compressed files?
+### What about compressed files?
 
+Many algorithms have been developed for reducing the size of a file by taking advantage of short repeated sections of a file. For example, imagine we had some data like: "AAAAAAGGGGGGGTTTTTTTTCCCCCCCCC", we could encode this value as "A6G7T8C9" and save a lot of space! This approach to data compression is called [Run Length Encoding or RLE](https://en.wikipedia.org/wiki/Run-length_encoding) and is sometimes used with Oxford Nanopore and PacBio CLR data to overcome problems with [homopolymers](https://en.wikipedia.org/wiki/Polymer).
+
+In this example we will use a file that is compressed with a more complex algorithm that is commonly used for storing files on Linux called [gzip](https://www.gzip.org/).
+
+First we need a compressed file to work with, we will use a module called [urllib.request](https://docs.python.org/3/library/urllib.request.html#request-objects) to download the file from GitHub, and the [os](https://docs.python.org/3/library/os.html) module to perform so tests on the file to see if it downloaded properly.
+
+**run in python >>>**
 ```python
-# First we need a compressed file to work with.
-# Use urllib to download the file from GitHub
-
-import urllib
+import urllib.request
 url = "https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Bioinformatics_Prerequisites_Workshop/master/Intro_to_Python/example_data.fastq.gz"
 
 urllib.request.urlretrieve(url, 'example_data.fastq.gz')
@@ -244,8 +289,9 @@ AGGGAATCTTCCGCAATGGACGAAAGTCTGACGGAGCAACGCCGCGTGAGTGATGAAGGTTTTCGGATCATAAAGCTCTG
 GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGCGGGGGGGGGGGGGGGGGGFFGGGGFGGGGGGGGGGGGGEGFGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGGGGGGEGGFGGGGGGGI"IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII""IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII2IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII$AIIGGGGFDGGGGCFGFFGGGGGFFDGFCGGGGFFFGGGGFE,GGGGGGGFEFGFEGGECGGGDGGGGGFFAGGDGGGFGGGGGGGGGFCGGF7GGGGGGGGFF?GGGGGFGGFGGGGGGGGGGGGGGFFEGGGDGGGGGGGGGGGGGGGGGGGGGF
 ```
 
-If we try to open this file like we did with the previous file we will get incomprehensible garbage. In order to read the file properly, we need to uncompress it. The Python gzip module allows us to do this, but otherwise works like the normal file handle.
+If we try to open this file like we did with the previous file we will get incomprehensible garbage. In order to read the file properly, we need to uncompress it. The Python [gzip](https://docs.python.org/3/library/gzip.html) module allows us to do this, but otherwise works like the normal file handle. Note that we open the file in "rt", or read-text mode.
 
+**run in python >>>**
 ```python
 import gzip
 
@@ -261,12 +307,18 @@ handle.close()
 
 Lets pretend that for some reason we want to process the whole file and count how many times we see each character? Can you figure out how this code works?
 
+Hints:
+1) Remember, h is a gzip file handle iterator that will return one line at a time.
+2) line.strip() removes special characters and for ch in line.strip() iterates over each character.
+
+**run in python >>>**
 ```python
+import gzip
 # Create an empty dictionary
 chrcount = {}
 
 # read in each line of the fasta file, count character occurrences
-with gzip.open('example_data.fasta.gz', 'rt') as h:
+with gzip.open('example_data.fastq.gz', 'rt') as h:
     for line in h:
         for ch in line.strip():
             if ch not in chrcount:
@@ -279,9 +331,17 @@ for k, v in chrcount.items():
 
 ```
 
+### Sorting in Python
 
-We might want to print out values from most common to least. To do this, we need a way to sort. Python has a built in "sorted" function that can take care of this for us. The sorted() function is a little bit tricky because the "key" argument has to be a function. This is very powerful because it allows flexibility, but can also be confusing.
+We might want to print out values from most common to least. To do this, we need a way to sort. Python has a built in *sorted()* function that can take care of this for us. The *sorted()* function is a little bit tricky because the "key" argument has to be a function. This is very powerful because it allows flexibility, but can also be confusing.
 
+Try to figure out how the call to sorted() works. 
+
+Some Hints:
+1) What does chrcount.items() return?
+2) What does x and x[1] contain if you run this code: x = list(chrcount.items())[0]?
+
+**run in python >>>**
 ```python
 # Check how sorted works:
 sorted([4,2,5,6,2])
@@ -292,7 +352,8 @@ sorted([4,2,5,6,2], reverse=True)
 # Sorting your dictionary by value requires some tricks:
 sorted(chrcount.items(), key=lambda x: x[1], reverse=True)
 
-# How does this work?
+# The lambda keyword allows us to create a function "on the fly". The 
+# following code shows how this works.
 def getv(x):
     return(x[1])
 
@@ -336,13 +397,18 @@ sorted(chrcount.items(), key=getv, reverse=True)
 
 Before we start we need to ensure that the BioPython module is loaded. On the bash command line load the biopython module and then run python3.
 
+**run in bash $**
 ```bash
+# Make sure you are back in the right directory
+cd /share/workshop/prereq_workshop/$USER/python
+
 module load biopython
 python3
 ```
 
 Explore Biopython Sequence objects
 
+**run in python >>>**
 ```python
 from Bio.Seq import Seq
 
@@ -379,8 +445,6 @@ print(n)
 m.reverse_complement()
 
 m.translate(table=11)
-
-
 ```
 
 
@@ -388,6 +452,7 @@ m.translate(table=11)
 
 Using SeqIO should look very familiar after learning about file handles. Note that we need to provide a file type so that SeqIO knows how to properly read our file.
 
+**run in python >>>**
 ```python 
 # Import SeqIO module
 from Bio import SeqIO
@@ -416,6 +481,7 @@ sum(record.letter_annotations['phred_quality'])/len(record)
 
 Use SeqIO to get the lenths of all sequences in the file and calculate statistics.
 
+**run in python >>>**
 ```python
 from Bio import SeqIO
 import gzip
@@ -440,6 +506,7 @@ sum(m > 429 for m in l)
 
 Another common use of SeqIO is to convert from one file type to another:
 
+**run in python >>>**
 ```python
 from Bio import SeqIO
 import gzip
@@ -463,8 +530,9 @@ It is commonly necessary to read or write tabular data when doing bioinformatics
 
 Lets experiment with writing and reading tabular files using the DictWriter and DictReader classes. 
 
-Writing data out.
+**run in python >>>**
 ```python
+# Write a tab-separated values file with 
 import csv
 
 # First lets write an example file
@@ -486,9 +554,12 @@ with open('my_data.csv', 'w') as csvfile:
 # If you are running ipython, try checking the contents of the file with "cat my_data.csv"
 
 ```
+<br>
 
-Reading data in from a file
+
+**run in python >>>**
 ```python
+# Reading data in from a file and print it to the screen
 import csv
 
 with open('my_data.csv', 'r') as csvfile:
